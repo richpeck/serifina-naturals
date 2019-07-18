@@ -30,8 +30,13 @@ gem 'sinatra-activerecord'                # => Integrates ActiveRecord into Sina
 
 # => Database
 # => Allows us to determine exactly which db we're using
+# => To get the staging/production environments recognized by Heroku, set the "BUNDLE_WITHOUT" env var as explained here: https://devcenter.heroku.com/articles/bundler#specifying-gems-and-groups
 gem 'sqlite3', group: :development
 gem 'pg',      groups: [:staging, :production]
+
+# => Server
+# => Runs puma in development/staging/production
+gem 'puma' # => Main web server
 
 ###########################################
 ###########################################
@@ -41,7 +46,7 @@ gem 'pg',      groups: [:staging, :production]
 ####################
 
 gem 'rack-flash3', require: 'rack-flash'    # => Flash messages for Rack apps
-gem 'foreman', group: :development          # => Allows us to use Procfile configuration in our app
+gem 'foreman', group: :development          # => Allows us to run the app in development/testing
 gem 'byebug', groups: [:development, :test] # => Debug tool for Ruby
 
 ###########################################
