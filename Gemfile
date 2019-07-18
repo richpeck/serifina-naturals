@@ -31,7 +31,7 @@ gem 'sinatra-activerecord'                # => Integrates ActiveRecord into Sina
 # => Database
 # => Allows us to determine exactly which db we're using
 gem 'sqlite3', group: :development
-gem 'pg',      groups: [:staging, :production]
+gem 'pg',      groups: [:staging, :production, :heroku]
 
 ###########################################
 ###########################################
