@@ -16,7 +16,7 @@ threads threads_count, threads_count
 preload_app!
 
 port        ENV.fetch("PORT")      { 4200 }
-environment ENV.fetch("RACK_ENV") { "development" }
+environment ENV.fetch("RACK_ENV")  { "development" }
 
 # Plugins
 plugin :tmp_restart

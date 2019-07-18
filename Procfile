@@ -1,3 +1,3 @@
 # Web
 # Runs web server
-web: bundle exec rackup config.ru -p $PORT
+web: bundle exec puma config.ru
