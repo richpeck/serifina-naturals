@@ -36,7 +36,7 @@ gem 'pg',      groups: [:staging, :production]
 
 # => Server
 # => Runs puma in development/staging/production
-gem 'puma' # => primary web server
+gem 'puma' # => web server
 
 ###########################################
 ###########################################
