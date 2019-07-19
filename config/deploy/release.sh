@@ -17,5 +17,8 @@
 echo "Migrating...";
 rake db:migrate;
 
+echo "Precompiling...";
+rake assets:precompile;
+
 ###########################################
 ###########################################

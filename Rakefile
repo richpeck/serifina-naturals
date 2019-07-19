@@ -1,6 +1,9 @@
 require 'sinatra/activerecord/rake'
+require 'sinatra/asset_pipeline/task' # => Sinatra Asset Pipeline
 require 'rake/testtask'
 require './src/app'
+
+Sinatra::AssetPipeline::Task.define! App # => Sinatra Asset Pipeline
 
 task :creds2heroku do
   Bundler.with_clean_env do

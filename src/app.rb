@@ -1,7 +1,9 @@
 require 'sinatra/shopify-sinatra-app'
+require 'sinatra/asset_pipeline' # => Sinatra Asset Piepline
 
 class SinatraApp < Sinatra::Base
   register Sinatra::Shopify
+  register Sinatra::AssetPipeline
 
   # set the scope that your app needs, read more here:
   # http://docs.shopify.com/api/tutorials/oauth

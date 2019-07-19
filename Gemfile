@@ -27,6 +27,7 @@ ruby [RUBY_VERSION, '2.6.3'].min
 # => Not big enough for Rails
 gem 'shopify-sinatra-app', '~> 0.8.0'     # => Allows us to create a shopify store with Sinatra (https://github.com/kevinhughes27/shopify-sinatra-app)
 gem 'sinatra-activerecord'                # => Integrates ActiveRecord into Sinatra apps
+gem 'sinatra-asset-pipeline', '~> 2.2'    # => Asset Pipeline (for CSS/JS)
 
 # => Database
 # => Allows us to determine exactly which db we're using
