@@ -3,7 +3,7 @@ require 'sinatra/asset_pipeline/task' # => Sinatra Asset Pipeline
 require 'rake/testtask'
 require './src/app'
 
-Sinatra::AssetPipeline::Task.define! ShopifyApp # => Sinatra Asset Pipeline
+Sinatra::AssetPipeline::Task.define! SinatraApp # => Sinatra Asset Pipeline
 
 task :creds2heroku do
   Bundler.with_clean_env do
