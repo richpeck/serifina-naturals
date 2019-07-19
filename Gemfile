@@ -25,9 +25,9 @@ ruby [RUBY_VERSION, '2.6.3'].min
 
 # => Sinatra
 # => Not big enough for Rails
-gem 'shopify-sinatra-app', '~> 0.8.0'     # => Allows us to create a shopify store with Sinatra (https://github.com/kevinhughes27/shopify-sinatra-app)
-gem 'sinatra-activerecord'                # => Integrates ActiveRecord into Sinatra apps
-gem 'sinatra-asset-pipeline', '~> 2.2'    # => Asset Pipeline (for CSS/JS)
+gem 'shopify-sinatra-app', '~> 0.8.0'               # => Allows us to create a shopify store with Sinatra (https://github.com/kevinhughes27/shopify-sinatra-app)
+gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.13'   # => Integrates ActiveRecord into Sinatra apps
+gem 'sinatra-asset-pipeline', '~> 2.2'              # => Asset Pipeline (for CSS/JS)
 
 # => Database
 # => Allows us to determine exactly which db we're using
@@ -49,6 +49,15 @@ gem 'puma' # => web server
 gem 'rack-flash3', require: 'rack-flash'    # => Flash messages for Rack apps
 gem 'foreman', group: :development          # => Allows us to run the app in development/testing
 gem 'byebug', groups: [:development, :test] # => Debug tool for Ruby
+
+###########################################
+###########################################
+
+####################
+#     Frontend     #
+####################
+
+gem 'haml', '~> 5.1', '>= 5.1.1' # => HAML
 
 ###########################################
 ###########################################

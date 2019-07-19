@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2014_04_14_042317) do
+ActiveRecord::Schema.define(version: 2014_04_13_221328) do
 
   create_table "shops", force: :cascade do |t|
     t.string "name"
     t.string "token_encrypted"
-    t.index ["name"], name: "index_shops_on_name"
+    t.index ["name"], name: "index_shops_on_name", unique: true
   end
 
 end

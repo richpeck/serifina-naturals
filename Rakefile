@@ -1,7 +1,7 @@
-require 'sinatra/activerecord/rake'
+require 'sinatra/activerecord/rake'   # => This works but ONLY if you call "bundle exec" - https://github.com/janko/sinatra-activerecord/issues/40#issuecomment-51647819
 require 'sinatra/asset_pipeline/task' # => Sinatra Asset Pipeline
 require 'rake/testtask'
-require './src/app'
+require './config/app'
 
 Sinatra::AssetPipeline::Task.define! SinatraApp # => Sinatra Asset Pipeline
 
