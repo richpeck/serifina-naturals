@@ -16,7 +16,7 @@ class CreateProducts < ActiveRecord::Migration::Current
 
   ###########################################
   ###########################################
-  
+
   # => Decs
   @@table = :products
 
@@ -26,10 +26,13 @@ class CreateProducts < ActiveRecord::Migration::Current
   ## Up ##
   def up
     create_table @@table do |t|
+      t.references :shop
       t.integer :product_id
       t.string  :product_type
       t.string  :title
       t.string  :vendor
+      t.string  :sku
+      t.decimal :price, precision: 10, scale: 2
     end
   end
 

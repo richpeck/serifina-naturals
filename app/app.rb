@@ -27,6 +27,11 @@ require 'haml'                        # => Haml
 require 'net/https'       # => URL::HTTPS core (for creating URL out of naked domain)
 require "addressable/uri" # => Addressable::URI (break down URL into components // for request.referrer - https://github.com/sporkmonger/addressable#example-usage)
 
+# => App
+# => Cycle through other files we've made and include them
+require_relative 'product'
+require_relative 'shop'
+
 ##########################################################
 ##########################################################
 
@@ -94,7 +99,7 @@ class SinatraApp < Sinatra::Base
     # => Shopify Session
     # => Required to give us access to the information we need
     shopify_session do |shop_name|
-      @shop = ShopifyAPI::Shop.current
+      @shop     = ShopifyAPI::Shop.current
       @products = ShopifyAPI::Product.find :all
 
       # => Response
@@ -116,7 +121,7 @@ class SinatraApp < Sinatra::Base
   # => stores more data.
   post '/uninstall' do
     shopify_webhook do |shop_name, params|
-      Shop.find_by(name: shop_name).destroy
+      Shop.find_by(name: shop_name).destroy # => should destroy products too
     end
   end
 
@@ -130,7 +135,7 @@ class SinatraApp < Sinatra::Base
   # => setup any webhooks or services you need on Shopify
   # => inside here.
   def after_shopify_auth
-    shopify_session do # => Shopify hook
+    shopify_session do |shop_name| # => Shopify hook
 
       # => Uninstall Webhook
       # => Allows us to remove the app from the db when it's installed from shopify
@@ -143,6 +148,15 @@ class SinatraApp < Sinatra::Base
       rescue => e
         raise unless uninstall_webhook.persisted?
       end
+
+      # => Populate Products
+      # => Download the products to the local DB and allocate conflict information etc
+      @products = ShopifyAPI::Product.find :all
+      @shop     = Shop.find_by name: shop_name
+
+      # => Populate new products
+      # => This allows us to store the products locally
+      @shop.products.create @products.to_json # => needs converting into object or hash etc
 
     end ## session
   end ## auth

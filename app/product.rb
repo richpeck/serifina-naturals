@@ -17,7 +17,7 @@
 
 ## Product ##
 ## id | shop_id | name | created_at | updated_at ##
-class Product < ApplicationRecord
+class Product < ActiveRecord::Base
 
     ## Store ##
     ## Ensures we are keeping the data dependent on users being logged in ##

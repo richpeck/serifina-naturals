@@ -13,10 +13,14 @@
 ActiveRecord::Schema.define(version: 2014_04_13_221329) do
 
   create_table "products", force: :cascade do |t|
+    t.integer "shop_id"
     t.integer "product_id"
     t.string "product_type"
     t.string "title"
     t.string "vendor"
+    t.string "sku"
+    t.decimal "price", precision: 10, scale: 2
+    t.index ["shop_id"], name: "index_products_on_shop_id"
   end
 
   create_table "shops", force: :cascade do |t|

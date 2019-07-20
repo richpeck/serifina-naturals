@@ -19,9 +19,15 @@ class CreateShops < ActiveRecord::Migration::Current
   ###########################################
   ###########################################
 
+  # => Decs
+  @@table = :shops
+
+  ###########################################
+  ###########################################
+
   ## Up ##
   def up
-    create_table :shops do |t|
+    create_table @@table do |t|
       t.string :name
       t.string :token_encrypted
       t.index  :name, unique: true
@@ -33,7 +39,7 @@ class CreateShops < ActiveRecord::Migration::Current
 
   ## Down ##
   def down
-    drop_table :shops, if_exists: true
+    drop_table @@table, if_exists: true
   end
 
   ###########################################
