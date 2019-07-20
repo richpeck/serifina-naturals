@@ -1,0 +1,4 @@
+%ul
+  - @products.each do |product|
+    %li
+      %a{href: "https://\#{@shop.myshopify_domain}/admin/products/\#{product.id}", target: :blank}= product.id
