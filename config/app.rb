@@ -35,10 +35,10 @@ require "addressable/uri" # => Addressable::URI (break down URL into components 
 class SinatraApp < Sinatra::Base
   register Sinatra::Shopify
   register Sinatra::AssetPipeline
-  register Sinatra::RespondWith
+  register Sinatra::RespondWith # => http://sinatrarb.com/contrib/respond_with
 
   configure :development do
-    register Sinatra::Reloader
+    register Sinatra::Reloader  # => http://sinatrarb.com/contrib/reloader
   end
 
   ##########################################################
@@ -129,23 +129,9 @@ class SinatraApp < Sinatra::Base
   # => setup any webhooks or services you need on Shopify
   # => inside here.
   def after_shopify_auth
-    # shopify_session do
-      # create an uninstall webhook, this webhook gets sent
-      # when your app is uninstalled from a shop. It is good
-      # practice to clean up any data from a shop when they
-      # uninstall your app:
-
-      # uninstall_webhook = ShopifyAPI::Webhook.new(
-      #   topic: 'app/uninstalled',
-      #   address: "#{base_url}/uninstall",
-      #   format: 'json'
-      # )
-      # begin
-      #   uninstall_webhook.save!
-      # rescue => e
-      #   raise unless uninstall_webhook.persisted?
-      # end
-    # end
+    shopify_session do
+      puts "test"
+    end
 
   end
 end
