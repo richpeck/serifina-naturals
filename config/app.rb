@@ -19,6 +19,7 @@
 require 'sinatra/shopify-sinatra-app' # => Shopify App
 require 'sinatra/asset_pipeline'      # => Sinatra Asset Piepline
 require 'sinatra/cors'                # => Sinatra CORS
+require 'sinatra/contrib'             # => Sinatra Respond To (Sinatra Contrib)
 require 'haml'                        # => Haml
 
 # => Extra
@@ -34,6 +35,7 @@ require "addressable/uri" # => Addressable::URI (break down URL into components 
 class SinatraApp < Sinatra::Base
   register Sinatra::Shopify
   register Sinatra::AssetPipeline
+  register Sinatra::Contrib
 
   ##########################################################
   ##########################################################
@@ -82,13 +84,23 @@ class SinatraApp < Sinatra::Base
   # => App
   # => This is a simple example that fetches some products
   # => From Shopify and displays them inside your app
-  get '/' do
+  get '/', provides: [:html, :json] do
+
+    # => Shopify Session
+    # => Required to give us access to the information we need
     shopify_session do |shop_name|
       @shop = ShopifyAPI::Shop.current
       @products = ShopifyAPI::Product.find :all
-      haml :home
-    end
-  end
+
+      # => Response
+      # => Bundled inside Sinatra
+      respond_to do |format|
+        format.json { @products.to_json }
+        format.html { haml :home }
+      end ## response
+    end ## shopify
+
+  end ## get
 
   ##########################################################
   ##########################################################
@@ -108,35 +120,12 @@ class SinatraApp < Sinatra::Base
 
   private
 
-  # => Post Install
+  # => Post Install/Uninstall
   # => This method gets called when your app is installed.
   # => setup any webhooks or services you need on Shopify
   # => inside here.
   def after_shopify_auth
-    # shopify_session do
-      # create an uninstall webhook, this webhook gets sent
-      # when your app is uninstalled from a shop. It is good
-      # practice to clean up any data from a shop when they
-      # uninstall your app:
 
-      # uninstall_webhook = ShopifyAPI::Webhook.new(
-      #   topic: 'app/uninstalled',
-      #   address: "#{base_url}/uninstall",
-      #   format: 'json'
-      # )
-      # begin
-      #   uninstall_webhook.save!
-      # rescue => e
-      #   raise unless uninstall_webhook.persisted?
-      # end
-    # end
-
-    # => Populate products
-    # => This pulls all the products from the newly added Shopify store
-    # => And allows us to then build up relationships around each product (as per spreadsheet)
-    shopify_session do
-      logger.info("test")
-    end
 
   end
 end
