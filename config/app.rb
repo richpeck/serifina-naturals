@@ -130,11 +130,23 @@ class SinatraApp < Sinatra::Base
   # => inside here.
   def after_shopify_auth
     shopify_session do
-      puts "test"
-    end
 
-  end
-end
+
+      # => Uninstall Webhook
+      # => Allows us to remove the app from the db when it's installed from shopify
+      begin
+        ShopifyAPI::Webhook.create(
+          topic: 'app/uninstalled',
+          address: "#{base_url}/uninstall",
+          format: 'json'
+        )
+      rescue => e
+        raise unless uninstall_webhook.persisted?
+      end
+
+    end ## session
+  end ## auth
+end ## app.rb
 
 ##########################################################
 ##########################################################
