@@ -71,6 +71,7 @@ class SinatraApp < Sinatra::Base
   # => General
   # => Allows us to determine various specifications inside the app
   set :logger, Logger.new(STDOUT) ## logger
+  set :haml, layout: :'layouts/application' ## https://github.com/kevinhughes27/shopify-sinatra-app/blob/996fa378324ab6d15bb54438be2605067f956428/lib/sinatra/shopify-sinatra-app.rb#L164
 
   ##########################################################
   ##########################################################
@@ -88,7 +89,7 @@ class SinatraApp < Sinatra::Base
   # => App
   # => This is a simple example that fetches some products
   # => From Shopify and displays them inside your app
-  get '/', provides: [:html, :json] do
+  get '/' do
 
     # => Shopify Session
     # => Required to give us access to the information we need
