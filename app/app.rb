@@ -130,8 +130,7 @@ class SinatraApp < Sinatra::Base
   # => setup any webhooks or services you need on Shopify
   # => inside here.
   def after_shopify_auth
-    shopify_session do
-
+    shopify_session do # => Shopify hook
 
       # => Uninstall Webhook
       # => Allows us to remove the app from the db when it's installed from shopify

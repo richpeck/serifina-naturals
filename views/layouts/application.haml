@@ -17,5 +17,6 @@
 
   %body
     .container
-      TEST
+      = haml :'_top_bar', layout: false, locals: locals
+      = haml :'_flash_messages', layout: false, locals: locals
       = yield
