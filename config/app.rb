@@ -1,7 +1,3 @@
-require 'sinatra/shopify-sinatra-app' # => Shopify App
-require 'sinatra/asset_pipeline'      # => Sinatra Asset Piepline
-require 'haml'                        # => Haml
-
 ##########################################################
 ##########################################################
 ##           ____ _             _                       ##
@@ -15,6 +11,21 @@ require 'haml'                        # => Haml
 ##########################################################
 ##              Main Sinatra app.rb file                ##
 ## Allows us to define, manage and serve various routes ##
+##########################################################
+##########################################################
+
+# => Libs
+# => Allows us to call various dependencies
+require 'sinatra/shopify-sinatra-app' # => Shopify App
+require 'sinatra/asset_pipeline'      # => Sinatra Asset Piepline
+require 'sinatra/cors'                # => Sinatra CORS
+require 'haml'                        # => Haml
+
+# => Extra
+# => Gives us ability to adapt functionality as appropriate
+require 'net/https'       # => URL::HTTPS core (for creating URL out of naked domain)
+require "addressable/uri" # => Addressable::URI (break down URL into components // for request.referrer - https://github.com/sporkmonger/addressable#example-usage)
+
 ##########################################################
 ##########################################################
 
@@ -43,6 +54,31 @@ class SinatraApp < Sinatra::Base
   ##########################################################
   ##########################################################
 
+  ## Definitions ##
+  ## Any variables defined here ##
+  domain   = ENV.fetch('DOMAIN', 'serifinanaturals.com') ## used for CORS and other funtionality -- ENV var gives flexibility
+  debug    = ENV.fetch("DEBUG", false) != false ## this needs to be evaluated this way because each ENV variable returns a string ##
+
+  ##########################################################
+  ##########################################################
+
+  # => General
+  # => Allows us to determine various specifications inside the app
+  set :logger, Logger.new(STDOUT) ## logger
+
+  ##########################################################
+  ##########################################################
+
+  ## CORS ##
+  ## Only allow requests from domain ##
+  set :allow_origin,   URI::HTTPS.build(host: domain).to_s
+  set :allow_methods,  "POST"
+  set :allow_headers,  "content-type,if-modified-since"
+  set :expose_headers, "location,link"
+
+  ##########################################################
+  ##########################################################
+
   # => App
   # => This is a simple example that fetches some products
   # => From Shopify and displays them inside your app
@@ -50,16 +86,17 @@ class SinatraApp < Sinatra::Base
     shopify_session do |shop_name|
       @shop = ShopifyAPI::Shop.current
       @products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
-      erb :home
+      haml :home
     end
   end
 
   ##########################################################
   ##########################################################
 
-  # this endpoint recieves the uninstall webhook
-  # and cleans up data, add to this endpoint as your app
-  # stores more data.
+  # => Uninstall
+  # => This endpoint recieves the uninstall webhook
+  # => and cleans up data, add to this endpoint as your app
+  # => stores more data.
   post '/uninstall' do
     shopify_webhook do |shop_name, params|
       Shop.find_by(name: shop_name).destroy
@@ -71,9 +108,10 @@ class SinatraApp < Sinatra::Base
 
   private
 
-  # This method gets called when your app is installed.
-  # setup any webhooks or services you need on Shopify
-  # inside here.
+  # => Post Install
+  # => This method gets called when your app is installed.
+  # => setup any webhooks or services you need on Shopify
+  # => inside here.
   def after_shopify_auth
     # shopify_session do
       # create an uninstall webhook, this webhook gets sent
@@ -92,6 +130,14 @@ class SinatraApp < Sinatra::Base
       #   raise unless uninstall_webhook.persisted?
       # end
     # end
+
+    # => Populate products
+    # => This pulls all the products from the newly added Shopify store
+    # => And allows us to then build up relationships around each product (as per spreadsheet)
+    shopify_session do
+      logger.info("test")
+    end
+
   end
 end
 
