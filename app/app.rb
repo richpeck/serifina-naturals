@@ -160,11 +160,17 @@ class SinatraApp < Sinatra::Base
 
       # => Populate new products
       # => This allows us to store the products locally
+      old_logger = ActiveRecord::Base.logger
+      ActiveRecord::Base.logger = nil
+
       @shop.products.upsert_all products.map {|p|
         p["product_id"] = p.delete("id")
         p.merge!({ "shop_id" => @shop.id, "sku" => p["variants"][0]["sku"], "image" => p["images"][0]["src"] }) # => @shop.products doesn't populate the shop_id
         p.keep_if { |k,_| Product.column_names.include? k }
       }, unique_by: :shop_products_unique_index # => needs converting into object or hash etc
+
+      # => Set the logger again
+      ActiveRecord::Base.logger = old_logger
 
     end ## session
   end ## auth
