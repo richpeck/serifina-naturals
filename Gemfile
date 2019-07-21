@@ -26,7 +26,7 @@ ruby [RUBY_VERSION, '2.6.3'].min
 # => Sinatra
 # => Not big enough for Rails
 gem 'shopify-sinatra-app', '~> 0.8.0'                                                        # => Allows us to create a shopify store with Sinatra (https://github.com/kevinhughes27/shopify-sinatra-app)
-gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.13', github: 'richpeck/sinatra-activerecord'   # => Integrates ActiveRecord into Sinatra apps (for AR6+)
+gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.13', github: 'richpeck/sinatra-activerecord'   # => Integrates ActiveRecord into Sinatra apps (I changed for AR6+)
 gem 'sinatra-asset-pipeline', '~> 2.2'                                                       # => Asset Pipeline (for CSS/JS)
 gem 'sinatra-contrib', '~> 2.0', '>= 2.0.5'                                                  # => Allows us to add "contrib" library to Sinatra app (respond_with) -> http://sinatrarb.com/contrib/
 gem 'sinatra-cors', '~> 1.1'                                                                 # => Protect app via CORS

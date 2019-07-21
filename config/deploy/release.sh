@@ -15,10 +15,10 @@
 # find . -name '*.sh' | xargs git update-index --chmod=+x
 
 echo "Migrating...";
-rake db:migrate;
+bundle exec rake db:migrate;
 
 echo "Precompiling...";
-rake assets:precompile;
+bundle exec rake assets:precompile;
 
 ###########################################
 ###########################################
