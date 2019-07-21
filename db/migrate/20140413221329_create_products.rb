@@ -27,7 +27,7 @@ class CreateProducts < ActiveRecord::Migration::Current
   def up
     create_table @@table do |t|
       t.references :shop, null: false
-      t.integer :product_id
+      t.integer :product_id, limit: 8
       t.string  :product_type
       t.string  :title
       t.string  :vendor
