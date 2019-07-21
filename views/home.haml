@@ -4,3 +4,6 @@
       %a{href: "https://\#{@shop.myshopify_domain}/admin/products/\#{product.id}", target: :blank}= "#{product.title} (#{product.sku})"
 
 = @products.size
+
+- Shape.all.each do |shape|
+  = shape.name 

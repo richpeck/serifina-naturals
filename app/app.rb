@@ -31,6 +31,7 @@ require "addressable/uri" # => Addressable::URI (break down URL into components 
 # => Cycle through other files we've made and include them
 require_relative 'product'
 require_relative 'shop'
+require_relative 'shape'
 
 ##########################################################
 ##########################################################

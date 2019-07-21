@@ -32,8 +32,9 @@ class CreateProducts < ActiveRecord::Migration::Current
       t.string  :title
       t.string  :vendor
       t.string  :sku
-      t.string  :image 
+      t.string  :image
       t.decimal :price, precision: 10, scale: 2
+      t.timestamps
 
       # => Index
       # => Required for upsert_all (ActiveRecord 6+)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2014_04_13_221329) do
+ActiveRecord::Schema.define(version: 2014_04_13_221330) do
 
   create_table "products", force: :cascade do |t|
     t.integer "shop_id", null: false
@@ -21,8 +21,18 @@ ActiveRecord::Schema.define(version: 2014_04_13_221329) do
     t.string "sku"
     t.string "image"
     t.decimal "price", precision: 10, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["shop_id", "product_id"], name: "shop_products_unique_index", unique: true
     t.index ["shop_id"], name: "index_products_on_shop_id"
+  end
+
+  create_table "shapes", force: :cascade do |t|
+    t.integer "bail_type", default: 0
+    t.integer "shape_type", default: 0
+    t.string "name"
+    t.integer "price"
+    t.index ["bail_type", "shape_type", "name"], name: "bail_shop_name_unique_index", unique: true
   end
 
   create_table "shops", force: :cascade do |t|
