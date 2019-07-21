@@ -1,28 +1,35 @@
+GIT
+  remote: git://github.com/richpeck/sinatra-activerecord.git
+  revision: d516be5df25d9c93254d8e277f58d4e18ae803f8
+  specs:
+    sinatra-activerecord (2.0.13)
+      activerecord (>= 3.2)
+      sinatra (>= 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (5.2.3)
-      activesupport (= 5.2.3)
+    activemodel (6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
     activemodel-serializers-xml (1.0.2)
       activemodel (> 5.x)
       activesupport (> 5.x)
       builder (~> 3.1)
-    activerecord (5.2.3)
-      activemodel (= 5.2.3)
-      activesupport (= 5.2.3)
-      arel (>= 9.0)
+    activerecord (6.0.0.rc1)
+      activemodel (= 6.0.0.rc1)
+      activesupport (= 6.0.0.rc1)
     activeresource (5.1.0)
       activemodel (>= 5.0, < 7)
       activemodel-serializers-xml (~> 1.0)
       activesupport (>= 5.0, < 7)
-    activesupport (5.2.3)
+    activesupport (6.0.0.rc1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+      zeitwerk (~> 2.1, >= 2.1.4)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
-    arel (9.0.0)
     attr_encrypted (3.1.0)
       encryptor (~> 3.0.0)
     backports (3.15.0)
@@ -107,9 +114,6 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.5)
       tilt (~> 2.0)
-    sinatra-activerecord (2.0.13)
-      activerecord (>= 3.2)
-      sinatra (>= 1.0)
     sinatra-asset-pipeline (2.2.0)
       coffee-script (~> 2.4)
       rake (~> 12.3)
@@ -137,11 +141,13 @@ GEM
     tilt (2.0.9)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    zeitwerk (2.1.9)
 
 PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  activerecord (~> 6.0.0.rc1)
   addressable (~> 2.6)
   byebug
   foreman
@@ -150,7 +156,7 @@ DEPENDENCIES
   puma
   rack-flash3
   shopify-sinatra-app (~> 0.8.0)
-  sinatra-activerecord (~> 2.0, >= 2.0.13)
+  sinatra-activerecord (~> 2.0, >= 2.0.13)!
   sinatra-asset-pipeline (~> 2.2)
   sinatra-contrib (~> 2.0, >= 2.0.5)
   sinatra-cors (~> 1.1)

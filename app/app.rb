@@ -99,8 +99,8 @@ class SinatraApp < Sinatra::Base
     # => Shopify Session
     # => Required to give us access to the information we need
     shopify_session do |shop_name|
-      @shop     = ShopifyAPI::Shop.current
-      @products = ShopifyAPI::Product.find :all
+      @shop     = Shop.find_by name: shop_name
+      @products = Product.all
 
       # => Response
       # => Bundled inside Sinatra
@@ -154,9 +154,17 @@ class SinatraApp < Sinatra::Base
       @products = ShopifyAPI::Product.find :all
       @shop     = Shop.find_by name: shop_name
 
+      # => Create intermediary local variable
+      # => This gives us the ability to manipulate the data as required
+      products = JSON.parse( @products.to_json )
+
       # => Populate new products
       # => This allows us to store the products locally
-      @shop.products.create @products.to_json # => needs converting into object or hash etc
+      @shop.products.upsert_all products.map {|p|
+        p["product_id"] = p.delete("id")
+        p.merge!({ "shop_id" => @shop.id })
+        p.keep_if { |k,_| Product.column_names.include? k }
+      }, unique_by: :shop_products_unique_index # => needs converting into object or hash etc
 
     end ## session
   end ## auth

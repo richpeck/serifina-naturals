@@ -1,7 +1,25 @@
+##########################################################
+##########################################################
+##                _____      _                          ##
+##               | ___ \    | |                         ##
+##               | |_/ /__ _| | _____                   ##
+##               |    // _` | |/ / _ \                  ##
+##               | |\ \ (_| |   <  __/                  ##
+##               \_| \_\__,_|_|\_\___|                  ##
+##                                                      ##
+##########################################################
+##########################################################
+
+# => Libs
 require 'sinatra/activerecord/rake'   # => This works but ONLY if you call "bundle exec" - https://github.com/janko/sinatra-activerecord/issues/40#issuecomment-51647819
 require 'sinatra/asset_pipeline/task' # => Sinatra Asset Pipeline
 require 'rake/testtask'
-require './app/app'
+
+# => App
+require_relative './app/app'
+
+##########################################################
+##########################################################
 
 Sinatra::AssetPipeline::Task.define! SinatraApp # => Sinatra Asset Pipeline
 
@@ -38,3 +56,6 @@ task :test do
     t.verbose = true
   end
 end
+
+##########################################################
+##########################################################
