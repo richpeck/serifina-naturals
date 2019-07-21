@@ -32,10 +32,11 @@ class CreateProducts < ActiveRecord::Migration::Current
       t.string  :title
       t.string  :vendor
       t.string  :sku
+      t.string  :image 
       t.decimal :price, precision: 10, scale: 2
 
       # => Index
-      # => Required for upsert_all
+      # => Required for upsert_all (ActiveRecord 6+)
       t.index [:shop_id, :product_id], unique: true, name: 'shop_products_unique_index'
     end
   end

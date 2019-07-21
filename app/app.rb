@@ -156,13 +156,13 @@ class SinatraApp < Sinatra::Base
 
       # => Create intermediary local variable
       # => This gives us the ability to manipulate the data as required
-      products = JSON.parse( @products.to_json )
+      products = JSON.parse(@products.to_json)
 
       # => Populate new products
       # => This allows us to store the products locally
       @shop.products.upsert_all products.map {|p|
         p["product_id"] = p.delete("id")
-        p.merge!({ "shop_id" => @shop.id })
+        p.merge!({ "shop_id" => @shop.id, "sku" => p["variants"][0]["sku"], "image" => p["images"][0]["src"] }) # => @shop.products doesn't populate the shop_id
         p.keep_if { |k,_| Product.column_names.include? k }
       }, unique_by: :shop_products_unique_index # => needs converting into object or hash etc
 
