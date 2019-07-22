@@ -66,6 +66,23 @@ class SinatraApp < Sinatra::Base
   ##########################################################
   ##########################################################
 
+  ## Definitions ##
+  ## Any variables defined here ##
+  domain   = ENV.fetch('DOMAIN', 'serifinanaturals.com') ## used for CORS and other funtionality -- ENV var gives flexibility
+  debug    = ENV.fetch("DEBUG", false) != false ## this needs to be evaluated this way because each ENV variable returns a string ##
+
+  ##########################################################
+  ##########################################################
+
+  # => General
+  # => Allows us to determine various specifications inside the app
+  set :logger, Logger.new(STDOUT)                    ## logger
+  set :root,   File.dirname(__FILE__)                ## required to get views working (esp. with HAML) -- http://sinatrarb.com/configuration.html
+  set :views,  Proc.new { File.join(root, "views") } ## views
+
+  ##########################################################
+  ##########################################################
+
   # => Asset Pipeline
   # => Allows us to precompile assets as you would in Rails
   # => https://github.com/kalasjocke/sinatra-asset-pipeline#customization
@@ -80,7 +97,7 @@ class SinatraApp < Sinatra::Base
   # => https://github.com/petebrowne/sprockets-helpers#setup
   set :sprockets, Sprockets::Environment.new(root)
   set :assets_prefix, '/assets'
-  set :digest_assets, true
+  set :digest_assets, false
 
   configure do
     # Setup Sprockets
@@ -89,16 +106,9 @@ class SinatraApp < Sinatra::Base
     sprockets.append_path File.join(root, 'assets', 'images')
 
     # Configure Sprockets::Helpers (if necessary)
-    ::Sprockets::Helpers.configure do |config|
+    Sprockets::Helpers.configure do |config|
       config.environment = sprockets
-      config.prefix      = assets_prefix
-      config.digest      = digest_assets
       config.public_path = public_folder
-
-      # Force to debug mode in development mode
-      # Debug mode automatically sets
-      # expand = true, digest = false, manifest = false
-      config.debug       = true if development?
     end
   end
 
@@ -109,23 +119,6 @@ class SinatraApp < Sinatra::Base
   # => Set the scope that your app needs, read more here:
   # => http://docs.shopify.com/api/tutorials/oauth
   set :scope, 'read_products, read_orders'
-
-  ##########################################################
-  ##########################################################
-
-  ## Definitions ##
-  ## Any variables defined here ##
-  domain   = ENV.fetch('DOMAIN', 'serifinanaturals.com') ## used for CORS and other funtionality -- ENV var gives flexibility
-  debug    = ENV.fetch("DEBUG", false) != false ## this needs to be evaluated this way because each ENV variable returns a string ##
-
-  ##########################################################
-  ##########################################################
-
-  # => General
-  # => Allows us to determine various specifications inside the app
-  set :logger, Logger.new(STDOUT)                    ## logger
-  set :root,   File.dirname(__FILE__)                ## required to get views working (esp. with HAML) -- http://sinatrarb.com/configuration.html
-  set :views,  Proc.new { File.join(root, "views") } ## views
 
   ##########################################################
   ##########################################################
