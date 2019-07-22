@@ -23,6 +23,7 @@ require 'sass/plugin/rack' # => SASS plugin for asset pipeline (https://stackove
 require 'require_all'      # => Require_All (allows us to call an entire directory)
 require 'rack-flash'       # => Flash for Rack based apps
 require 'padrino-helpers'  # => Padrino Helpers (required for number_to_currency)
+require 'sprockets'
 
 # => Libs
 # => Allows us to call various dependencies
@@ -42,6 +43,9 @@ require_all 'app' # => requires the entire "app" directory (https://medium.com/@
 ## Sinatra ##
 ## Based on - https://github.com/kevinhughes27/shopify-sinatra-app ##
 class SinatraApp < Sinatra::Base
+
+  # => Register
+  # => This allows us to call the various extensions for the system
   register Sinatra::Shopify
   register Padrino::Helpers                # => number_to_currency (https://github.com/padrino/padrino-framework/blob/master/padrino-helpers/lib/padrino-helpers.rb#L22)
   register Sinatra::Sprockets::Helpers     # => Asset Pipeline
@@ -62,12 +66,38 @@ class SinatraApp < Sinatra::Base
   # => Asset Pipeline
   # => Allows us to precompile assets as you would in Rails
   # => https://github.com/kalasjocke/sinatra-asset-pipeline#customization
-  set :assets_precompile, %w[javascripts/app.js stylesheets/app.sass *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2]
-  set :assets_paths,      %w[assets ../vendor/assets]
-  set :public_folder,    'public'
-  set :digest_assets,     true
-  set :assets_css_compressor, :sass
+  set :assets_precompile, %w[javascripts/app.js stylesheets/app.sass] # *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2
   register Sinatra::AssetPipeline
+
+  ##########################################################
+  ##########################################################
+
+  # => Sprockets
+  # => This is for the layout (calling sprockets helpers etc)
+  # => https://github.com/petebrowne/sprockets-helpers#setup
+  set :sprockets, Sprockets::Environment.new(root)
+  set :assets_prefix, '/assets'
+  set :digest_assets, true
+
+  configure do
+    # Setup Sprockets
+    sprockets.append_path File.join(root, 'assets', 'stylesheets')
+    sprockets.append_path File.join(root, 'assets', 'javascripts')
+    sprockets.append_path File.join(root, 'assets', 'images')
+
+    # Configure Sprockets::Helpers (if necessary)
+    ::Sprockets::Helpers.configure do |config|
+      config.environment = sprockets
+      config.prefix      = assets_prefix
+      config.digest      = digest_assets
+      config.public_path = public_folder
+
+      # Force to debug mode in development mode
+      # Debug mode automatically sets
+      # expand = true, digest = false, manifest = false
+      config.debug       = true if development?
+    end
+  end
 
   ##########################################################
   ##########################################################
