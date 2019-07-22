@@ -5,6 +5,7 @@
 
 = @products.size
 
-- Shape.regular.each do |shape|
-  = shape.name
+- Shape.all.each do |shape|
+  = shape.bail_type
+  = number_to_currency(shape.price)
   %br

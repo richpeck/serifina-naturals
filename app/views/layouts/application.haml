@@ -19,5 +19,5 @@
   %body
     .container
       = haml :'_top_bar', layout: false, locals: locals
-      = haml :'_flash_messages', layout: false, locals: locals
+      = erb :'_flash_messages', layout: false, locals: locals # => Needs to be erb because HAML couldn't handle the conditional logic inside javascript
       = yield

@@ -44,6 +44,13 @@ gem 'puma' # => web server
 ###########################################
 ###########################################
 
+# => Environments
+# => Allows us to load gems depending on the environment
+gem 'irb', group: :development
+
+###########################################
+###########################################
+
 ####################
 #     Backend      #
 ####################
@@ -56,9 +63,10 @@ gem 'byebug', groups: [:development, :test] # => Debug tool for Ruby
 
 # => Extra
 # => Added to help us manage data structures in app
-gem 'addressable', '~> 2.6'                 # => Break down the various components of a domain
-gem 'activerecord', '~> 6.0.0.rc1'          # => Allows us to use AR 6.0.0.rc1+ as opposed to 5.2.x (will need to keep up to date)
-gem 'require_all', '~> 2.0'                 # => Require an entire directory and include in an app
+gem 'addressable', '~> 2.6'        # => Break down the various components of a domain
+gem 'activerecord', '~> 6.0.0.rc1' # => Allows us to use AR 6.0.0.rc1+ as opposed to 5.2.x (will need to keep up to date)
+gem 'require_all', '~> 2.0'        # => Require an entire directory and include in an app
+gem 'padrino-helpers', '~> 0.14.4' # => Sinatra framework which adds a number of support classes -- we needed it for "number_to_currency" (https://github.com/padrino/padrino-framework/blob/02feacb6afa9bce20c1fb360df4dfd4057899cfc/padrino-helpers/lib/padrino-helpers/number_helpers.rb)
 
 ###########################################
 ###########################################

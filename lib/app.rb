@@ -21,6 +21,7 @@ require 'net/https'        # => URL::HTTPS core (for creating URL out of naked d
 require "addressable/uri"  # => Addressable::URI (break down URL into components // for request.referrer - https://github.com/sporkmonger/addressable#example-usage)
 require 'sass/plugin/rack' # => SASS plugin for asset pipeline (https://stackoverflow.com/q/47406294/1143732)
 require 'require_all'      # => Require_All (allows us to call an entire directory)
+require 'padrino-helpers'  # => Padrino Helpers (required for number_to_currency)
 
 # => Libs
 # => Allows us to call various dependencies
@@ -42,8 +43,9 @@ require_all 'app' # => requires the entire "app" directory (https://medium.com/@
 class SinatraApp < Sinatra::Base
   register Sinatra::Shopify
   #register Sinatra::AssetPipeline
-  register Sinatra::Sprockets::Helpers
-  register Sinatra::RespondWith # => http://sinatrarb.com/contrib/respond_with
+  register Padrino::Helpers                # => number_to_currency (https://github.com/padrino/padrino-framework/blob/master/padrino-helpers/lib/padrino-helpers.rb#L22)
+  register Sinatra::Sprockets::Helpers     # => Asset Pipeline
+  register Sinatra::RespondWith            # => http://sinatrarb.com/contrib/respond_with
 
   configure :development do
     register Sinatra::Reloader  # => http://sinatrarb.com/contrib/reloader
@@ -121,8 +123,8 @@ class SinatraApp < Sinatra::Base
       # => Response
       # => Bundled inside Sinatra
       respond_to do |format|
-        format.json { @products.to_json }
         format.html { haml :home }
+        format.json { @products.to_json }
       end ## response
     end ## shopify
 
