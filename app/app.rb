@@ -44,6 +44,9 @@ require_all 'app' # => requires the entire "app" directory (https://medium.com/@
 ## Based on - https://github.com/kevinhughes27/shopify-sinatra-app ##
 class SinatraApp < Sinatra::Base
 
+  ##########################################################
+  ##########################################################
+
   # => Register
   # => This allows us to call the various extensions for the system
   register Sinatra::Shopify
