@@ -23,7 +23,6 @@ require 'sass/plugin/rack' # => SASS plugin for asset pipeline (https://stackove
 require 'require_all'      # => Require_All (allows us to call an entire directory)
 require 'rack-flash'       # => Flash for Rack based apps
 require 'padrino-helpers'  # => Padrino Helpers (required for number_to_currency)
-require 'sprockets'
 
 # => Libs
 # => Allows us to call various dependencies
@@ -95,7 +94,7 @@ class SinatraApp < Sinatra::Base
   # => Sprockets
   # => This is for the layout (calling sprockets helpers etc)
   # => https://github.com/petebrowne/sprockets-helpers#setup
-  set :sprockets, Sprockets::Environment.new(root)
+  #set :sprockets, Sprockets::Environment.new(app)
   set :assets_prefix, '/assets'
   set :digest_assets, false
 
@@ -111,6 +110,10 @@ class SinatraApp < Sinatra::Base
       config.public_path = public_folder
     end
   end
+
+  # => Sprockets Helpers
+  # => https://github.com/petebrowne/sprockets-helpers/issues/32#issuecomment-270227554
+  configure_sprockets_helpers
 
   ##########################################################
   ##########################################################
