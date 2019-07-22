@@ -42,11 +42,15 @@ require_all 'app' # => requires the entire "app" directory (https://medium.com/@
 ## Based on - https://github.com/kevinhughes27/shopify-sinatra-app ##
 class SinatraApp < Sinatra::Base
   register Sinatra::Shopify
-  #register Sinatra::AssetPipeline
   register Padrino::Helpers                # => number_to_currency (https://github.com/padrino/padrino-framework/blob/master/padrino-helpers/lib/padrino-helpers.rb#L22)
   register Sinatra::Sprockets::Helpers     # => Asset Pipeline
   register Sinatra::RespondWith            # => http://sinatrarb.com/contrib/respond_with
 
+  ##########################################################
+  ##########################################################
+
+  # => Development
+  # => Ensures we're only loading in development environment
   configure :development do
     register Sinatra::Reloader  # => http://sinatrarb.com/contrib/reloader
   end
@@ -65,12 +69,6 @@ class SinatraApp < Sinatra::Base
   set :assets_css_compressor, :sass
 
   register Sinatra::AssetPipeline
-
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-    sprockets.append_path File.join('app', 'assets', 'stylesheets')
-  end
 
   ##########################################################
   ##########################################################
@@ -94,7 +92,7 @@ class SinatraApp < Sinatra::Base
   # => General
   # => Allows us to determine various specifications inside the app
   set :logger, Logger.new(STDOUT) ## logger
-  set :haml, layout: :'layouts/application' ## https://github.com/kevinhughes27/shopify-sinatra-app/blob/996fa378324ab6d15bb54438be2605067f956428/lib/sinatra/shopify-sinatra-app.rb#L164
+  set :views, 'app/views'
 
   ##########################################################
   ##########################################################

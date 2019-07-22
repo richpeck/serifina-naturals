@@ -88,6 +88,7 @@ shapes = {
 }
 
 ## Loop ##
+## Cycles the hash above and creates the appropriate listings ##
 shapes.each do |bail_type,shapes| # => loop/regular
   shapes.each do |shape_type,models|  # => circle/square/oval/teardrop etc
     models.each do |name, price|
