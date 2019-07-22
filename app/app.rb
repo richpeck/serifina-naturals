@@ -62,7 +62,11 @@ class SinatraApp < Sinatra::Base
   # => Asset Pipeline
   # => Allows us to precompile assets as you would in Rails
   # => https://github.com/kalasjocke/sinatra-asset-pipeline#customization
-  set :assets_precompile, %w(app.js app.sass *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2)
+  set :assets_precompile, %w[app.js stylesheets/app.sass *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2]
+  set :assets_paths,      %w[assets ../vendor/assets]
+  set :assets_css_compressor, :sass
+  set :assets_protocol, :relative
+  set :sprockets, Sprockets::Environment.new('app')
   register Sinatra::AssetPipeline
 
   ##########################################################
@@ -86,8 +90,8 @@ class SinatraApp < Sinatra::Base
 
   # => General
   # => Allows us to determine various specifications inside the app
-  set :logger, Logger.new(STDOUT) ## logger
-  set :root,   File.dirname(__FILE__) ## required to get views working (esp. with HAML) -- http://sinatrarb.com/configuration.html
+  set :logger, Logger.new(STDOUT)                    ## logger
+  set :root,   File.dirname(__FILE__)                ## required to get views working (esp. with HAML) -- http://sinatrarb.com/configuration.html
   set :views,  Proc.new { File.join(root, "views") } ## views
 
   ##########################################################
