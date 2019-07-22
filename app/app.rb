@@ -21,6 +21,7 @@ require 'net/https'        # => URL::HTTPS core (for creating URL out of naked d
 require "addressable/uri"  # => Addressable::URI (break down URL into components // for request.referrer - https://github.com/sporkmonger/addressable#example-usage)
 require 'sass/plugin/rack' # => SASS plugin for asset pipeline (https://stackoverflow.com/q/47406294/1143732)
 require 'require_all'      # => Require_All (allows us to call an entire directory)
+require 'rack-flash'       # => Flash for Rack based apps
 require 'padrino-helpers'  # => Padrino Helpers (required for number_to_currency)
 
 # => Libs
@@ -61,13 +62,7 @@ class SinatraApp < Sinatra::Base
   # => Asset Pipeline
   # => Allows us to precompile assets as you would in Rails
   # => https://github.com/kalasjocke/sinatra-asset-pipeline#customization
-  set :assets_precompile, %w(app.js app.css *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2)
-
-  set :sprockets, Sprockets::Environment.new('app')
-  set :assets_prefix, '/assets'
-  set :digest_assets, true
-  set :assets_css_compressor, :sass
-
+  set :assets_precompile, %w(app.js app.sass *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2)
   register Sinatra::AssetPipeline
 
   ##########################################################
@@ -92,7 +87,8 @@ class SinatraApp < Sinatra::Base
   # => General
   # => Allows us to determine various specifications inside the app
   set :logger, Logger.new(STDOUT) ## logger
-  set :views, 'app/views'
+  set :root,   File.dirname(__FILE__) ## required to get views working (esp. with HAML) -- http://sinatrarb.com/configuration.html
+  set :views,  Proc.new { File.join(root, "views") } ## views
 
   ##########################################################
   ##########################################################
