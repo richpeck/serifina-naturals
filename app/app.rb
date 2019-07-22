@@ -62,11 +62,11 @@ class SinatraApp < Sinatra::Base
   # => Asset Pipeline
   # => Allows us to precompile assets as you would in Rails
   # => https://github.com/kalasjocke/sinatra-asset-pipeline#customization
-  set :assets_precompile, %w[app.js stylesheets/app.sass *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2]
+  set :assets_precompile, %w[javascripts/app.js stylesheets/app.sass *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2]
   set :assets_paths,      %w[assets ../vendor/assets]
+  set :public_folder,    'public'
+  set :digest_assets,     true
   set :assets_css_compressor, :sass
-  set :assets_protocol, :relative
-  set :sprockets, Sprockets::Environment.new('app')
   register Sinatra::AssetPipeline
 
   ##########################################################
