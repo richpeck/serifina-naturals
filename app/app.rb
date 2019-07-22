@@ -94,10 +94,6 @@ class SinatraApp < Sinatra::Base
   # => Sprockets
   # => This is for the layout (calling sprockets helpers etc)
   # => https://github.com/petebrowne/sprockets-helpers#setup
-  #set :sprockets, Sprockets::Environment.new(app)
-  set :assets_prefix, '/assets'
-  set :digest_assets, false
-
   configure do
     # Setup Sprockets
     sprockets.append_path File.join(root, 'assets', 'stylesheets')
@@ -110,10 +106,6 @@ class SinatraApp < Sinatra::Base
       config.public_path = public_folder
     end
   end
-
-  # => Sprockets Helpers
-  # => https://github.com/petebrowne/sprockets-helpers/issues/32#issuecomment-270227554
-  configure_sprockets_helpers
 
   ##########################################################
   ##########################################################
