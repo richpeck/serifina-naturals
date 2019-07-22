@@ -17,6 +17,9 @@
 echo "Migrating...";
 bundle exec rake db:migrate;
 
+echo "Seeding...";
+bundle exec rake db:seed;
+
 echo "Precompiling...";
 bundle exec rake assets:precompile;
 

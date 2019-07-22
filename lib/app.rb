@@ -14,24 +14,25 @@
 ##########################################################
 ##########################################################
 
+# => Extras
+# => Gives us ability to adapt functionality as appropriate
+require 'haml'             # => Haml
+require 'net/https'        # => URL::HTTPS core (for creating URL out of naked domain)
+require "addressable/uri"  # => Addressable::URI (break down URL into components // for request.referrer - https://github.com/sporkmonger/addressable#example-usage)
+require 'sass/plugin/rack' # => SASS plugin for asset pipeline (https://stackoverflow.com/q/47406294/1143732)
+require 'require_all'      # => Require_All (allows us to call an entire directory)
+
 # => Libs
 # => Allows us to call various dependencies
 require 'sinatra/shopify-sinatra-app' # => Shopify App
 require 'sinatra/asset_pipeline'      # => Sinatra Asset Piepline
 require 'sinatra/cors'                # => Sinatra CORS
 require 'sinatra/contrib'             # => Sinatra Respond To (Sinatra Contrib)
-require 'haml'                        # => Haml
-
-# => Extra
-# => Gives us ability to adapt functionality as appropriate
-require 'net/https'       # => URL::HTTPS core (for creating URL out of naked domain)
-require "addressable/uri" # => Addressable::URI (break down URL into components // for request.referrer - https://github.com/sporkmonger/addressable#example-usage)
+require 'sinatra/sprockets-helpers'   # => Sprockets Helpers (Asset Pipeline -> https://stackoverflow.com/q/47406294/1143732)
 
 # => App
 # => Cycle through other files we've made and include them
-require_relative 'product'
-require_relative 'shop'
-require_relative 'shape'
+require_all 'app' # => requires the entire "app" directory (https://medium.com/@ellishim/understanding-require-vs-require-relative-vs-require-all-80e3b26d89e6)
 
 ##########################################################
 ##########################################################
@@ -40,7 +41,8 @@ require_relative 'shape'
 ## Based on - https://github.com/kevinhughes27/shopify-sinatra-app ##
 class SinatraApp < Sinatra::Base
   register Sinatra::Shopify
-  register Sinatra::AssetPipeline
+  #register Sinatra::AssetPipeline
+  register Sinatra::Sprockets::Helpers
   register Sinatra::RespondWith # => http://sinatrarb.com/contrib/respond_with
 
   configure :development do
@@ -54,6 +56,19 @@ class SinatraApp < Sinatra::Base
   # => Allows us to precompile assets as you would in Rails
   # => https://github.com/kalasjocke/sinatra-asset-pipeline#customization
   set :assets_precompile, %w(app.js app.css *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2)
+
+  set :sprockets, Sprockets::Environment.new('app')
+  set :assets_prefix, '/assets'
+  set :digest_assets, true
+  set :assets_css_compressor, :sass
+
+  register Sinatra::AssetPipeline
+
+  configure do
+    set :public_folder, 'public'
+    set :views, 'app/views'
+    sprockets.append_path File.join('app', 'assets', 'stylesheets')
+  end
 
   ##########################################################
   ##########################################################

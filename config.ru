@@ -3,5 +3,5 @@ if Gem::Specification.find_all_by_name('dotenv').any?
   Dotenv.load
 end
 
-require './app/app'
+require './lib/app'
 SinatraApp.run!

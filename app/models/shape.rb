@@ -23,8 +23,8 @@
 ## -- ##
 ## id | bail_type | shape_type | name | code | price | created_at | updated_at ##
 class Shape < ActiveRecord::Base
-  enum bail_type:  [:loop, :regular] # => 2 types of bail
-  enum shape_type: [:square, :oval, :circle, :teardrop, :puzzle, :hunch_shell, :heart] # => 7 types of shape
+  enum bail_type:  %i[loop regular] # => 2 types of bail
+  enum shape_type: %i[square oval rectangle circle teardrop puzzle hunch_shell heart] # => 7 types of shape
 end
 
 ############################################

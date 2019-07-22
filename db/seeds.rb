@@ -91,7 +91,7 @@ shapes = {
 shapes.each do |bail_type,shapes| # => loop/regular
   shapes.each do |shape_type,models|  # => circle/square/oval/teardrop etc
     models.each do |name, price|
-      Shape.upsert({bail_type: bail_type.to_sym, shape_type: shape_type.to_sym, name: name, price: price}, unique_by: :bail_shop_name_unique_index)
+      Shape.upsert({bail_type: 1, shape_type: 2, name: name, price: price}, unique_by: :bail_shop_name_unique_index)
     end
   end
 end

@@ -16,7 +16,7 @@ require 'sinatra/asset_pipeline/task' # => Sinatra Asset Pipeline
 require 'rake/testtask'
 
 # => App
-require_relative './app/app'
+require_relative './lib/app'
 
 ##########################################################
 ##########################################################

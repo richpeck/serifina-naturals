@@ -88,10 +88,11 @@ GEM
       rack
     rack-protection (2.0.5)
       rack
-    rake (12.3.2)
+    rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    require_all (2.0.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -155,6 +156,7 @@ DEPENDENCIES
   pg
   puma
   rack-flash3
+  require_all (~> 2.0)
   shopify-sinatra-app (~> 0.8.0)
   sinatra-activerecord (~> 2.0, >= 2.0.13)!
   sinatra-asset-pipeline (~> 2.2)

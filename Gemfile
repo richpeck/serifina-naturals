@@ -58,6 +58,7 @@ gem 'byebug', groups: [:development, :test] # => Debug tool for Ruby
 # => Added to help us manage data structures in app
 gem 'addressable', '~> 2.6'                 # => Break down the various components of a domain
 gem 'activerecord', '~> 6.0.0.rc1'          # => Allows us to use AR 6.0.0.rc1+ as opposed to 5.2.x (will need to keep up to date)
+gem 'require_all', '~> 2.0'                 # => Require an entire directory and include in an app
 
 ###########################################
 ###########################################
