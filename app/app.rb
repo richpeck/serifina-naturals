@@ -123,7 +123,7 @@ class SinatraApp < Sinatra::Base
   ## CORS ##
   ## Only allow requests from domain ##
   set :allow_origin,   URI::HTTPS.build(host: domain).to_s
-  set :allow_methods,  "GET"
+  set :allow_methods,  "GET,POST"
   set :allow_headers,  "content-type,if-modified-since"
   set :expose_headers, "location,link"
 
@@ -175,7 +175,7 @@ class SinatraApp < Sinatra::Base
 
     # => Request
     # => Only serve XHR requests
-    halt 403, "Unauthorized" unless request.xhr?
+    halt 403, "Unauthorized" unless request.json?
 
     # => Params
     # => Gives us access to the querystring sent
