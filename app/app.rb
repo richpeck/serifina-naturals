@@ -181,7 +181,7 @@ class SinatraApp < Sinatra::Base
     # => Response
     # => Send back the hash of what you've built
     respond_to do |format|
-      format.json { json: @params.to_json }
+      format.json { @params.to_json }
     end
 
   end
