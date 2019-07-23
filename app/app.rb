@@ -170,8 +170,7 @@ class SinatraApp < Sinatra::Base
   # => Protection
   # => This is used to protect the method from non-accepted routes
   before '/select' do
-    format(request.xhr? ? 'js' : 'html')
-    halt 403 unless request.xhr?
+    halt 403, request.xhr?.to_s unless request.xhr?
   end
 
   ##########################################################
@@ -194,7 +193,7 @@ class SinatraApp < Sinatra::Base
     # => Response
     # => Send back the hash of what you've built
     respond_to do |format|
-      format.json { @params.to_json }
+      format.js { @params.to_json }
     end
 
   end
