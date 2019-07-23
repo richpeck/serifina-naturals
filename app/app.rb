@@ -171,6 +171,9 @@ class SinatraApp < Sinatra::Base
   # => Allows us to receive XHR requests
   # => This is used to build the custom order in the Shopify area
   get '/select' do
+
+    # => Params
+    # => Ensures we have *at least* the "bail_type" params present
     required_params :bail_type # => This ensures we have "bail_type" set in the params querystring
 
     # => Request
