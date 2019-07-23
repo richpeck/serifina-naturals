@@ -175,7 +175,7 @@ class SinatraApp < Sinatra::Base
 
     # => Request
     # => Only serve XHR requests
-    halt 403, "Unauthorized" unless request.xhr?
+    #halt 403, request.xhr? unless request.xhr?
 
     # => Params
     # => Gives us access to the querystring sent
