@@ -121,7 +121,7 @@ class SinatraApp < Sinatra::Base
 
   ## CORS ##
   ## Only allow requests from domain ##
-  set :allow_origin,   URI::HTTPS.build(host: domain).to_s
+  set :allow_origin,   "https://www.serifinanaturals.com"#URI::HTTPS.build(host: domain).to_s
   set :allow_methods,  "GET"
   set :allow_headers,  "content-type,if-modified-since"
   set :expose_headers, "location,link"
