@@ -170,7 +170,7 @@ class SinatraApp < Sinatra::Base
   # => Protection
   # => This is used to protect the method from non-accepted routes
   before '/select' do
-    halt 403 unless request.content_type == 'application/json'
+    halt 403 unless request.accept == 'application/json'
   end
 
   ##########################################################
@@ -180,7 +180,7 @@ class SinatraApp < Sinatra::Base
   # => Allows us to receive XHR requests
   # => This is used to build the custom order in the Shopify area
   # => https://stackoverflow.com/questions/8225689/creating-a-route-with-sinatra-to-only-accept-a-certain-content-type
-  post '/select', provides: :json do
+  get '/select', provides: 'json' do
 
     # => Params
     # => Ensures we have *at least* the "bail_type" params present
