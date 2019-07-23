@@ -77,7 +77,6 @@ class SinatraApp < Sinatra::Base
 
   # => General
   # => Allows us to determine various specifications inside the app
-  set :assume_xhr_is_js, true                        ## respond_to & .xhr?
   set :logger, Logger.new(STDOUT)                    ## logger
   set :root,   File.dirname(__FILE__)                ## required to get views working (esp. with HAML) -- http://sinatrarb.com/configuration.html
   set :views,  Proc.new { File.join(root, "views") } ## views
@@ -185,7 +184,7 @@ class SinatraApp < Sinatra::Base
     # => Response
     # => Send back the hash of what you've built
     respond_to do |format|
-      format.json { @params.to_json }
+      format.js { @params.to_json }
     end
 
   end
