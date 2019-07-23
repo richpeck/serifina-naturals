@@ -124,7 +124,7 @@ class SinatraApp < Sinatra::Base
   ## Only allow requests from domain ##
   set :allow_origin,   URI::HTTPS.build(host: domain).to_s
   set :allow_methods,  "GET,POST"
-  set :allow_headers,  :any
+  set :allow_headers,  "accept,content-type,if-modified-since"
   set :expose_headers, "location,link"
 
   ##########################################################
@@ -170,7 +170,7 @@ class SinatraApp < Sinatra::Base
   # => Protection
   # => This is used to protect the method from non-accepted routes
   before '/select' do
-    halt 403, request.xhr?.to_s unless request.xhr?
+    halt 403, headers.to_s unless request.xhr?
   end
 
   ##########################################################
