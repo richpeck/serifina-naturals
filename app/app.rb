@@ -170,7 +170,7 @@ class SinatraApp < Sinatra::Base
   # => Protection
   # => This is used to protect the method from non-accepted routes
   before '/select' do
-    halt 403, request.accept if !request.accept?('application/json') && request.accept?('text/html')
+    halt 403, request.accept?('text/html') if !request.accept?('application/json') && request.accept?('text/html')
   end
 
   ##########################################################
