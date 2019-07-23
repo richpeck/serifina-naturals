@@ -124,7 +124,7 @@ class SinatraApp < Sinatra::Base
   ## Only allow requests from domain ##
   set :allow_origin,   URI::HTTPS.build(host: domain).to_s
   set :allow_methods,  "GET,POST"
-  set :allow_headers,  "content-type,if-modified-since"
+  set :allow_headers,  :any
   set :expose_headers, "location,link"
 
   ##########################################################
@@ -190,10 +190,14 @@ class SinatraApp < Sinatra::Base
     # => Gives us access to the querystring sent
     @params = params
 
+    # => Build out response object
+    # => This is designed to provide the user with a series of pieces of information
+    # => which gives them the ability to add certain products to their cart
+
     # => Response
     # => Send back the hash of what you've built
     respond_to do |format|
-      format.js { @params.to_json }
+      format.json { @params.to_json }
     end
 
   end
