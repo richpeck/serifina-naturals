@@ -77,6 +77,7 @@ class SinatraApp < Sinatra::Base
 
   # => General
   # => Allows us to determine various specifications inside the app
+  set :assume_xhr_is_js, true                        ## respond_to & .xhr?
   set :logger, Logger.new(STDOUT)                    ## logger
   set :root,   File.dirname(__FILE__)                ## required to get views working (esp. with HAML) -- http://sinatrarb.com/configuration.html
   set :views,  Proc.new { File.join(root, "views") } ## views
@@ -175,7 +176,7 @@ class SinatraApp < Sinatra::Base
 
     # => Request
     # => Only serve XHR requests
-    halt 403, "Unauthorized" unless request.json?
+    halt 403, "Unauthorized" unless request.xhr?
 
     # => Params
     # => Gives us access to the querystring sent
