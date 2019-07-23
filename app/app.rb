@@ -137,7 +137,7 @@ class SinatraApp < Sinatra::Base
     # => Required to give us access to the information we need
     shopify_session do |shop_name|
       @shop     = Shop.find_by name: shop_name
-      @products = Product.all
+      @products = @shop.products
 
       # => Response
       # => Bundled inside Sinatra
@@ -165,6 +165,30 @@ class SinatraApp < Sinatra::Base
   ##########################################################
   ##########################################################
 
+  # => Select
+  # => Allows us to receive XHR requests
+  # => This is used to build the custom order in the Shopify area
+  get '/select' do
+
+    # => Request
+    # => Only serve XHR requests
+    halt 403, "Unauthorized" unless request.xhr?
+
+    # => Params
+    # => Gives us access to the querystring sent
+    @params = params
+
+    # => Response
+    # => Send back the hash of what you've built
+    respond_to do |format|
+      format.json { json: @params.to_json }
+    end
+
+  end
+
+  ##########################################################
+  ##########################################################
+
   private
 
   # => Post Install/Uninstall
@@ -174,7 +198,13 @@ class SinatraApp < Sinatra::Base
   def after_shopify_auth
     shopify_session do |shop_name| # => Shopify hook
 
-      # => Uninstall Webhook
+    ##################################################
+    ##################################################
+
+      #######################
+      ## Uninstall Webhook ##
+      #######################
+
       # => Allows us to remove the app from the db when it's installed from shopify
       begin
         ShopifyAPI::Webhook.create(
@@ -186,7 +216,13 @@ class SinatraApp < Sinatra::Base
         raise unless uninstall_webhook.persisted?
       end
 
-      # => Populate Products
+    ##################################################
+    ##################################################
+
+      #######################
+      ## Populate Products ##
+      #######################
+
       # => Download the products to the local DB and allocate conflict information etc
       @products = ShopifyAPI::Product.find :all
       @shop     = Shop.find_by name: shop_name
@@ -208,6 +244,9 @@ class SinatraApp < Sinatra::Base
 
       # => Set the logger again
       ActiveRecord::Base.logger = old_logger
+
+    ##################################################
+    ##################################################
 
     end ## session
   end ## auth
