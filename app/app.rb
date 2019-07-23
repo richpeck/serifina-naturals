@@ -49,9 +49,10 @@ class SinatraApp < Sinatra::Base
   # => Register
   # => This allows us to call the various extensions for the system
   register Sinatra::Shopify
-  register Padrino::Helpers                # => number_to_currency (https://github.com/padrino/padrino-framework/blob/master/padrino-helpers/lib/padrino-helpers.rb#L22)
-  register Sinatra::Sprockets::Helpers     # => Asset Pipeline
-  register Sinatra::RespondWith            # => http://sinatrarb.com/contrib/respond_with
+  register Padrino::Helpers             # => number_to_currency (https://github.com/padrino/padrino-framework/blob/master/padrino-helpers/lib/padrino-helpers.rb#L22)
+  register Sinatra::Sprockets::Helpers  # => Asset Pipeline
+  register Sinatra::RespondWith         # => http://sinatrarb.com/contrib/respond_with
+  helpers Sinatra::RequiredParams       # => Required Parameters (ensures we have certain params for different routes)
 
   ##########################################################
   ##########################################################
@@ -169,6 +170,7 @@ class SinatraApp < Sinatra::Base
   # => Allows us to receive XHR requests
   # => This is used to build the custom order in the Shopify area
   get '/select' do
+    required_params :bail_type # => This ensures we have "bail_type" set in the params querystring
 
     # => Request
     # => Only serve XHR requests
