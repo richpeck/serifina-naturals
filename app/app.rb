@@ -68,7 +68,7 @@ class SinatraApp < Sinatra::Base
 
   ## Definitions ##
   ## Any variables defined here ##
-  domain   = ENV.fetch('DOMAIN', 'serifinanaturals.com') ## used for CORS and other funtionality -- ENV var gives flexibility
+  domain   = ENV.fetch('DOMAIN', 'www.serifinanaturals.com') ## used for CORS and other funtionality -- ENV var gives flexibility
   debug    = ENV.fetch("DEBUG", false) != false ## this needs to be evaluated this way because each ENV variable returns a string ##
 
   ##########################################################
