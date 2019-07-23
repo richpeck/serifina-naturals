@@ -175,7 +175,7 @@ class SinatraApp < Sinatra::Base
 
     # => Request
     # => Only serve XHR requests
-    halt 403 if !request.xhr?
+    halt 403, request.content_type if !request.xhr?
 
     # => Params
     # => Gives us access to the querystring sent
