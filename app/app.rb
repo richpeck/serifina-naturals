@@ -170,8 +170,14 @@ class SinatraApp < Sinatra::Base
   # => Select
   # => Allows us to receive XHR requests
   # => This is used to build the custom order in the Shopify area
-  # => "provides" only allows certain routes - https://stackoverflow.com/questions/8225689/creating-a-route-with-sinatra-to-only-accept-a-certain-content-type
+  # => https://stackoverflow.com/questions/8225689/creating-a-route-with-sinatra-to-only-accept-a-certain-content-type
   get '/select', provides: :json do
+
+    puts request.content_type
+
+    # => Request
+    # => Only serve XHR requests
+    halt 403 unless request.content_type == 'application/javascript'
 
     # => Params
     # => Ensures we have *at least* the "bail_type" params present
