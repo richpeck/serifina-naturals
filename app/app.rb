@@ -49,6 +49,7 @@ class SinatraApp < Sinatra::Base
   # => Register
   # => This allows us to call the various extensions for the system
   register Sinatra::Shopify
+  register Sinatra::Cors                # => Protects from unauthorized domain activity
   register Padrino::Helpers             # => number_to_currency (https://github.com/padrino/padrino-framework/blob/master/padrino-helpers/lib/padrino-helpers.rb#L22)
   register Sinatra::Sprockets::Helpers  # => Asset Pipeline
   register Sinatra::RespondWith         # => http://sinatrarb.com/contrib/respond_with
