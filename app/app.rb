@@ -230,7 +230,7 @@ class SinatraApp < Sinatra::Base
 
     # => Shopify API
     # => Engages with store etc
-    @session.draft_orders.create({
+    @order = ShopifyAPI::DraftOrders.create({
       "line_items" => [{
 
         # => Stones
