@@ -240,8 +240,8 @@ class SinatraApp < Sinatra::Base
           "price":      @shape.price,
           "quantity":   1,
           "properties": [{
-            "name": "Stones",
-            "value": "#{@shape.shape_type.titleize} (#{@shape.name.titleize})",
+            "name": "Shape",
+            "value": "#{@shape.shape_type.titleize} (#{@shape.name.titleize}) (#{number_to_currency(@shape.price)})",
           },{
             "name":   "Charm",
             "value":  @shape.shape_type.titleize,
