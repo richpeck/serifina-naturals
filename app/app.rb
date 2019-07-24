@@ -188,7 +188,7 @@ class SinatraApp < Sinatra::Base
 
     # => Vars
     # => Allows us to identify the various variables for the system
-    @shape  = Shape.find params[:shape]
+    @shape  = Shape.find(params[:shape]) || nil
     @charms = @shape.try(:charms)
 
     # => Build out response object
