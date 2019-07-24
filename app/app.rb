@@ -23,6 +23,7 @@ require 'sass/plugin/rack' # => SASS plugin for asset pipeline (https://stackove
 require 'require_all'      # => Require_All (allows us to call an entire directory)
 require 'rack-flash'       # => Flash for Rack based apps
 require 'padrino-helpers'  # => Padrino Helpers (required for number_to_currency)
+require 'titleize'         # => Appends titleize method to strings in Ruby (https://github.com/granth/titleize)
 
 # => Libs
 # => Allows us to call various dependencies
@@ -115,7 +116,7 @@ class SinatraApp < Sinatra::Base
   # => Shopify
   # => Set the scope that your app needs, read more here:
   # => http://docs.shopify.com/api/tutorials/oauth
-  set :scope, 'read_products, read_orders'
+  set :scope, 'read_products, write_draft_orders'
 
   ##########################################################
   ##########################################################
@@ -204,6 +205,39 @@ class SinatraApp < Sinatra::Base
     # => Send back the hash of what you've built
     respond_to do |format|
       format.json { @items.to_json }
+    end
+
+  end
+
+  ##########################################################
+  ##########################################################
+
+  # => Draft Order
+  # => Allows us to create new orders for custom products
+  post '/select' do
+
+    # => Items
+    @stone = Stone.find params[:stone]
+
+    # => Shopify API
+    # => Engages with store etc
+    shopify_session do # => create draft order
+      @order = ShopifyAPI::DraftOrder.create({
+        "line_items" => [{
+
+          # => Stones
+          "title": @stone.shape_type.replace(/_/g, ' ')) + " (" + shape.name + ") (" + currency(shape.price, { formatWithSymbol: true }).format() + ")",
+          "price": "",
+          "quantity":   1,
+
+        }]
+      }) # => Create draft order
+
+      # => Response
+      # => Send back the hash of what you've built
+      respond_to do |format|
+        format.json { @order.to_json }
+      end
     end
 
   end

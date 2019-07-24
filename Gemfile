@@ -75,7 +75,8 @@ gem 'padrino-helpers', '~> 0.14.4' # => Sinatra framework which adds a number of
 #     Frontend     #
 ####################
 
-gem 'haml', '~> 5.1', '>= 5.1.1' # => HAML
+gem 'haml', '~> 5.1', '>= 5.1.1'      # => HAML
+gem 'titleize', '~> 1.4', '>= 1.4.1'  # => Titleize (for order line items)
 
 ###########################################
 ###########################################
