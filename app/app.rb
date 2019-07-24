@@ -231,7 +231,7 @@ class SinatraApp < Sinatra::Base
 
     # => Shopify API
     # => Engages with store
-    @order = ShopifyAPI::DraftOrder.new({
+    @order = ShopifyAPI::DraftOrder.create({
 
       "line_items" => [{
 
@@ -244,7 +244,7 @@ class SinatraApp < Sinatra::Base
 
     }) # => Create draft order
 
-    @order.save
+    @order.send_draft_invoice
 
     # => Response
     # => Send back the hash of what you've built
