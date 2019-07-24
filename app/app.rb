@@ -227,6 +227,7 @@ class SinatraApp < Sinatra::Base
     # => Session
     # => Because we're registering/logging in on behalf of the store, we need to ensure we are using their store
     @session = ShopifyAPI::Session.new(domain: @shop.name, token: @shop.token, api_version: '2019-07')
+    ShopifyAPI::Base.activate_session(@session)
 
     # => Shopify API
     # => Engages with store etc
