@@ -216,28 +216,35 @@ class SinatraApp < Sinatra::Base
   # => Allows us to create new orders for custom products
   post '/select' do
 
+    # => Required Params
+    # => Ensures we are passing the right data to the method
+    required_params :shop, :bail_type, :shape #, :charm, :stones
+
     # => Items
-    @shape = Shape.find params[:shape]
+    @shop    = Shop.find_by name: params[:shop]
+    @shape   = Shape.find params[:shape]
+
+    # => Session
+    # => Because we're registering/logging in on behalf of the store, we need to ensure we are using their store
+    @session = ShopifyAPI::Session.new(domain: @shop.name, token: @shop.token, api_version: '2019/07')
 
     # => Shopify API
     # => Engages with store etc
-    shopify_session do # => create draft order
-      @order = ShopifyAPI::DraftOrder.create({
-        "line_items" => [{
+    @session.draft_orders.create({
+      "line_items" => [{
 
-          # => Stones
-          "title": @shape.shape_type.titleize,
-          "price": "",
-          "quantity":   1,
+        # => Stones
+        "title": @shape.shape_type.titleize,
+        "price": "",
+        "quantity":   1,
 
-        }]
-      }) # => Create draft order
+      }]
+    }) # => Create draft order
 
-      # => Response
-      # => Send back the hash of what you've built
-      respond_to do |format|
-        format.json { @order.to_json }
-      end
+    # => Response
+    # => Send back the hash of what you've built
+    respond_to do |format|
+      format.json { @order.to_json }
     end
 
   end
