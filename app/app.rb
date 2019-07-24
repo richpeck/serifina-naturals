@@ -236,17 +236,17 @@ class SinatraApp < Sinatra::Base
 
       "line_items" => [
         { # => Shape
-          "title":      "#{@shape.shape_type.titleize} (#{@shape.name.titleize})",
+          "title":      "Shape: #{@shape.shape_type.titleize} (#{@shape.name.titleize})",
           "price":      @shape.price,
           "quantity":   1,
         },
         { # => Charm
-          "title":      @shape.shape_type.titleize,
+          "title":      "Charm: #{@shape.shape_type.titleize}",
           "price":      @shape.price,
           "quantity":   1,
         },
         { # => Stones
-          "title":      @shape.shape_type.titleize,
+          "title":      "Stones: #{@shape.shape_type.titleize}",
           "price":      @shape.price,
           "quantity":   1,
         }
