@@ -226,7 +226,7 @@ class SinatraApp < Sinatra::Base
         "line_items" => [{
 
           # => Stones
-          "title": @stone.shape_type.replace(/_/g, ' ').titleize,
+          "title": @stone.shape_type.titleize,
           "price": "",
           "quantity":   1,
 
