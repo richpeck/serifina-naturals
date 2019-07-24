@@ -230,21 +230,29 @@ class SinatraApp < Sinatra::Base
     ShopifyAPI::Base.activate_session(@session)
 
     # => Shopify API
-    # => Engages with store
-    @order = ShopifyAPI::DraftOrder.new({
+    # => Engages with store to create a draft order
+    # => From this, the user has the ability to
+    @order = ShopifyAPI::DraftOrder.create({
 
-      "line_items" => [{
-
-        # => Stones
-        "title": @shape.shape_type.titleize,
-        "price": "20.00",
-        "quantity":   1,
-
-      }]
+      "line_items" => [
+        { # => Shape
+          "title":      "#{@shape.shape_type.titleize} (#{@shape.name.titleize})",
+          "price":      @shape.price,
+          "quantity":   1,
+        },
+        { # => Charm
+          "title":      @shape.shape_type.titleize,
+          "price":      @shape.price,
+          "quantity":   1,
+        },
+        { # => Stones
+          "title":      @shape.shape_type.titleize,
+          "price":      @shape.price,
+          "quantity":   1,
+        }
+      ]
 
     }) # => Create draft order
-
-    @order.save
 
     # => Response
     # => Send back the hash of what you've built
