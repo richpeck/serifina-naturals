@@ -186,11 +186,18 @@ class SinatraApp < Sinatra::Base
     # => Ensures we have *at least* the "bail_type" params present
     required_params :bail_type # => This ensures we have "bail_type" set in the params querystring
 
+    # => Vars
+    # => Allows us to identify the various variables for the system
+    @shape  = Shape.find params[:shape]
+    @charms = @shape.try(:charms)
+
     # => Build out response object
     # => This is designed to provide the user with a series of pieces of information
     # => which gives them the ability to add certain products to their cart
     @items = {
-      shapes: Shape.send(params[:bail_type])
+      shapes: Shape.send(params[:bail_type]),
+      charms: @charms,
+      stones: @charms.try(:find, params[:charm]).try(:stones)
     }
 
     # => Response
