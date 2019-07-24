@@ -217,7 +217,7 @@ class SinatraApp < Sinatra::Base
   post '/select' do
 
     # => Items
-    @stone = Stone.find params[:stone]
+    @shape = Shape.find params[:shape]
 
     # => Shopify API
     # => Engages with store etc
@@ -226,7 +226,7 @@ class SinatraApp < Sinatra::Base
         "line_items" => [{
 
           # => Stones
-          "title": @stone.shape_type.titleize,
+          "title": @shape.shape_type.titleize,
           "price": "",
           "quantity":   1,
 
