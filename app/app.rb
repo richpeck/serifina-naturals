@@ -189,7 +189,11 @@ class SinatraApp < Sinatra::Base
     # => Build out response object
     # => This is designed to provide the user with a series of pieces of information
     # => which gives them the ability to add certain products to their cart
-    @items = Shape.send(params[:bail_type])
+    @items = {
+      shapes: [
+        Shape.send(params[:bail_type])
+      ]
+    }
 
     # => Response
     # => Send back the hash of what you've built
