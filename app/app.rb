@@ -235,18 +235,8 @@ class SinatraApp < Sinatra::Base
     @order = ShopifyAPI::DraftOrder.create({
 
       "line_items" => [
-        { # => Shape
-          "title":      "Shape: #{@shape.shape_type.titleize} (#{@shape.name.titleize})",
-          "price":      @shape.price,
-          "quantity":   1,
-        },
-        { # => Charm
-          "title":      "Charm: #{@shape.shape_type.titleize}",
-          "price":      @shape.price,
-          "quantity":   1,
-        },
-        { # => Stones
-          "title":      "Stones: #{@shape.shape_type.titleize}",
+        {
+          "title":      "Shape: #{@shape.shape_type.titleize} (#{@shape.name.titleize}),<br />Charm: #{@shape.shape_type.titleize},<br />Stones: #{@shape.shape_type.titleize}",
           "price":      @shape.price,
           "quantity":   1,
         }
