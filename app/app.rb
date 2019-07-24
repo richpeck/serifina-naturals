@@ -186,18 +186,15 @@ class SinatraApp < Sinatra::Base
     # => Ensures we have *at least* the "bail_type" params present
     required_params :bail_type # => This ensures we have "bail_type" set in the params querystring
 
-    # => Params
-    # => Gives us access to the querystring sent
-    @params = params
-
     # => Build out response object
     # => This is designed to provide the user with a series of pieces of information
     # => which gives them the ability to add certain products to their cart
+    @items = Stone.send(params[:bail_type])
 
     # => Response
     # => Send back the hash of what you've built
     respond_to do |format|
-      format.json { @params.to_json }
+      format.json { @items.to_json }
     end
 
   end
