@@ -239,11 +239,16 @@ class SinatraApp < Sinatra::Base
           "title":      "1 Custom Designed Charm Pendant",
           "price":      @shape.price,
           "quantity":   1,
-          "properties": {
-            "Shape": "#{@shape.shape_type.titleize} (#{@shape.name.titleize})",
-            "Charm":  @shape.shape_type.titleize,
-            "Stones": @shape.shape_type.titleize
-          }
+          "properties": [{
+            "name": "Stones",
+            "value": "#{@shape.shape_type.titleize} (#{@shape.name.titleize})",
+          },{
+            "name":   "Charm",
+            "value":  @shape.shape_type.titleize,
+          },{
+            "name": "Stones",
+            "value": @shape.shape_type.titleize
+          }]
         }
       ]
 
