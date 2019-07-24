@@ -236,7 +236,7 @@ class SinatraApp < Sinatra::Base
 
       "line_items" => [
         {
-          "title":      "Custom Charm Pendant",
+          "title":      "Custom Pendant",
           "price":      @shape.price * 2,
           "quantity":   1,
           "properties": [{
