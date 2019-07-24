@@ -237,14 +237,14 @@ class SinatraApp < Sinatra::Base
       "line_items" => [
         {
           "title":      "Custom Charm Pendant",
-          "price":      @shape.price,
+          "price":      @shape.price * 2,
           "quantity":   1,
           "properties": [{
             "name": "Shape",
             "value": "#{@shape.shape_type.titleize} (#{@shape.name.upcase}) (#{number_to_currency(@shape.price)})",
           },{
             "name":   "Charm",
-            "value":  @shape.shape_type.titleize,
+            "value":  "#{@shape.shape_type.titleize} (#{number_to_currency(@shape.price)})",
           },{
             "name": "Stones",
             "value": @shape.shape_type.titleize
