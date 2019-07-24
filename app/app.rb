@@ -190,9 +190,7 @@ class SinatraApp < Sinatra::Base
     # => This is designed to provide the user with a series of pieces of information
     # => which gives them the ability to add certain products to their cart
     @items = {
-      shapes: [
-        Shape.send(params[:bail_type])
-      ]
+      shapes: Shape.send(params[:bail_type])
     }
 
     # => Response
