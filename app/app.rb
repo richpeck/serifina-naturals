@@ -236,7 +236,7 @@ class SinatraApp < Sinatra::Base
 
       "line_items" => [
         {
-          "title":      "Shape: #{@shape.shape_type.titleize} (#{@shape.name.titleize}),<br />Charm: #{@shape.shape_type.titleize},<br />Stones: #{@shape.shape_type.titleize}",
+          "title":      "Shape: #{@shape.shape_type.titleize} (#{@shape.name.titleize}), <br />Charm: #{@shape.shape_type.titleize}, <br />Stones: #{@shape.shape_type.titleize}",
           "price":      @shape.price,
           "quantity":   1,
         }
