@@ -237,7 +237,7 @@ class SinatraApp < Sinatra::Base
 
         # => Stones
         "title": @shape.shape_type.titleize,
-        "price": "",
+        "price": "20.00",
         "quantity":   1,
 
       }]
