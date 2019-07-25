@@ -1,6 +1,6 @@
 %ul
   - @products.each do |product|
     %li
-      %a{href: "https://\#{@shop.myshopify_domain}/admin/products/\#{product.id}", target: :blank}= "#{product.name} (#{product.shape_type.titleiz})"
+      %a{href: "https://\#{@shop.myshopify_domain}/admin/products/\#{product.id}", target: :blank}= "#{product.name.upcase} (#{product.shape_type.capitalize})"
 
-= @products.size
+= "#{@products.size} Shapes"
