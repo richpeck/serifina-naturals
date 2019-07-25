@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2014_04_13_221331) do
+ActiveRecord::Schema.define(version: 2014_04_13_221332) do
 
   create_table "charms", force: :cascade do |t|
     t.integer "charm_type", default: 0
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 2014_04_13_221331) do
     t.string "name"
     t.string "token_encrypted"
     t.index ["name"], name: "index_shops_on_name", unique: true
+  end
+
+  create_table "stones", force: :cascade do |t|
+    t.integer "stone_type", default: 0
+    t.string "name"
+    t.integer "price"
+    t.index ["stone_type", "name"], name: "stone_type_name_index", unique: true
   end
 
 end

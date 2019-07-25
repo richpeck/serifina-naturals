@@ -350,7 +350,40 @@ end
 
 ## Stones ##
 ## Pre-defined inside applet ##
-stones = {}
+stones = {
+  "chakra" => {
+    "quartz"       => 0,
+    "amethyst"     => 0,
+    "lapis_lazuli" => 0,
+    "rose_quartz"  => 0,
+    "angelite"     => 0,
+    "citrine"      => 0,
+    "carnelian"    => 0,
+    "garnet"       => 0
+  },
+  "synergy12" => {
+    "azeztulite_quarts" => 0,
+    "brookite"          => 0,
+    "danburite"         => 0,
+    "herderite"         => 0,
+    "moldavite"         => 0,
+    "natrolite"         => 0,
+    "petalite"          => 0,
+    "phenacite"         => 0,
+    "satyaloka_quartz"  => 0,
+    "scolecite"         => 0,
+    "tanzanite"         => 0,
+    "tibetan_tektite"   => 0
+  }
+}
+
+## Loop ##
+## Cycles the hash above and creates the appropriate listings ##
+stones.each do |stone_type,stones| # => starfish etc
+  stones.each do |stone,price|  # => circle/square/oval/teardrop etc
+    Stone.upsert({stone_type: Stone.stone_types[stone_type], name: stone, price: price}, unique_by: :stone_type_name_index)
+  end
+end
 
 ##########################################
 ##########################################

@@ -198,7 +198,7 @@ class SinatraApp < Sinatra::Base
     @items = {
       shapes: Shape.send(params[:bail_type]).group(:id, :shape_type).order(name: :asc),
       charms: Charm.all,
-      stones: ""
+      stones: Stone.all
     }
 
     # => Response
