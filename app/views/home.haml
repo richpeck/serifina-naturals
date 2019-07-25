@@ -1,11 +1,6 @@
 %ul
   - @products.each do |product|
     %li
-      %a{href: "https://\#{@shop.myshopify_domain}/admin/products/\#{product.id}", target: :blank}= "#{product.title} (#{product.sku})"
+      %a{href: "https://\#{@shop.myshopify_domain}/admin/products/\#{product.id}", target: :blank}= "#{product.name} (#{product.shape_type.titelize})"
 
 = @products.size
-
-- Shape.all.each do |shape|
-  = shape.bail_type
-  = number_to_currency(shape.price)
-  %br

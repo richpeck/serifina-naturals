@@ -140,7 +140,7 @@ class SinatraApp < Sinatra::Base
     # => Required to give us access to the information we need
     shopify_session do |shop_name|
       @shop     = Shop.find_by name: shop_name
-      @products = @shop.products
+      @products = Shape.all
 
       # => Response
       # => Bundled inside Sinatra
