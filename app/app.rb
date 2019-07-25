@@ -239,7 +239,7 @@ class SinatraApp < Sinatra::Base
       "line_items" => [
         {
           "title":      "Custom Pendant",
-          "price":      [@shape.price, @charm.price, @stones.price].inject(:+)
+          "price":      [@shape.price, @charm.price, @stones.price].inject(:+),
           "quantity":   1,
           "properties": [{
             "name": "Shape",
