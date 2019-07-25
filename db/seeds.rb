@@ -103,7 +103,7 @@ end
 ## Charms ##
 ## These have to be pre-defined because they don't exist in the store ##
 charms = {
-  "dream_catchers" => {
+  "dream_catcher" => {
     "dream_catcher":          1,
     "gunmetal_dream_catcher": 4
   },
@@ -119,7 +119,7 @@ charms = {
     "silver":               0,
     "blue":                 0
   },
-  "steampunk_gears" => {
+  "steampunk_gear" => {
     "lg_gears":             0,
     "sm_gears":             0,
     "moon":                 0,
@@ -168,7 +168,7 @@ charms = {
     "ohm_lotus":           1,
     "yoga_lotus":          1
   },
-  "chakras" => {
+  "chakra" => {
     "crown_lg":           2,
     "third_eye_lg":       2,
     "throat_lg":          2,
@@ -184,7 +184,7 @@ charms = {
     "sacral_sm":          2,
     "root_sm":            2
   },
-  "hearts" => {
+  "heart" => {
     "silver":             0,
     "infinity":           0,
     "mini_silver":        0,
@@ -209,7 +209,7 @@ charms = {
     "lg":                 0,
     "sm":                 0
   },
-  "paw_prints" => {
+  "paw_print" => {
     "paw_print":          0,
     "lg_paw_print":       0,
     "heart_paws":         0,
@@ -222,7 +222,7 @@ charms = {
     "light_bulb":         0,
     "seed_of_life":       0
   },
-  "tear_drops" => {
+  "tear_drop" => {
     "mini_drop_silver":   1,
     "mini_drop_gold":     1,
     "four_leaf_clover":   0,
@@ -239,7 +239,7 @@ charms = {
     "snowflake":          0,
     "pumpkin":            0
   },
-  "words" => {
+  "word" => {
     "love":               0,
     "travel":             0,
     "no_365":             0,
@@ -269,7 +269,7 @@ charms = {
     "blue":               1,
     "lighthouse":         3
   },
-  "anchors" => {
+  "anchor" => {
     "anchor":             0,
     "anchor_b":           1,
     "anchor_c":           1,
@@ -277,7 +277,7 @@ charms = {
     "anchor_e":           1,
     "anchor_f":           1
   },
-  "turtles" => {
+  "turtle" => {
     "sm_silver":          0,
     "lg_silver":          0,
     "mini_silver":        0,
@@ -286,7 +286,7 @@ charms = {
     "turtle_f":           1,
     "fish":               1
   },
-  "dolphins" => {
+  "dolphin" => {
     "dolphin":                 0,
     "dolphins_silver_plated":  4,
     "palm_tree_silver_plated": 3,
@@ -298,7 +298,7 @@ charms = {
     "boat_b":                  1,
     "boat_c":                  1
   },
-  "premium_minis" => {
+  "premium_mini" => {
     "silver_starfish":         3,
     "silver_crab":             3,
     "silver_anchor":           3,
@@ -310,7 +310,7 @@ charms = {
     "bronze_seahorse":         3,
     "bronze_shell":            3
   },
-  "seashells" => {
+  "seashell" => {
     "clam":                    0
   },
   "request_shape" => {
@@ -339,6 +339,13 @@ charms = {
   }
 }
 
+## Loop ##
+## Cycles the hash above and creates the appropriate listings ##
+charms.each do |charm_type,charms| # => starfish etc
+  charms.each do |charm,price|  # => circle/square/oval/teardrop etc
+    Charm.upsert({charm_type: Charm.charm_types[charm_type], name: charm, price: price}, unique_by: :charm_type_name_index)
+  end
+end
 
 ##########################################
 ##########################################

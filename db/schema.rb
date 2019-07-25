@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2014_04_13_221330) do
+ActiveRecord::Schema.define(version: 2014_04_13_221331) do
+
+  create_table "charms", force: :cascade do |t|
+    t.integer "charm_type", default: 0
+    t.string "name"
+    t.integer "price"
+    t.index ["charm_type", "name"], name: "charm_type_name_index", unique: true
+  end
 
   create_table "products", force: :cascade do |t|
     t.integer "shop_id", null: false
