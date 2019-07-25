@@ -262,7 +262,11 @@ charms = {
     "c_starfish":         0,
     "d_starfish":         0,
     "e_starfish":         0,
-    "f_starfish":         0
+    "f_starfish":         0,
+    "starfish":           6,
+    "mini_starfish":      3,
+    "sand_dollar":        3,
+    "ammonite_fossil":    20
   },
   "seahorse" => {
     "silver":             0,
@@ -330,12 +334,6 @@ charms = {
   "shark_teeth" => {
     "shark_tooth":             3,
     "mini_shark_tooth":        3,
-  },
-  "starfish" => {
-    "starfish":                6,
-    "mini_starfish":           3,
-    "sand_dollar":             3,
-    "ammonite_fossil":         20
   }
 }
 
