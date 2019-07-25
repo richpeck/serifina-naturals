@@ -218,11 +218,13 @@ class SinatraApp < Sinatra::Base
 
     # => Required Params
     # => Ensures we are passing the right data to the method
-    required_params :shop, :bail_type, :shape #, :charm, :stones
+    required_params :shop, :bail_type, :shape, :charm, :stones
 
     # => Items
     @shop    = Shop.find_by name: params[:shop]
     @shape   = Shape.find params[:shape]
+    @charm   = Charm.fimd params[:charm]
+    @stones  = Stone.find params[:stone]
 
     # => Session
     # => Because we're registering/logging in on behalf of the store, we need to ensure we are using their store
@@ -237,17 +239,17 @@ class SinatraApp < Sinatra::Base
       "line_items" => [
         {
           "title":      "Custom Pendant",
-          "price":      @shape.price * 2,
+          "price":      [@shape.price, @charm.price, @stones.price].inject(:+)
           "quantity":   1,
           "properties": [{
             "name": "Shape",
             "value": "#{@shape.shape_type.titleize} (#{@shape.name.upcase}) (#{number_to_currency(@shape.price)})",
           },{
             "name":   "Charm",
-            "value":  "#{@shape.shape_type.titleize} (#{number_to_currency(@shape.price)})",
+            "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
           },{
             "name": "Stones",
-            "value": @shape.shape_type.titleize
+            "value": "#{@stones.stone_type.titleize} (+ #{number_to_currency(@stones.price)})",
           }]
         }
       ]
