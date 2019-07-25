@@ -171,7 +171,7 @@ class SinatraApp < Sinatra::Base
   # => Protection
   # => This is used to protect the method from non-accepted routes
   before '/select' do
-    halt 403 if !request.accept.map{ |item| item.to_s }.include?("application/json") && request.get? # => Cross origin domain cuts out XHR headers (need to justify against accept headers instead)
+    halt 403 if request.get? && !request.accept.map{ |item| item.to_s }.include?("application/json") # => Cross origin domain cuts out XHR headers (need to justify against accept headers instead)
   end
 
   ##########################################################
