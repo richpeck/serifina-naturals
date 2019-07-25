@@ -196,7 +196,7 @@ class SinatraApp < Sinatra::Base
     # => This is designed to provide the user with a series of pieces of information
     # => which gives them the ability to add certain products to their cart
     @items = {
-      shapes: Shape.send(params[:bail_type]).group(:id, :shape_type).order(shape_type: :desc, name: :desc),
+      shapes: Shape.send(params[:bail_type]).group(:id, :shape_type).order(shape_type: :asc, name: :asc),
       charms: @charms,
       stones: @charms.try(:find, params[:charm]).try(:stones)
     }
