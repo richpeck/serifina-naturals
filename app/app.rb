@@ -223,7 +223,7 @@ class SinatraApp < Sinatra::Base
     # => Items
     @shop    = Shop.find_by name: params[:shop]
     @shape   = Shape.find params[:shape]
-    @charm   = Charm.fimd params[:charm]
+    @charm   = Charm.find params[:charm]
     @stones  = Stone.find params[:stone]
 
     # => Session
