@@ -16,14 +16,15 @@
 
 # => Extras
 # => Gives us ability to adapt functionality as appropriate
-require 'haml'             # => Haml
-require 'net/https'        # => URL::HTTPS core (for creating URL out of naked domain)
-require "addressable/uri"  # => Addressable::URI (break down URL into components // for request.referrer - https://github.com/sporkmonger/addressable#example-usage)
-require 'sass/plugin/rack' # => SASS plugin for asset pipeline (https://stackoverflow.com/q/47406294/1143732)
-require 'require_all'      # => Require_All (allows us to call an entire directory)
-require 'rack-flash'       # => Flash for Rack based apps
-require 'padrino-helpers'  # => Padrino Helpers (required for number_to_currency)
-require 'titleize'         # => Appends titleize method to strings in Ruby (https://github.com/granth/titleize)
+require 'haml'                      # => Haml
+require 'net/https'                 # => URL::HTTPS core (for creating URL out of naked domain)
+require "addressable/uri"           # => Addressable::URI (break down URL into components // for request.referrer - https://github.com/sporkmonger/addressable#example-usage)
+require 'sass/plugin/rack'          # => SASS plugin for asset pipeline (https://stackoverflow.com/q/47406294/1143732)
+require 'require_all'               # => Require_All (allows us to call an entire directory)
+require 'rack-flash'                # => Flash for Rack based apps
+require 'padrino-helpers'           # => Padrino Helpers (required for number_to_currency)
+require 'titleize'                  # => Appends titleize method to strings in Ruby (https://github.com/granth/titleize)
+require 'active_support/inflector'  # => Pluralize (https://stackoverflow.com/a/2453553/1143732)
 
 # => Libs
 # => Allows us to call various dependencies

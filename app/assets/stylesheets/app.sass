@@ -20,31 +20,48 @@ body
   // Table
   // Styling for the table on the home page
   table
-    border:
-      spacing: 0
-      collapse: 0
-    tr
-      td,
-      th
-        &:nth-of-type(2)
-          border:
-            right: 2px solid black
-        &.charm
-          color: red
-    thead
-      th
-        background: rgba(#ddd, 1)
-        padding:    10px 0
-        &.charm
-          color: rgba(255,255,255,1)
-          background: rgba(0,0,0,1)
-
-    tbody
+    &.charms
+      border:
+        spacing: 0
+        collapse: 0
       tr
-        td
+        &:first-of-type
+          td
+            &:not(.charm)
+              border:
+                bottom: 2px solid rgba(0,0,0,1)
+        td,
+        th
+          &.charm2
+            border:
+              right: 2px solid black
+
+      thead
+        th
+          background: rgba(#ddd, 1)
+          padding:    10px 0
           &.charm
-            text:
-              align: center
+            color: rgba(255,255,255,1)
+            background: rgba(0,0,0,1)
+          &:not(.charm)
+            padding: 10px 0
+            border:
+              bottom: 2px solid rgba(0,0,0,1)
+
+      tbody
+        tr
+          &.bails
+            td
+              &:not(.charm)
+                color: rgba(255,255,255,1)
+                background: rgba(0,0,0,1)
+          td
+            &.charm
+              text:
+                align: center
+            &.regular
+              border:
+                left: 2px solid rgba(0,0,0,1)
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////

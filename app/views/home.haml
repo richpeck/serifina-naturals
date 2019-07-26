@@ -1,20 +1,35 @@
-%table{ width: '100%' }
+%table{ width: '100%', class: "charms" }
   %thead
     %tr
       %th{colspan: 2,  width: '20%', class: "charm" } Charms
       %th{colspan: 42, width: '80%' } Shapes
   %tbody
-    %tr
-      %td{ colspan: 2, class: "charm" } &nbsp;
-
+    %tr{ class: "bails" }
+      %td{ colspan: 2, class: "charm charm2" } &nbsp;
       - # Shapes
       - @shapes = Shape.bail_types
       - @shapes.each do |shape|
-        %td{ colspan: 42/@shapes.count, align: "center" }= "#{shape[0].titleize} Bails"
+        %td{ colspan: Shape.send(shape[0]).count, align: "center", class: shape[0] }= "#{shape[0].titleize} Bails"
+      %tr{ class: "bails" }
+        %td{ colspan: 2, class: "charm charm2" } &nbsp;
+        - # Shape Types
+        - @shapes = Shape.bail_types
+        - @shapes.each do |bail|
+          - Shape.where(bail_type: bail).order(name: :asc).group_by(&:shape_type).each do |shape_type, array|
+            %td{ class: bail, colspan: array.size, align: :center }
+              %strong= shape_type.titleize.pluralize
+      %tr{ class: "bails" }
+        %td{ colspan: 2, class: "charm charm2" } &nbsp;
+        - # Shapes
+        - @shapes = Shape.bail_types
+        - @shapes.each do |bail|
+          - Shape.where(bail_type: bail).order(name: :asc).each do |shape|
+            %td{ class: bail, align: :center }
+              %strong= "#{shape.name} (#{number_to_currency(shape.price)})"
 
   - @charms.group_by(&:charm_type).each_with_index do |(charm_type, array), index|
     - array.each_with_index do |charm, i|
-      %tr
-        - # Charms
-        %td{ class: "charm" }= charm_type.titleize unless i > 0
-        %td{ class: "charm" }= charm.name.titleize
+      %tr{ class: charm_type }
+        %td{ class: "charm" }
+          %strong= charm_type.titleize unless i > 0
+        %td{ class: "charm charm2" }= charm.name.titleize
