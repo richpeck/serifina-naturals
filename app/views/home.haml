@@ -1,11 +1,20 @@
-%ul
-  - @products.each do |product|
-    %li
-      %a{href: "https://\#{@shop.myshopify_domain}/admin/products/\#{product.id}", target: :blank}= "#{product.name.upcase} (#{product.shape_type.capitalize})"
+%table{ width: '100%' }
+  %thead
+    %tr
+      %th{colspan: 2,  width: '20%', class: "charm" } Charms
+      %th{colspan: 42, width: '80%' } Shapes
+  %tbody
+    %tr
+      %td{ colspan: 2, class: "charm" } &nbsp;
 
-= "#{@products.size} Shapes"
+      - # Shapes
+      - @shapes = Shape.bail_types
+      - @shapes.each do |shape|
+        %td{ colspan: 42/@shapes.count, align: "center" }= "#{shape[0].titleize} Bails"
 
-- Charm.all.each do |charm|
-  = charm.charm_type
-  = charm.name
-  <br />
+  - @charms.group_by(&:charm_type).each_with_index do |(charm_type, array), index|
+    - array.each_with_index do |charm, i|
+      %tr
+        - # Charms
+        %td{ class: "charm" }= charm_type.titleize unless i > 0
+        %td{ class: "charm" }= charm.name.titleize

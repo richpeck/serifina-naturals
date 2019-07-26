@@ -54,6 +54,10 @@ class SinatraApp < Sinatra::Base
   register Padrino::Helpers             # => number_to_currency (https://github.com/padrino/padrino-framework/blob/master/padrino-helpers/lib/padrino-helpers.rb#L22)
   register Sinatra::Sprockets::Helpers  # => Asset Pipeline
   register Sinatra::RespondWith         # => http://sinatrarb.com/contrib/respond_with
+  register Sinatra::MultiRoute          # => Multi Route (allows for route :put, :delete)
+
+  # => Helpers
+  # => Allows us to manage the system at its core
   helpers Sinatra::RequiredParams       # => Required Parameters (ensures we have certain params for different routes)
 
   ##########################################################
@@ -140,7 +144,8 @@ class SinatraApp < Sinatra::Base
     # => Required to give us access to the information we need
     shopify_session do |shop_name|
       @shop     = Shop.find_by name: shop_name
-      @products = Shape.all
+      @shapes   = Shape.all
+      @charms   = Charm.all
 
       # => Response
       # => Bundled inside Sinatra
@@ -151,6 +156,36 @@ class SinatraApp < Sinatra::Base
     end ## shopify
 
   end ## get
+
+  ##########################################################
+  ##########################################################
+
+  # => Update
+  # => Gives us the ability to update the various associations
+  # => For the moment, just have a standard list of Shape.all etc
+  route :put, :delete, '/' do
+
+    # => Required Params
+    # => Ensures we're receiving certain parameters from the request
+    required_params :shape, :charm # => params[:shape], params[:charm] ensures we're able to manage which shapes/charms go together
+
+    # => Shape
+    # => Since this is required, we're able to call it
+    @shape = Shape.find_by id: params[:shape]
+
+    # => Charm
+    # => Again, since we have the params delivered, we can use them to look up the various items
+    @charm = Charm.find_by id: params[:charm]
+
+    # => Action
+    # => Removes @charm from @shape.charms or adds it
+    request.put? ? @shape.charms << charm : @shape.charms.delete(@charm)
+
+    # => Response
+    # => Passes back the shape object
+    respond_with @shape
+
+  end
 
   ##########################################################
   ##########################################################
@@ -223,7 +258,7 @@ class SinatraApp < Sinatra::Base
     # => Items
     @shop    = Shop.find_by name: params[:shop]
     @shape   = Shape.find params[:shape]
-    @charm   = Charm.find params[:charm]
+    @charm   = @shape.charms.find params[:charm]
     @stones  = Stone.find params[:stones]
 
     # => Session
