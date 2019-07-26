@@ -197,7 +197,7 @@ class SinatraApp < Sinatra::Base
     # => which gives them the ability to add certain products to their cart
     @items = {
       shapes: Shape.send(params[:bail_type]).group(:id, :shape_type).order(name: :asc),
-      charms: Charm.all,
+      charms: @charms, # => has to be a derivative of the @shape var
       stones: Stone.all
     }
 

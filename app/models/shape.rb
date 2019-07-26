@@ -23,8 +23,18 @@
 ## -- ##
 ## id | bail_type | shape_type | name | code | price | created_at | updated_at ##
 class Shape < ActiveRecord::Base
-  enum bail_type:  %i[loop regular] # => 2 types of bail
+
+  # => Types
+  # => Allows us to differentiate between the various items
+  enum bail_type:  %i[loop regular]
   enum shape_type: %i[square oval rectangle circle teardrop puzzle hunch_shell heart] # => 7 types of shape
+
+  # => Associations
+  # => Gives us the ability to associate different objects
+  # => EG @shop.shapes.find(1).charms
+  has_many :associations, as: :associatiable, dependent: :destroy
+  has_many :charms, through: :associations, source: :associated, source_type: "Charm"
+
 end
 
 ############################################

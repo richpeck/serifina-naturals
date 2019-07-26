@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2014_04_13_221332) do
+ActiveRecord::Schema.define(version: 2014_04_13_221334) do
+
+  create_table "associations", force: :cascade do |t|
+    t.string "associatiable_type"
+    t.integer "associatiable_id"
+    t.string "associated_type"
+    t.integer "associated_id"
+    t.index ["associated_type", "associated_id"], name: "index_associations_on_associated_type_and_associated_id"
+    t.index ["associatiable_type", "associatiable_id"], name: "index_associations_on_associatiable_type_and_associatiable_id"
+  end
 
   create_table "charms", force: :cascade do |t|
     t.integer "charm_type", default: 0
