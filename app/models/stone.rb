@@ -17,7 +17,7 @@
 ## Stone ##
 ## id | stone_type | name | price | created_at | updated_at ##
 class Stone < ActiveRecord::Base
-  enum stone_type: %i[chakra synergy12]
+  enum stone_type: %i[chakra synergy12 a_la_carte]
 end
 
 ############################################
