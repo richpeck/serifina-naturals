@@ -269,7 +269,7 @@ class SinatraApp < Sinatra::Base
 
     # => Stones
     # => Required because the buyer wanted multiple stones
-    puts @stones.map {|s| s['price']}.reduce(0, :+).inject(:+)
+    puts @stones.map {|s| s['price']}.reduce(0, :+)
 
     # => Shopify API
     # => Engages with store to create a draft order
