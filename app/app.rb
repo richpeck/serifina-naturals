@@ -296,8 +296,11 @@ class SinatraApp < Sinatra::Base
             "name":   "Charm",
             "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
           },{
-          "name":  "Stone",
-          "value": "Test"
+            "name":  "Stone",
+            "value": "Test"
+          },{
+            "name":  "Stone2",
+            "value": "Test2"            
           }]
         }
       ]
