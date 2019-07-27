@@ -273,9 +273,8 @@ class SinatraApp < Sinatra::Base
       {
       "name":  "Stone",
       "value": "Test"
-      },
-      {
-      "name":  "Stone",
+      },{
+      "name":  "Stone2",
       "value": "Test2"
       }
     ]
