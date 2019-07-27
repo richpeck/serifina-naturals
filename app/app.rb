@@ -270,14 +270,13 @@ class SinatraApp < Sinatra::Base
     # => Stones
     # => Required because the buyer wanted multiple stones
     stones = [
-      {
+    {
       "name":  "Stone",
       "value": "Test"
-      },{
+    },{
       "name":  "Stone2",
       "value": "Test2"
-      }
-    ]
+    }]
 
     # => Shopify API
     # => Engages with store to create a draft order
@@ -295,13 +294,7 @@ class SinatraApp < Sinatra::Base
           },{
             "name":   "Charm",
             "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
-          },{
-            "name":  "Stone",
-            "value": "Test"
-          },{
-            "name":  "Stone2",
-            "value": "Test2"            
-          }]
+          }].append(stones)
         }
       ]
 
