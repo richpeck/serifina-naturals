@@ -296,10 +296,10 @@ class SinatraApp < Sinatra::Base
           },{
             "name":   "Charm",
             "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
-          }].append({
-            "name": "Stones",
-            "value": "Test2"
-          })
+          }].append(
+            {"name": "Stones", "value": "Test2"},
+            {"name": "Stones", "value": "Test3"}
+          )
         }
       ]
 
