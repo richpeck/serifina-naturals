@@ -269,7 +269,10 @@ class SinatraApp < Sinatra::Base
 
     # => Stones
     # => Required because the buyer wanted multiple stones
-    puts @stones.map {|s| s['price']}.reduce(0, :+)
+    stones = {
+      "name":  "Stone",
+      "value": "Test"
+    }
 
     # => Shopify API
     # => Engages with store to create a draft order
@@ -287,7 +290,7 @@ class SinatraApp < Sinatra::Base
           },{
             "name":   "Charm",
             "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
-          }]
+          }].append(stones)
         }
       ]
 
