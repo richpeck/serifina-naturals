@@ -290,7 +290,7 @@ class SinatraApp < Sinatra::Base
           },{
             "name":   "Charm",
             "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
-          }].append(stones)
+          }].push(stones)
         }
       ]
 
