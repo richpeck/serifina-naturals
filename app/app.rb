@@ -269,13 +269,9 @@ class SinatraApp < Sinatra::Base
 
     # => Stones
     # => Required because the buyer wanted multiple stones
-    stones = [
-    {
+    stones = [{
       "name":  "Stone",
       "value": "Test"
-    },{
-      "name":  "Stone2",
-      "value": "Test2"
     }]
 
     # => Shopify API
