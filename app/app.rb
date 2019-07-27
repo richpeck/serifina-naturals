@@ -267,6 +267,9 @@ class SinatraApp < Sinatra::Base
     @session = ShopifyAPI::Session.new(domain: @shop.name, token: @shop.token, api_version: '2019-07')
     ShopifyAPI::Base.activate_session(@session)
 
+    # => Properties
+    # => Required
+
     # => Shopify API
     # => Engages with store to create a draft order
     # => From this, the user has the ability to
@@ -283,10 +286,14 @@ class SinatraApp < Sinatra::Base
           },{
             "name":   "Charm",
             "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
-          },{
-            "name": "Stones",
-            "value": "#{@stones.stone_type.titleize} (+ #{number_to_currency(@stones.price)})",
-          }]
+          }].append(
+            @stones.each do |stone|
+              {
+                "name": "Stone",
+                "value": "#{@stones.stone_type.titleize} (+ #{number_to_currency(@stones.price)})",
+              }
+            end
+          )
         }
       ]
 
