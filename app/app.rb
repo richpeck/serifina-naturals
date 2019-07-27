@@ -290,7 +290,16 @@ class SinatraApp < Sinatra::Base
           "title":      "Custom Pendant",
           "price":      [@shape.price, @charm.price, @stones.map {|s| s['price']}.reduce(0, :+)].inject(:+),
           "quantity":   1,
-          "properties": properties
+          "properties": [{
+            "name": "Shape",
+            "value": "#{@shape.shape_type.titleize} (#{@shape.name.upcase}) (#{number_to_currency(@shape.price)})",
+          },{
+            "name":   "Charm",
+            "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
+          }].append({
+            "name": "Stones",
+            "value": "Test2"
+          })
         }
       ]
 
