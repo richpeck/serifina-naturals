@@ -226,7 +226,7 @@ class SinatraApp < Sinatra::Base
     # => Vars
     # => Allows us to identify the various variables for the system
     @shape  = Shape.find_by(id: params[:shape])
-    @charms = Charm.all.order(shape_type: :asc) # @shape.try(:charms)
+    @charms = Charm.all.order(charm_type: :asc) # @shape.try(:charms)
 
     # => Build out response object
     # => This is designed to provide the user with a series of pieces of information
