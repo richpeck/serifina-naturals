@@ -290,7 +290,7 @@ class SinatraApp < Sinatra::Base
             @stones.each do |stone|
               {
                 "name": "Stone",
-                "value": "#{@stones.stone_type.titleize} (+ #{number_to_currency(@stones.price)})",
+                "value": "#{stone.stone_type.titleize} (+ #{number_to_currency(stone.price)})",
               }
             end
           )
