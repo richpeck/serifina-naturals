@@ -269,9 +269,12 @@ class SinatraApp < Sinatra::Base
 
     # => Stones
     # => Required because the buyer wanted multiple stones
-    stones = [{
-      "name":  "Stone",
-      "value": "Test"
+    properties = [{
+      "name": "Shape",
+      "value": "#{@shape.shape_type.titleize} (#{@shape.name.upcase}) (#{number_to_currency(@shape.price)})",
+    },{
+      "name":   "Charm",
+      "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
     }]
 
     # => Shopify API
@@ -284,13 +287,7 @@ class SinatraApp < Sinatra::Base
           "title":      "Custom Pendant",
           "price":      [@shape.price, @charm.price, @stones.map {|s| s['price']}.reduce(0, :+)].inject(:+),
           "quantity":   1,
-          "properties": [{
-            "name": "Shape",
-            "value": "#{@shape.shape_type.titleize} (#{@shape.name.upcase}) (#{number_to_currency(@shape.price)})",
-          },{
-            "name":   "Charm",
-            "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
-          }].push(stones)
+          "properties": properties
         }
       ]
 
