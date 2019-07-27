@@ -270,8 +270,8 @@ class SinatraApp < Sinatra::Base
     # => Stones
     # => Required because the buyer wanted multiple stones
     stones = []
-    @stones.each_with_index do |stone, index|
-      stones << {"name": "Stone #{index + 1}", "value": "#{stone.stone_type.titleize} (+ #{number_to_currency(stone.price)})"},
+    @stones.each_with_index do |stone,index|
+      stones << {"name": "Stone #{index + 1}", "value": "#{stone.stone_type.titleize} (+ #{number_to_currency(stone.price)})"}
     end
 
     # => Shopify API
