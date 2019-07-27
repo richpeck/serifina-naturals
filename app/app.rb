@@ -275,10 +275,10 @@ class SinatraApp < Sinatra::Base
     },{
       "name":   "Charm",
       "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
-    }].append([{
+    }].append({
       "name": "Stones",
       "value": "Test2"
-    }])
+    })
 
     # => Shopify API
     # => Engages with store to create a draft order
