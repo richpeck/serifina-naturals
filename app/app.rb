@@ -258,9 +258,9 @@ class SinatraApp < Sinatra::Base
 
     # => Items
     @shop    = Shop.find_by name: params[:shop]
-    @shape   = Shape.find params[:shape]
-    @charm   = @shape.charms.find params[:charm]
-    @stones  = Stone.find params[:stones]
+    @shape   = Shape.find         params[:shape]
+    @charm   = Charm.find params[:charm] #@shape.charms.find params[:charm]
+    @stones  = Stone.where id:    params[:stones]
 
     # => Session
     # => Because we're registering/logging in on behalf of the store, we need to ensure we are using their store
