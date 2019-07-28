@@ -41,7 +41,7 @@
               - array.each_with_index do |shape,index|
                 %td{ class: [shape.name, index.humanize], align: :center }
                   %strong
-                    - if shape.charms.find_by(id: charm.id)
-                      = button_to(shape.name.upcase, "/associations/#{shape.id}/#{charm.id}", method: :delete, title: "Remove Association", params: { shape: shape.id, charm: charm.id })
+                    - if shape.charms.ids.include? charm.id
+                      = button_to shape.name.upcase, "/associations/#{shape.id}/#{charm.id}", method: :delete, title: "Remove Association"
                     - else
-                      = button_to("x", "/associations/#{shape.id}/#{charm.id}", method: :put, title: "Add Association", params: { shape: shape.id, charm: charm.id })
+                      = button_to "x", "/associations/#{shape.id}/#{charm.id}", method: :put, title: "Add Association"
