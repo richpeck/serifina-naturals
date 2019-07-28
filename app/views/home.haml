@@ -38,6 +38,6 @@
           - # Shapes
           - @shapes.each do |bail|
             - Shape.where(bail_type: bail).order(name: :asc).group_by(&:shape_type).each do |shape_type, array|
-              - array.each do |shape|
-                %td{ class: shape.name, align: :center }
+              - array.each_with_index do |shape,index|
+                %td{ class: [shape.name, index.humanize], align: :center }
                   %strong= shape.name

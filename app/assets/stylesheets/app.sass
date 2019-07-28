@@ -56,8 +56,13 @@ body
 
       tbody
         tr
-          &:not(.zero)
-            &:not(.bails)
+          &:not(.bails)
+            td
+              &.zero
+                & ~ .zero
+                  border:
+                    left: 2px solid rgba(0,0,0,1)
+            &:not(.zero)
               td
                 border:
                   top: 1px solid rgba(200,200,200,1)
