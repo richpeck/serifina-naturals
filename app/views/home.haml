@@ -9,7 +9,8 @@
       %tr{ class: "bails" }
         - # Shape Types
         - @shapes.each do |bail|
-          - Shape.where(bail_type: bail).order(name: :asc).group_by(&:shape_type).each do |shape_type, array|
+          - shapes = instance_variable_get("@#{bail[0].pluralize}")
+          - shapes.order(name: :asc).group_by(&:shape_type).each do |shape_type, array|
             %td{ class: bail, colspan: array.size, align: :center }
               %strong= shape_type.titleize.pluralize
 
@@ -17,7 +18,8 @@
 
         - # Shapes
         - @shapes.each do |bail|
-          - Shape.where(bail_type: bail).order(name: :asc).each do |shape|
+          - shapes = instance_variable_get("@#{bail[0].pluralize}")
+          - shapes.order(name: :asc).each do |shape|
             %td{ class: bail, align: :center }
               %strong= "#{shape.name} (#{number_to_currency(shape.price)})"
 
@@ -31,7 +33,8 @@
 
           - # Shapes
           - @shapes.each do |bail|
-            - Shape.where(bail_type: bail).order(name: :asc).group_by(&:shape_type).each do |shape_type, array|
+            - shapes = instance_variable_get("@#{bail[0].pluralize}")
+            - shapes.order(name: :asc).group_by(&:shape_type).each do |shape_type, array|
               - array.each_with_index do |shape,index|
                 %td{ class: [shape.name, index.humanize], align: :center }
                   %strong
