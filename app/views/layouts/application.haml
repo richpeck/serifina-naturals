@@ -20,6 +20,6 @@
 
   %body
     .container
-      = haml :'_top_bar', layout: false, locals: locals
+      = haml :'_top_bar', layout: false, locals: locals unless Sinatra::Base.development?
       = erb :'_flash_messages', layout: false, locals: locals if flash.try(:any?) # => Needs to be erb because HAML couldn't handle the conditional logic inside javascript
       = yield

@@ -189,12 +189,14 @@ class SinatraApp < Sinatra::Base
 
     # => Action
     # => Removes @charm from @shape.charms or adds it
-    puts request.put?
     request.put? ? @shape.charms << @charm : @shape.charms.delete(@charm)
 
     # => Response
     # => Passes back the shape object
-    redirect "/" # => https://stackoverflow.com/a/2728204/1143732
+    respond_to do |format|
+      format.js   { haml :_button, locals: { shape: @shape, charm: @charm }, layout: false }
+      format.html { redirect "/" } # => https://stackoverflow.com/a/2728204/1143732
+    end
 
   end
 
@@ -335,7 +337,7 @@ class SinatraApp < Sinatra::Base
 
       # => Allows us to remove the app from the db when it's installed from shopify
       begin
-        ShopifyAPI::Webhook.create(
+        uninstall_webhook = ShopifyAPI::Webhook.create(
           topic: 'app/uninstalled',
           address: "#{base_url}/uninstall",
           format: 'json'
