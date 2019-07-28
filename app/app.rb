@@ -88,6 +88,10 @@ class SinatraApp < Sinatra::Base
   set :root,   File.dirname(__FILE__)                ## required to get views working (esp. with HAML) -- http://sinatrarb.com/configuration.html
   set :views,  Proc.new { File.join(root, "views") } ## views
 
+  # => Required for CSRF
+  # => https://cheeyeo.uk/ruby/sinatra/padrino/2016/05/14/padrino-sinatra-rack-authentication-token/
+  set :protect_from_csrf, true
+
   ##########################################################
   ##########################################################
 
@@ -165,7 +169,7 @@ class SinatraApp < Sinatra::Base
   # => Update
   # => Gives us the ability to update the various associations
   # => For the moment, just have a standard list of Shape.all etc
-  route :put, :delete, '/' do
+  route :put, :delete, '/associations/:shape/:charm' do
 
     # => Required Params
     # => Ensures we're receiving certain parameters from the request
@@ -181,11 +185,12 @@ class SinatraApp < Sinatra::Base
 
     # => Action
     # => Removes @charm from @shape.charms or adds it
-    request.put? ? @shape.charms << charm : @shape.charms.delete(@charm)
+    puts request.put?
+    request.put? ? @shape.charms << @charm : @shape.charms.delete(@charm)
 
     # => Response
     # => Passes back the shape object
-    respond_with @shape
+    redirect "/" # => https://stackoverflow.com/a/2728204/1143732
 
   end
 
