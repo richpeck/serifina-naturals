@@ -42,18 +42,6 @@ body
             border:
               right: 2px solid black
 
-      thead
-        th
-          background: rgba(#ddd, 1)
-          padding:    10px 0
-          &.charm
-            color: rgba(255,255,255,1)
-            background: rgba(0,0,0,1)
-          &:not(.charm)
-            padding: 10px 0
-            border:
-              bottom: 2px solid rgba(0,0,0,1)
-
       tbody
         tr
           &:not(.bails)
@@ -76,6 +64,11 @@ body
                 color: rgba(255,255,255,1)
                 background: rgba(0,0,0,1)
           td
+            &.charmhead
+              font:
+                weight: bold
+              background:
+                color: rgba(#ddd, 1)
             &.charm
               text:
                 align: center

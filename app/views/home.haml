@@ -1,13 +1,12 @@
 %table{ width: '100%', class: "charms" }
   %tbody
     %tr{ class: "bails" }
-      %th{colspan: 2,  width: '20%', class: "charm charm2" } Charms
+      %td{colspan: 2,  rowspan: 3, valign: :middle, width: '20%', class: "charm charm2 charmhead" } Charms
 
       - # Shapes
       - @shapes.each do |shape|
         %td{ colspan: Shape.send(shape[0]).count, align: "center", class: shape[0] }= "#{shape[0].titleize} Bails"
       %tr{ class: "bails" }
-        %td{ colspan: 2, class: "charm charm2" } &nbsp;
         - # Shape Types
         - @shapes.each do |bail|
           - Shape.where(bail_type: bail).order(name: :asc).group_by(&:shape_type).each do |shape_type, array|
@@ -15,7 +14,6 @@
               %strong= shape_type.titleize.pluralize
 
       %tr{ class: "bails" }
-        %td{ colspan: 2, class: "charm charm2" } &nbsp;
 
         - # Shapes
         - @shapes.each do |bail|
