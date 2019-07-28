@@ -56,6 +56,15 @@ body
 
       tbody
         tr
+          &:not(.zero)
+            &:not(.bails)
+              td
+                border:
+                  top: 1px solid rgba(200,200,200,1)
+          &.zero
+            td
+              border:
+                top: 2px solid rgba(0,0,0,1)
           &.bails
             td
               &:not(.charm)

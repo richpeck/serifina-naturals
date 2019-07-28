@@ -25,6 +25,7 @@ require 'rack-flash'                # => Flash for Rack based apps
 require 'padrino-helpers'           # => Padrino Helpers (required for number_to_currency)
 require 'titleize'                  # => Appends titleize method to strings in Ruby (https://github.com/granth/titleize)
 require 'active_support/inflector'  # => Pluralize (https://stackoverflow.com/a/2453553/1143732)
+require 'humanize'                  # => Humanize (numbers to text - https://stackoverflow.com/a/33893572/1143732)
 
 # => Libs
 # => Allows us to call various dependencies
@@ -145,7 +146,7 @@ class SinatraApp < Sinatra::Base
     # => Required to give us access to the information we need
     shopify_session do |shop_name|
       @shop     = Shop.find_by name: shop_name
-      @shapes   = Shape.all
+      @shapes   = Shape.bail_types
       @charms   = Charm.all
 
       # => Response

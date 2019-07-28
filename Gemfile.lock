@@ -59,7 +59,7 @@ GEM
     ffi (1.11.1-x64-mingw32)
     foreman (0.85.0)
       thor (~> 0.19.1)
-    graphql (1.9.7)
+    graphql (1.9.8)
     graphql-client (0.14.0)
       activesupport (>= 3.0, < 6.0)
       graphql (~> 1.6)
@@ -67,6 +67,7 @@ GEM
       temple (>= 0.8.0)
       tilt
     hashie (3.6.0)
+    humanize (2.1.1)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     irb (1.0.0)
@@ -165,6 +166,7 @@ DEPENDENCIES
   byebug
   foreman
   haml (~> 5.1, >= 5.1.1)
+  humanize (~> 2.1, >= 2.1.1)
   irb
   padrino-helpers (~> 0.14.4)
   pg
