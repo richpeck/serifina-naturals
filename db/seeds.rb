@@ -513,7 +513,11 @@ end
 ## Allows us to build the various associations between charms & shapes ##
 Charm.all.each do |charm|
   shapes = Shape.where name: charms[charm.charm_type][charm.name.to_sym][:associations]
-  charm.shapes << shapes
+  begin
+    charm.shapes << shapes # => unique constraints
+  rescue ActiveRecord::RecordNotUnique => e
+    next # => skip to next value
+  end
 end
 
 ##########################################

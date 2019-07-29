@@ -26,8 +26,12 @@ class CreateAssociations < ActiveRecord::Migration::Current
   ## Up ##
   def up
     create_table @@table do |t|
-      t.references  :associatiable, polymorphic: true, index: true # => http://stackoverflow.com/a/29257570/1143732
-      t.references  :associated, 	  polymorphic: true, index: true # => http://stackoverflow.com/a/29257570/1143732
+      t.references  :associatiable, polymorphic: true # => http://stackoverflow.com/a/29257570/1143732
+      t.references  :associated, 	  polymorphic: true # => http://stackoverflow.com/a/29257570/1143732
+
+      # => Index
+      # => Required for upsert_all (ActiveRecord 6+)
+      t.index [:associatiable_type, :associatiable_id, :associated_type, :associated_id], unique: true, name: 'association_index'
     end
   end
 
