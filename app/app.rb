@@ -154,7 +154,7 @@ class SinatraApp < Sinatra::Base
       @charms   = Charm.all
 
       @shapes.each do |type|
-        instance_variable_set("@#{type[0].pluralize}", Shape.send( type[0] )) # => @loop, loops
+        instance_variable_set("@#{type[0].pluralize}", Shape.send( type[0] ).includes(:charms)) # => @loop, loops
       end
 
       # => Response
