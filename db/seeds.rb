@@ -104,244 +104,245 @@ end
 ## These have to be pre-defined because they don't exist in the store ##
 charms = {
   "dream_catcher" => {
-    "dream_catcher":          1,
-    "gunmetal_dream_catcher": 4
+    "dream_catcher":          { price: 1, associations: %w(RL1 RL2	RL3	RL4) },
+    "gunmetal_dream_catcher": { price: 4, associations: %w(RL1 RL2	RL3	RL4	RL6	OL1) }
   },
   "ohms" => {
-    "solid_bronze":         0,
-    "bronze":               0,
-    "silver":               0,
-    "gold":                 0
+    "solid_bronze":         { price: 0, associations: %w(CL1 CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "bronze":               { price: 0, associations: %w(CL1 CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "silver":               { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "gold":                 { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   },
   "paisley" => {
-    "gunmetal":             0,
-    "bronze":               0,
-    "silver":               0,
-    "blue":                 0
+    "gunmetal":             { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3 CS1	CS2	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "bronze":               { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "silver":               { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "blue":                 { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   },
   "steampunk_gear" => {
-    "lg_gears":             0,
-    "sm_gears":             0,
-    "moon":                 0,
-    "stars":                0,
-    "moon_&_stars":         0,
-    "sun":                  0,
-    "moon_fairy":           1
+    "lg_gears":             { price: 0, associations: %w(RL1	RL2	RL3	SL1	OL1	CD1	O1	H1) },
+    "sm_gears":             { price: 0, associations: %w(CL2	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	CD1	CD2	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "moon":                 { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2) },
+    "stars":                { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "moon_&_stars":         { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "sun":                  { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "moon_fairy":           { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	OL1	CD1	CS1	S1	O1	O2	H1) }
   },
   "tree_of_life" => {
-    "silver_solid":        0,
-    "lg_bronze":           1,
-    "lg_silver":           1,
-    "tree_e":              0,
-    "tree_f":              0,
-    "direction_compass":   0,
-    "compass_gold_plated": 3,
-    "arrow":               0
+    "silver_solid":        { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "lg_bronze":           { price: 1, associations: %w(CL2	RL1	RL2	RL3	OL1	CD1	O1	H1) },
+    "lg_silver":           { price: 1, associations: %w(CL2	RL1	RL2	RL3	OL1	CD1 O1	H1) },
+    "tree_e":              { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	HL1	CD1	CD2	CS1	S1	S2	O1	O2	O3	H1	H2) },
+    "tree_f":              { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	HL1	CD1	CD2	CS1	S1	S2	O1	O2	O3	H1	H2) },
+    "direction_compass":   { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "compass_gold_plated": { price: 3, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	O1	H1	CD1	CD2	CD3	CS1	CS2	S1	S2	O1	O2	H1	H2) },
+    "arrow":               { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   },
   "peace" => {
-    "thin":                0,
-    "silver":              0,
-    "bronze":              0
+    "thin":                { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H3) },
+    "silver":              { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "bronze":              { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1) }
   },
   "feather" => {
-    "gold_peacock":        0,
-    "silver_peacock":      0,
-    "bronze_peacock":      0,
-    "silver":              0,
-    "bronze":              0,
-    "wrapped_silver":      0,
-    "blue":                0
+    "gold_peacock":        { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CS1	CS2	S1	S2	O1	O2	O3	T1	H1) },
+    "silver_peacock":      { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CS1	CS2	S1	S2	O1	O2	O3	T1	H1) },
+    "bronze_peacock":      { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CS1	CS2	S1	S2	O1	O2	O3	T1	H1) },
+    "silver":              { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	HL1	HL2	CD1	CS1	S1	S2	SF	O1	O2	O3	T1	H1) },
+    "bronze":              { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	HL1	HL2	CD1	CS1	S1	S2	SF	O1	O2	O3	T1	H1) },
+    "wrapped_silver":      { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	PL1	HL1	HL2	CD1	S1	S1	S2	SF	O1	O2	O3	T1	H1) },
+    "blue":                { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   },
   "hamsa" => {
-    "silver":              0,
-    "gunmetal":            0,
-    "solid_bronze":        0,
-    "blue":                0
+    "silver":              { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	OL1	CD1	CD2	CS1	S1	O1	O2	O3	T1) },
+    "gunmetal":            { price: 0, associations: %w(CL2	RL1	RL2	RL3	RL4	RL6	RL7	SL1	OL1	CD1	CD2	CS1	S1 O1	O2	O3	T1) },
+    "solid_bronze":        { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1) },
+    "blue":                { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CS1	CS2	S1	S2	O1	O2	O3	T1	H1) }
   },
   "lotus" => {
-    "gold":                0,
-    "silver":              0,
-    "silver_deep":         0,
-    "rose_gold_plated":    3,
-    "silver_plated":       3,
-    "gold_plated":         3,
-    "ohm_lotus":           1,
-    "yoga_lotus":          1
+    "gold":                { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	O1	O2	O3	O4	T1	H1	H2) },
+    "silver":              { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	O1	O2	O3	O4	T1	H1	H2) },
+    "silver_deep":         { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	CF	S1	S2	O1	O2	O3	T1	H1	H2) },
+    "rose_gold_plated":    { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	O1	O2	O3	O4	T1	H1	H2) },
+    "silver_plated":       { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	O1	O2	O3	O4	T1	H1	H2) },
+    "gold_plated":         { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	O1	O2	O3	O4	T1	H1	H2) },
+    "ohm_lotus":           { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1 HL1	CD1	CD2	CS1	S1	O1	O2	O3	H1	H2) },
+    "yoga_lotus":          { price: 1, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	CS2	S1	S2	O1	O2	O3	H1	H2) }
   },
   "chakra" => {
-    "crown_lg":           2,
-    "third_eye_lg":       2,
-    "throat_lg":          2,
-    "heart_lg":           2,
-    "solar_plexus_lg":    2,
-    "sacral_lg":          2,
-    "root_lg":            2,
-    "crown_sm":           2,
-    "third_eye_sm":       2,
-    "throat_sm":          2,
-    "heart_sm":           2,
-    "solar_plexus_sm":    2,
-    "sacral_sm":          2,
-    "root_sm":            2
+    "crown_lg":           { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1	O1	H1) },
+    "third_eye_lg":       { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	SL1	SL2	OL1	HL1	HL2	CD1	CD2	CS1	S1	O1	O2	O3	H1) },
+    "throat_lg":          { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1	O1	H1) },
+    "heart_lg":           { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1	O1	H1) },
+    "solar_plexus_lg":    { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1	O1	H1) },
+    "sacral_lg":          { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1	O1	H1) },
+    "root_lg":            { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1 O1	H1) },
+    "crown_sm":           { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "third_eye_sm":       { price: 2, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	X	HL1	HL2	CD1	CD2	CD3	CS1	CS2	S1	S2	O1	O2	O3	O4	H1) },
+    "throat_sm":          { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3 T1	H1	H2) },
+    "heart_sm":           { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "solar_plexus_sm":    { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "sacral_sm":          { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "root_sm":            { price: 2, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) }
   },
   "heart" => {
-    "silver":             0,
-    "infinity":           0,
-    "mini_silver":        0,
-    "mini_gold":          0,
-    "mini_rose_gold":     0,
-    "double":             0
+    "silver":             { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "solid":              { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "infinity":           { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	O4	T1	H1	H2	H3) },
+    "mini_silver":        { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "mini_gold":          { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "mini_rose_gold":     { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "double":             { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CS1	CS2	S1	S2	O1	O2	H1	H2) }
   },
   "mini_heart_&_arrow" => {
-    "rose_gold":          2,
-    "silver":             2,
-    "gold":               2
+    "rose_gold":          { price: 2, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "silver":             { price: 2, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "gold":               { price: 2, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   },
   "lock_and_key" => {
-    "silver":             0,
-    "gold":               0,
-    "bronze":             0,
-    "lucky_coin":         0,
-    "fotune_cookie":      0,
-    "butterfly":          0
+    "silver":             { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "gold":               { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "bronze":             { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "lucky_coin":         { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	O4	T1	H1	H2	H3) },
+    "fotune_cookie":      { price: 0, associations: %w(CD1	CD2	CD3	CD4	CS1	CS2	CF	O1	O2	O3	H1) },
+    "butterfly":          { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) }
   },
   "owl" => {
-    "lg":                 0,
-    "sm":                 0
+    "lg":                 { price: 0, associations: %w(CL2	RL1	RL2	RL3	RL4	RL6	RL7	SL1	OL1	CD1	CD2	CS1	S1	O1	O2	H1) },
+    "sm":                 { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   },
   "paw_print" => {
-    "paw_print":          0,
-    "lg_paw_print":       0,
-    "heart_paws":         0,
-    "lg_dog_bone":        0,
-    "pineapple":          0,
-    "gold_plated":        0,
-    "dragon":             0,
-    "silver_plated":      0,
-    "rainbow_unicorn":    0,
-    "light_bulb":         0,
-    "seed_of_life":       0
+    "paw_print":          { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "lg_paw_print":       { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1 O1	H1) },
+    "heart_paws":         { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD3	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "lg_dog_bone":        { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	HL1	HL2	CD1	CD2	CS1	S1 O1	O2	O3	H1) },
+    "pineapple":          { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	S1	S2	O1	O2	O3	O4	T1	H1	H2) },
+    "gold_plated":        { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1	O1	O2	H1) },
+    "dragon":             { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1	O1	O2	H1) },
+    "silver_plated":      { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	CD1	CD2	CS1	S1	O1	O2	H1) },
+    "rainbow_unicorn":    { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	CD1	CD2	CS1	S1	O1	O2	H1) },
+    "light_bulb":         { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CS1	CS2	S1	S2	O1	O2	O3	T1	H1	H2) },
+    "seed_of_life":       { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	OL1	CD1	CD2	CS1	S1 O1	H1) }
   },
   "tear_drop" => {
-    "mini_drop_silver":   1,
-    "mini_drop_gold":     1,
-    "four_leaf_clover":   0,
-    "bike":               1,
-    "eiffel_tower":       0,
-    "fireman_hat":        1,
-    "pa_symbol":          1,
-    "stylist":            1,
-    "justice_scales":     1
+    "mini_drop_silver":   { price: 1, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "mini_drop_gold":     { price: 1, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "four_leaf_clover":   { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CS4	CF	S1	S2	SF	O1	O2	O3	O4	T1	H1	H2	H3) },
+    "bike":               { price: 1, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2 CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "eiffel_tower":       { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	CD1	CD2	CS1	S1	O1	O2	O3	T1	H1) },
+    "fireman_hat":        { price: 1, associations: %w(RL2	CD1	CD2	CD3	CD4	CS1	CS2	O1	O2	H1) },
+    "pa_symbol":          { price: 1, associations: %w(CL2	RL1	RL2	RL3	RL4	SL1	SL2	OL1	CD1	CD2	CS1	S1	S2	O1	H1	H2) },
+    "stylist":            { price: 1, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "justice_scales":     { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	CD1	CD2	CS1	S1	O1	O2	H1) }
   },
   "cross" => {
-    "lg":                 0,
-    "sm":                 0,
-    "snowflake":          0,
-    "pumpkin":            0
+    "lg":                 { price: 0, associations: %w(CL2 CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	CD1	CD2	CD3	CS1	CS2	S1	S2	O1	O2	O3) },
+    "sm":                 { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "snowflake":          { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	CD1	CD2	CS1	CS2	S1	S2	O1	O2	O3	T1	H1	H2) },
+    "pumpkin":            { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	CD1	CD2	CS1	CS2	S1	S2	O1	O2	O3	T1	H1	H2) }
   },
   "word" => {
-    "love":               0,
-    "travel":             0,
-    "no_365":             0,
-    "story":              0,
-    "wish":               0,
-    "lucky":              0,
-    "noted":              0,
-    "wander":             0,
-    "found":              0,
-    "love_script":        1
+    "love":               { price: 0, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	HL1	HL2	CD1	CS1	S1	O1	O2	H1) },
+    "travel":             { price: 0, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1 HL1	HL2	CD1	CS1	S1	O1	O2	H1) },
+    "no_365":             { price: 0, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	HL1	HL2	CD1	CS1	S1	O1	O2	H1) },
+    "story":              { price: 0, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	HL1	HL2	CD1	CS1	S1	O1	O2	H1) },
+    "wish":               { price: 0, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	HL1	HL2	CD1	CS1	S1	O1	O2	H1) },
+    "lucky":              { price: 0, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	HL1	HL2	CD1	CS1	S1	O1	O2	H1) },
+    "noted":              { price: 0, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	HL1	HL2	CD1	CS1 S1	O1	O2	H1) },
+    "wander":             { price: 0, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	HL1	HL2	CD1	CS1 S1	O1	O2	H1) },
+    "found":              { price: 0, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	HL1	HL2	CD1	CS1 S1	O1	O2	H1) },
+    "love_script":        { price: 1, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   },
   "starfish" => {
-    "a_bronze":           0,
-    "a_gold":             0,
-    "a_gunmetal":         0,
-    "b_bronze":           0,
-    "b_silver":           0,
-    "b_gold":             0,
-    "b_gunmetal":         0,
-    "c_starfish":         0,
-    "d_starfish":         0,
-    "e_starfish":         0,
-    "f_starfish":         0,
-    "starfish":           6,
-    "mini_starfish":      3,
-    "sand_dollar":        3,
-    "ammonite_fossil":    20
+    "a_bronze":           { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "a_gold":             { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "a_gunmetal":         { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "b_bronze":           { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "b_silver":           { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "b_gold":             { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "b_gunmetal":         { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "c_starfish":         { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "d_starfish":         { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "e_starfish":         { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "f_starfish":         { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "starfish":           { price: 6, associations: %w(RL1	RL2	SL1	CD1	S1 O1) },
+    "mini_starfish":      { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CS3 CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "sand_dollar":        { price: 3, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	CD1	CD2	CD3	CS1	CS2	S1	S2	X	O1	O2	O3	H1) },
+    "ammonite_fossil":    { price: 20, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	X	SL1	SL2	OL1	CD1	S1	O1	H1) }
   },
   "seahorse" => {
-    "silver":             0,
-    "blue":               1,
-    "lighthouse":         3
+    "silver":             { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	CD1	CD2	CS1	S1	O1	O2	O3	T1	H1) },
+    "blue":               { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	CD1	CD2	CS1	S1	S2	O1	O2	O3	T1	H1	H2) },
+    "lighthouse":         { price: 3, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	CD1	CD2	CS1	S1	S2	O1	O2	O3	T1	H1	H2) }
   },
   "anchor" => {
-    "anchor":             0,
-    "anchor_b":           1,
-    "anchor_c":           1,
-    "anchor_d":           1,
-    "anchor_e":           1,
-    "anchor_f":           1
+    "anchor":             { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	CD1	CD2	CS1	S1	S2	O1	O2	O3	T1	H1	H2) },
+    "anchor_b":           { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "anchor_c":           { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	OL1	CD1	CD2	CS1	S1	O1	H1) },
+    "anchor_d":           { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	CD1	CD2	CS1	S1	S2	O1	O2	O3	T1	H1	H2) },
+    "anchor_e":           { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3 T1	H1	H2) },
+    "anchor_f":           { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) }
   },
   "turtle" => {
-    "sm_silver":          0,
-    "lg_silver":          0,
-    "mini_silver":        0,
-    "blue":               1,
-    "turtle_e":           1,
-    "turtle_f":           1,
-    "fish":               1
+    "sm_silver":          { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "lg_silver":          { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "mini_silver":        { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "blue":               { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "turtle_e":           { price: 1, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "turtle_f":           { price: 1, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2	H3) },
+    "fish":               { price: 1, associations: %w(CL1	CL2	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	CS2	S1	S2	O1	O2	O3 H1	H2) }
   },
   "dolphin" => {
-    "dolphin":                 0,
-    "dolphins_silver_plated":  4,
-    "palm_tree_silver_plated": 3,
-    "helm":                    1,
-    "love_helm":               1,
-    "fish_hook":               2,
-    "sail":                    0,
-    "boat_a":                  1,
-    "boat_b":                  1,
-    "boat_c":                  1
+    "dolphin":                 { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "dolphins_silver_plated":  { price: 4, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	OL1	CD1	CD2	CS1	S1 O1	H1) },
+    "palm_tree_silver_plated": { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	CD1	CD2	CS1	S1	S2	O1	O2	O3	T1	H1	H2) },
+    "helm":                    { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1	O1	H1) },
+    "love_helm":               { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	HL1	CD1	CD2	CS1	S1	O1	H1) },
+    "fish_hook":               { price: 2, associations: %w(RL1	RL2	RL3	RL4	RL6	SL	OL1	O1) },
+    "sail":                    { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	CD1	CD3	CS1	S1	S2	SF	O1	O2	O3	H1	H2) },
+    "boat_a":                  { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "boat_b":                  { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	CD1	CD2	CS1	S1	O1	O2	O3	T1	H1) },
+    "boat_c":                  { price: 1, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	CD1	CD2	CS1	S1	O1	O2	O3	H1) }
   },
   "premium_mini" => {
-    "silver_starfish":         3,
-    "silver_crab":             3,
-    "silver_anchor":           3,
-    "silver_seahorse":         3,
-    "silver_shell":            3,
-    "bronze_starfish":         3,
-    "bronze_crab":             3,
-    "bronze_anchor":           3,
-    "bronze_seahorse":         3,
-    "bronze_shell":            3
+    "silver_starfish":         { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "silver_crab":             { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "silver_anchor":           { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "silver_seahorse":         { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "silver_shell":            { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "bronze_starfish":         { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "bronze_crab":             { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "bronze_anchor":           { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "bronze_seahorse":         { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "bronze_shell":            { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   },
   "seashell" => {
-    "clam":                    0
+    "clam":                    { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   },
   "request_shape" => {
-    "coquin":                  0
+    "coquin":                  { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   },
   "sm_med_or_large" => {
-    "cone":                    0,
-    "tulip":                   0,
-    "spiral":                  0,
-    "sharkeye":                0,
-    "lg_shell_a":              0,
-    "lg_shell_b":              0,
-    "pectin_decato_shell":     1,
-    "mini_abalone":            3,
-    "green_limpet_shell":      1
+    "cone":                    { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "tulip":                   { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "spiral":                  { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "sharkeye":                { price: 0, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) },
+    "lg_shell_a":              { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "lg_shell_b":              { price: 0, associations: %w(CL2	CL3	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	HL1	HL2	CD1	CD2	CD3	CD4	CS1	CS2	CF	S1	S2	SF	O1	O2	O3	T1	H1	H2) },
+    "pectin_decato_shell":     { price: 1, associations: %w(RL1	RL2	OL1	O1) },
+    "mini_abalone":            { price: 3, associations: %w(RL1	RL2	RL3	RL4	OL1	O1	H1) },
+    "green_limpet_shell":      { price: 1, associations: %w(CL2	CL3	RL1	RL	RL3	RL4	RL6	RL7	SL1	SL2	OL1	OL2	TL1	CD1	CD2	CS1	S1	O1	O2	O3	H1) }
   },
   "shark_teeth" => {
-    "shark_tooth":             3,
-    "mini_shark_tooth":        3,
+    "shark_tooth":             { price: 3, associations: %w(CL2	RL1	RL2	RL3	RL4	RL6	RL7	SL1	SL2	CD1	CD2	CS1	S1 O1	O2	O3	H1) },
+    "mini_shark_tooth":        { price: 3, associations: %w(CL1	CL2	CL3	RL1	RL2	RL3	RL4	RL5	RL6	RL7	SL1	SL2	OL1	OL2	TL1	PL1	HL1	HL2	CD1	CD2	CD3	CD4	CD5	CD6	CS1	CS2	CS3	CS4	CS5	CF	S1	S2	SF	O1	O2	O3	O4	T1	T2	H1	H2	H3) }
   }
 }
 
 ## Loop ##
 ## Cycles the hash above and creates the appropriate listings ##
 charms.each do |charm_type,charms| # => starfish etc
-  charms.each do |charm,price|  # => circle/square/oval/teardrop etc
-    Charm.upsert({charm_type: Charm.charm_types[charm_type], name: charm, price: price}, unique_by: :charm_type_name_index)
+  charms.each do |charm,item|  # => {price: 1, associations: x} etc
+    charm  = Charm.upsert({charm_type: Charm.charm_types[charm_type], name: charm, price: item[:price]}, unique_by: :charm_type_name_index) # => doesn't return any id's - build the associations separately
   end
 end
 
@@ -509,8 +510,11 @@ end
 ##########################################
 
 ## Associations ##
-## Determine which charms interact with which shape ##
-
+## Allows us to build the various associations between charms & shapes ##
+Charm.all.each do |charm|
+  shapes = Shape.where name: charms[charm.charm_type][charm.name.to_sym][:associations]
+  charm.shapes << shapes
+end
 
 ##########################################
 ##########################################
