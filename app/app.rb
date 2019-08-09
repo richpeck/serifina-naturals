@@ -291,7 +291,7 @@ class SinatraApp < Sinatra::Base
     # => This is for the "notes" section of the order form
     properties = []
     @properties.each do |k,v|
-      properties << {"name": k, "value": v}
+      properties << {"name": k, "value": v} unless v.blank?
     end
 
     # => Shopify API
