@@ -269,10 +269,11 @@ class SinatraApp < Sinatra::Base
     required_params :shop, :bail_type, :shape, :charm, :stones
 
     # => Items
-    @shop    = Shop.find_by name: params[:shop]
-    @shape   = Shape.find params[:shape]
-    @charm   = Charm.find params[:charm] #@shape.charms.find params[:charm]
-    @stones  = Stone.where id: params[:stones]
+    @shop       = Shop.find_by name: params[:shop]
+    @shape      = Shape.find params[:shape]
+    @charm      = Charm.find params[:charm] #@shape.charms.find params[:charm]
+    @stones     = Stone.where id: params[:stones]
+    @properties = params[:properties]
 
     # => Session
     # => Because we're registering/logging in on behalf of the store, we need to ensure we are using their store
@@ -284,6 +285,13 @@ class SinatraApp < Sinatra::Base
     stones = []
     @stones.each_with_index do |stone,index|
       stones << {"name": "Stone #{index + 1}", "value": "#{stone.name.titleize} (#{stone.stone_type.titleize}) (+ #{number_to_currency(stone.price)})"}
+    end
+    
+    # => Properties
+    # => This is for the "notes" section of the order form
+    properties = []
+    @properties.each do |k,v|
+      properties << {"name": k, "value": v}
     end
 
     # => Shopify API
@@ -302,7 +310,7 @@ class SinatraApp < Sinatra::Base
           },{
             "name":   "Charm",
             "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
-          }].append(*stones)
+          }].append(*stones).append(*properties)
         }
       ]
 
