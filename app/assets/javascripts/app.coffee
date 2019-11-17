@@ -14,7 +14,21 @@
 
 ## Libs ##
 #= require jquery
+#= require jquery.poshytip.min
 #= require jquery-editable-poshytip.min
+
+##########################################################
+##########################################################
+
+## Editable ##
+## Used to allow users to edit items ##
+$.fn.editable.defaults.mode = 'popup' # prefer popup
+$.fn.editable.defaults.ajaxOptions = { type: "PUT" } # updates sent via PUT
+
+## X-Editable ##
+## This uses the X-Editable library to provide async functionality ##
+$(document).on 'ready', ->
+  $('.editable').editable()
 
 ##########################################################
 ##########################################################
