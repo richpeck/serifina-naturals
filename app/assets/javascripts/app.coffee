@@ -40,13 +40,13 @@ $(document).ready ->
       alert newValue
 
     error: (errors) ->
-    var msg = ''
-    if errors && errors.responseText
-      msg = errors.responseText
-    else
-      $.each(errors, function(k, v) { msg += k+": "+v+"<br>"; })
+      var msg = ''
+      if errors && errors.responseText
+        msg = errors.responseText
+      else
+        $.each(errors, function(k, v) { msg += k+": "+v+"<br>"; })
 
-    $('#msg').removeClass('alert-success').addClass('alert-error').html(msg).show()
+      $('#msg').removeClass('alert-success').addClass('alert-error').html(msg).show()
 
 
 ##########################################################
