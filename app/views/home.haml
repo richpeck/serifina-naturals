@@ -28,7 +28,7 @@
       - array.each_with_index do |charm, i|
         %tr{ class: [charm_type, i.humanize] }
           %td{ class: "charm" }
-            %strong{ class: 'editable', data: { type: "text", pk: charm_type.id, url: "/edit/charm_type/#{charm_type}", title: "Change Charm Type:" }}= link_to charm_type.titleize, '#' unless i > 0
+            %strong{ class: 'editable', data: { type: "text", url: "/edit/charm_type/#{charm_type}", title: "Change Charm Type:" }}= link_to charm_type.titleize, '#' unless i > 0
           %td{ class: "charm charm2" }= charm.name.titleize
 
           - # Shapes
