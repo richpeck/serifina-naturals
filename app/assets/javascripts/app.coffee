@@ -30,7 +30,7 @@ $.fn.editable.defaults.ajaxOptions = { type: "PUT" } # updates sent via PUT
 $(document).ready ->
   $('.editable').editable
     success: (response, newValue) ->
-      if response.status == 'error' return response.msg
+      alert newValue
 
 ##########################################################
 ##########################################################
