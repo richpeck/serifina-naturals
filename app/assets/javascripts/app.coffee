@@ -31,9 +31,9 @@ $(document).ready ->
   $('.editable').editable
 
     # Validations
-    validate: function(value)
-      if($.trim(value) == '')
-          return 'This field is required'
+    validate: (value) ->
+      if $.trim(value) == ''
+        return 'This field is required'
 
     # Ajax
     success: (response, newValue) ->
