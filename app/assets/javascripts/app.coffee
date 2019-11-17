@@ -36,6 +36,7 @@ $(document).ready ->
       return 'Numbers Only.'
 
   $('.editable.price').editable 'option', 'display', (v, source) ->
+    alert source
     $(this).text(source + '$')
 
   # Editable Object
