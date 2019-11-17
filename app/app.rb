@@ -76,8 +76,8 @@ class SinatraApp < Sinatra::Base
 
   ## Definitions ##
   ## Any variables defined here ##
-  domain   = ENV.fetch('DOMAIN', 'www.serifinanaturals.com') ## used for CORS and other funtionality -- ENV var gives flexibility
-  debug    = ENV.fetch("DEBUG", false) != false ## this needs to be evaluated this way because each ENV variable returns a string ##
+  domain = ENV.fetch('DOMAIN', 'www.serifinanaturals.com') ## used for CORS and other funtionality -- ENV var gives flexibility
+  debug  = ENV.fetch("DEBUG", false) != false ## this needs to be evaluated this way because each ENV variable returns a string ##
 
   ##########################################################
   ##########################################################
@@ -133,7 +133,7 @@ class SinatraApp < Sinatra::Base
 
   ## CORS ##
   ## Only allow requests from domain ##
-  set :allow_origin,   URI::HTTPS.build(host: domain).to_s
+  set :allow_origin,   domain.split(",").map{ |x| URI::HTTPS.build(host: x).to_s }.join(",")
   set :allow_methods,  "GET,POST"
   set :allow_headers,  "accept,content-type,if-modified-since"
   set :expose_headers, "location,link"
@@ -286,7 +286,7 @@ class SinatraApp < Sinatra::Base
     @stones.each_with_index do |stone,index|
       stones << {"name": "Stone #{index + 1}", "value": "#{stone.name.titleize} (#{stone.stone_type.titleize}) (+ #{number_to_currency(stone.price)})"}
     end
-    
+
     # => Properties
     # => This is for the "notes" section of the order form
     properties = []
