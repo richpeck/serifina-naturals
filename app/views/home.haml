@@ -21,8 +21,11 @@
           - shapes = instance_variable_get("@#{bail[0].pluralize}")
           - shapes.sort_by { |shape| shape[:name] }.each do |shape|
             %td{ class: bail, align: :center }
-              %strong{ class: 'editable', data: { type: "text",   url: "/edit/shape/#{shape}", title: "Shape Name:" }}= link_to "#{shape.name}", "#"
-              %strong{ class: 'editable', data: { type: "number", url: "/edit/shape/#{shape}", title: "Shape Price:" }}= link_to "(#{number_to_currency(shape.price)})", "#"
+              %strong{ class: 'editable', data: { type: "text", url: "/edit/shape/#{shape}", title: "Shape Name:" }}= link_to "#{shape.name}", "#"
+              %strong{ class: 'editable', data: { type: "text", url: "/edit/shape/#{shape}", title: "Shape Price:" }}
+                (
+                = link_to "#{number_to_currency(shape.price)})", "#"
+                )
 
     - # Charms (general content)
     - @charms.group_by(&:charm_type).each_with_index do |(charm_type, array), index|
