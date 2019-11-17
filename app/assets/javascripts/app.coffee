@@ -33,7 +33,7 @@ $(document).ready ->
     # Validations
     validate: (value) ->
       if $.trim(value) == ''
-        return 'Field is required'
+        return 'Field required'
 
     # Ajax
     success: (response, newValue) ->
