@@ -31,7 +31,7 @@ $.fn.editable.defaults.ajaxOptions = { type: "PUT" } # updates sent via PUT
 $(document).ready ->
 
   # Price Validation
-  $('.editable.price').editable('option', 'validate', (v) ->
+  $('.editable.price').editable 'option', 'validate', (v) ->
     if !$.isNumeric(v)
       return 'Numbers Only.'
 
