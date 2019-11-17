@@ -29,6 +29,13 @@ $.fn.editable.defaults.ajaxOptions = { type: "PUT" } # updates sent via PUT
 ## This uses the X-Editable library to provide async functionality ##
 $(document).ready ->
   $('.editable').editable
+
+    # Validations
+    validate: function(value)
+      if($.trim(value) == '')
+          return 'This field is required'
+
+    # Ajax
     success: (response, newValue) ->
       alert newValue
 
