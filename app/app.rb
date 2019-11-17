@@ -289,7 +289,7 @@ class SinatraApp < Sinatra::Base
 
     # => Properties
     # => This is for the "notes" section of the order form
-    # => Array() prevents exception - https://stackoverflow.com/a/18894072/1143732
+    # => Array() prevents exception on nil - https://stackoverflow.com/a/18894072/1143732
     properties = []
     Array(@properties).each do |k,v|
       properties << {"name": k, "value": v} unless v.blank?
@@ -322,6 +322,17 @@ class SinatraApp < Sinatra::Base
     respond_to do |format|
       format.json { @order.to_json }
     end
+
+  end
+
+  ##########################################################
+  ##########################################################
+
+  ## EDITOR ##
+  ## By request, this allows us to manage the titles/prices of various elements
+  route :post, :put, :delete, '/edit/:item/:id' do # => /edit/charm/15
+
+    # => Allows us to create/update/delete elements
 
   end
 
