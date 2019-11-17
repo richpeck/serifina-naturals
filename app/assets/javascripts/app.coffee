@@ -28,6 +28,7 @@ $.fn.editable.defaults.ajaxOptions = { type: "PUT" } # updates sent via PUT
 ## X-Editable ##
 ## This uses the X-Editable library to provide async functionality ##
 $(document).on 'ready', ->
+  alert "test"
   $('.editable').editable()
 
 ##########################################################
