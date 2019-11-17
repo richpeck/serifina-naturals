@@ -9,7 +9,7 @@
 	max-width:530px;
 	color:#fff;
 	background-color:#999;
-	background-image:url(tip-darkgray.png); /* bgImageFrameSize >= 11 should work fine */
+	background-image: asset-url('assets/images/tip-darkgray.png'); /* bgImageFrameSize >= 11 should work fine */
 	/**
 	 * - If you set a background-image, border/padding/background-color will be ingnored.
 	 *   You can set any padding to .tip-inner instead if you need.
@@ -31,7 +31,7 @@
 	left:0;
 	width:16px;
 	height:10px;
-	background:url(tip-darkgray_arrows.png) no-repeat;
+	background: asset-url('tip-darkgray_arrows.png') no-repeat;
 }
 .tip-darkgray .tip-arrow-right {
 	margin-top:-9px; /* approx. half the height to center it */
@@ -40,7 +40,7 @@
 	left:100%;
 	width:11px;
 	height:21px;
-	background:url(tip-darkgray_arrows.png) no-repeat -22px 0;
+	background: asset-url('tip-darkgray_arrows.png') no-repeat -22px 0;
 }
 .tip-darkgray .tip-arrow-bottom {
 	margin-top:-7px;
@@ -49,7 +49,7 @@
 	left:0;
 	width:22px;
 	height:13px;
-	background:url(tip-darkgray_arrows.png) no-repeat -44px 0;
+	background: asset-url('tip-darkgray_arrows.png') no-repeat -44px 0;
 }
 .tip-darkgray .tip-arrow-left {
 	margin-top:-9px; /* approx. half the height to center it */
@@ -58,5 +58,5 @@
 	left:0;
 	width:11px;
 	height:21px;
-	background:url(tip-darkgray_arrows.png) no-repeat -66px 0;
+	background: asset-url('tip-darkgray_arrows.png') no-repeat -66px 0;
 }
