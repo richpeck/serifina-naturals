@@ -31,7 +31,7 @@
           %td{ class: "charm" }
             - if i <= 0
               %strong{ class: 'editable', data: { type: "text", url: "/edit/charm_type/#{charm_type}", title: "Change Charm Type:" }}= link_to charm_type.titleize, '#'
-          %td{ class: "charm charm2" }= charm.name.titleize
+          %td{ class: "charm charm2" }= link_to charm.name.titleize, "#", class: 'editable', data: { type: "text", url: "/edit/charm_type/#{charm_type}", title: "Change Charm Type:" }
 
           - # Shapes
           - @shapes.each do |bail|
