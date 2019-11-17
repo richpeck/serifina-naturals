@@ -29,6 +29,9 @@ $.fn.editable.defaults.ajaxOptions = { type: "PUT" } # updates sent via PUT
 ## X-Editable ##
 ## This uses the X-Editable library to provide async functionality ##
 $(document).ready ->
+  $('.editable.price').editable('option', 'validate', (v) ->
+    if !$.isNumeric(v) return 'Numbers Only.'
+
   $('.editable').editable
 
     # Validations
@@ -48,7 +51,7 @@ $(document).ready ->
         $.each errors, (k, v) ->
           msg += k+": "+v+"<br>"
 
-      $('#msg').removeClass('alert-success').addClass('alert-error').html(msg).show()
+      console.log msg
 
 
 ##########################################################
