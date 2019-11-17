@@ -35,10 +35,6 @@ $(document).ready ->
     if !$.isNumeric(v)
       return 'Numbers Only.'
 
-  $('.editable.price').editable 'option', 'display', (v, source) ->
-    alert source
-    $(this).text(source + '$')
-
   # Editable Object
   $('.editable').editable
 
