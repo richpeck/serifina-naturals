@@ -34,8 +34,9 @@ $(document).ready ->
   $('.editable.price').editable('option', 'validate', (v) ->
     if !$.isNumeric(v)
       return 'Numbers Only.'
-  ).editable 'option', 'display', (v) ->
-    $(this).text(v + '$')
+
+  $('.editable.price').editable 'option', 'display', (v, source) ->
+    $(this).text(source + '$')
 
   # Editable Object
   $('.editable').editable
