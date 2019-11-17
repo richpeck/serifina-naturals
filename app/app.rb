@@ -134,7 +134,7 @@ class SinatraApp < Sinatra::Base
   ## CORS ##
   ## Only allow requests from domain ##
   set :allow_origin,   URI::HTTPS.build(host: domain).to_s
-  set :allow_methods,  "GET,POST"
+  set :allow_methods,  "GET,POST,PUT,DELETE"
   set :allow_headers,  "accept,content-type,if-modified-since"
   set :expose_headers, "location,link"
 
