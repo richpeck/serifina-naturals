@@ -40,7 +40,7 @@ $(document).ready ->
       alert newValue
 
     error: (errors) ->
-      var msg = ''
+      msg = ''
       if errors && errors.responseText
         msg = errors.responseText
       else
