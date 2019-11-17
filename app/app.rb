@@ -289,8 +289,9 @@ class SinatraApp < Sinatra::Base
 
     # => Properties
     # => This is for the "notes" section of the order form
+    # => Array() prevents exception - https://stackoverflow.com/a/18894072/1143732
     properties = []
-    @properties.each do |k,v|
+    Array(@properties).each do |k,v|
       properties << {"name": k, "value": v} unless v.blank?
     end
 
