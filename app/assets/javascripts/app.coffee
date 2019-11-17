@@ -30,6 +30,9 @@ $.fn.editable.defaults.ajaxOptions = { type: "PUT" } # updates sent via PUT
 $(document).ready ->
   $('.editable').editable
 
+    # Options
+    name: "test"
+
     # Validations
     validate: (value) ->
       if $.trim(value) == ''
