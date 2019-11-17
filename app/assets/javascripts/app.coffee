@@ -23,15 +23,13 @@
 ## Editable ##
 ## Used to allow users to edit items ##
 $.fn.editable.defaults.mode = 'popup' # prefer popup
+$.fn.editable.defaults.send = "always" # required because typical system requires pk + url - https://stackoverflow.com/a/22480288/1143732
 $.fn.editable.defaults.ajaxOptions = { type: "PUT" } # updates sent via PUT
 
 ## X-Editable ##
 ## This uses the X-Editable library to provide async functionality ##
 $(document).ready ->
   $('.editable').editable
-
-    # Options
-    name: "test"
 
     # Validations
     validate: (value) ->
