@@ -35,7 +35,7 @@ $(document).ready ->
     if !$.isNumeric(v)
       return 'Numbers Only.'
   ).editable 'option', 'display', (v) ->
-    $(this).text(value + '$')
+    $(this).text(v + '$')
 
   # Editable Object
   $('.editable').editable
