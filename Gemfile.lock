@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/richpeck/sinatra-activerecord.git
-  revision: 4d53a19b2289a2bbd2f0296abcddf3e390388b3d
-  specs:
-    sinatra-activerecord (2.0.13)
-      activerecord (>= 3.2)
-      sinatra (>= 1.0)
-
-GIT
   remote: git://github.com/richpeck/sinatra-asset-pipeline.git
   revision: 37b664a0bd54aeccf0c74592fae3d2ff5b65eddc
   specs:
@@ -41,8 +33,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.1, >= 2.1.4)
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     attr_encrypted (3.1.0)
       encryptor (~> 3.0.0)
     backports (3.15.0)
@@ -55,32 +47,31 @@ GEM
     concurrent-ruby (1.1.5)
     encryptor (3.0.0)
     execjs (2.7.0)
-    faraday (0.15.4)
+    faraday (0.17.0)
       multipart-post (>= 1.2, < 3)
-    ffi (1.11.1-x64-mingw32)
-    foreman (0.85.0)
-      thor (~> 0.19.1)
-    graphql (1.9.8)
-    graphql-client (0.14.0)
-      activesupport (>= 3.0, < 6.0)
-      graphql (~> 1.6)
-    haml (5.1.1)
+    ffi (1.11.2-x64-mingw32)
+    foreman (0.86.0)
+    graphql (1.9.15)
+    graphql-client (0.16.0)
+      activesupport (>= 3.0)
+      graphql (~> 1.8)
+    haml (5.1.2)
       temple (>= 0.8.0)
       tilt
     hashie (3.6.0)
-    humanize (2.1.1)
+    humanize (2.4.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     irb (1.0.0)
     jwt (2.2.1)
-    minitest (5.11.3)
-    multi_json (1.13.1)
+    minitest (5.13.0)
+    multi_json (1.14.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     mustermann (1.0.3)
-    nio4r (2.4.0)
-    oauth2 (1.4.1)
-      faraday (>= 0.8, < 0.16.0)
+    nio4r (2.5.2)
+    oauth2 (1.4.2)
+      faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
@@ -91,7 +82,7 @@ GEM
     omniauth-oauth2 (1.5.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
-    omniauth-shopify-oauth2 (2.1.0)
+    omniauth-shopify-oauth2 (2.2.0)
       activesupport
       omniauth-oauth2 (~> 1.5.0)
     padrino-helpers (0.14.4)
@@ -100,13 +91,13 @@ GEM
       tilt (>= 1.4.1, < 3)
     padrino-support (0.14.4)
     pg (1.1.4-x64-mingw32)
-    public_suffix (3.1.1)
-    puma (4.0.1)
+    public_suffix (4.0.1)
+    puma (4.3.0)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-flash3 (1.0.5)
       rack
-    rack-protection (2.0.5)
+    rack-protection (2.0.7)
       rack
     rake (12.3.3)
     rb-fsevent (0.10.3)
@@ -130,18 +121,21 @@ GEM
       activeresource (>= 4.1.0, < 6.0.0)
       graphql-client
       rack
-    sinatra (2.0.5)
+    sinatra (2.0.7)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.5)
+      rack-protection (= 2.0.7)
       tilt (~> 2.0)
-    sinatra-contrib (2.0.5)
+    sinatra-activerecord (2.0.14)
+      activerecord (>= 3.2)
+      sinatra (>= 1.0)
+    sinatra-contrib (2.0.7)
       backports (>= 2.8.2)
       multi_json
       mustermann (~> 1.0)
-      rack-protection (= 2.0.5)
-      sinatra (= 2.0.5)
-      tilt (>= 1.3, < 3)
+      rack-protection (= 2.0.7)
+      sinatra (= 2.0.7)
+      tilt (~> 2.0)
     sinatra-cors (1.1.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -149,14 +143,13 @@ GEM
     sprockets-helpers (1.2.1)
       sprockets (>= 2.2)
     sqlite3 (1.4.1)
-    temple (0.8.1)
-    thor (0.19.4)
+    temple (0.8.2)
     thread_safe (0.3.6)
-    tilt (2.0.9)
+    tilt (2.0.10)
     titleize (1.4.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    zeitwerk (2.1.9)
+    zeitwerk (2.2.1)
 
 PLATFORMS
   x64-mingw32
@@ -173,9 +166,10 @@ DEPENDENCIES
   pg
   puma
   rack-flash3
+  rake
   require_all (~> 2.0)
   shopify-sinatra-app (~> 0.8.0)
-  sinatra-activerecord (~> 2.0, >= 2.0.13)!
+  sinatra-activerecord (~> 2.0, >= 2.0.14)
   sinatra-asset-pipeline (~> 2.2)!
   sinatra-contrib (~> 2.0, >= 2.0.5)
   sinatra-cors (~> 1.1)
@@ -183,7 +177,7 @@ DEPENDENCIES
   titleize (~> 1.4, >= 1.4.1)
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.6.5p114
 
 BUNDLED WITH
    2.0.1

@@ -19,7 +19,7 @@ source 'https://rails-assets.org'
 
 # => Ruby
 # => https://github.com/cantino/huginn/blob/master/Gemfile#L4
-ruby [RUBY_VERSION, '2.6.3'].min
+ruby [RUBY_VERSION, '2.6.5'].max
 
 ###########################################
 ###########################################
@@ -27,7 +27,7 @@ ruby [RUBY_VERSION, '2.6.3'].min
 # => Sinatra
 # => Not big enough for Rails
 gem 'shopify-sinatra-app', '~> 0.8.0'                                                        # => Allows us to create a shopify store with Sinatra (https://github.com/kevinhughes27/shopify-sinatra-app)
-gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.13', github: 'richpeck/sinatra-activerecord'   # => Integrates ActiveRecord into Sinatra apps (I changed for AR6+)
+gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.14'                                            # => Integrates ActiveRecord into Sinatra apps (I changed for AR6+)
 gem 'sinatra-asset-pipeline', '~> 2.2', github: 'richpeck/sinatra-asset-pipeline'            # => Asset Pipeline (for CSS/JS) (I changed lib/asset-pipeline/task.rb#14 to use ::Sinatra:Manifest)
 gem 'sinatra-contrib', '~> 2.0', '>= 2.0.5'                                                  # => Allows us to add "contrib" library to Sinatra app (respond_with) -> http://sinatrarb.com/contrib/
 gem 'sinatra-cors', '~> 1.1'                                                                 # => Protect app via CORS
@@ -58,6 +58,7 @@ gem 'irb', group: :development
 
 # => General
 # => Included by Sinatra-Shopify-App
+gem 'rake'                                  # => Allows for Rake usage
 gem 'rack-flash3', require: 'rack-flash'    # => Flash messages for Rack apps
 gem 'foreman', group: :development          # => Allows us to run the app in development/testing
 gem 'byebug', groups: [:development, :test] # => Debug tool for Ruby

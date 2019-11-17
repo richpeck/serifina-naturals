@@ -363,18 +363,7 @@ stones = {
     "garnet"       => 0
   },
   "synergy12" => {
-    "azeztulite_quarts" => 0,
-    "brookite"          => 0,
-    "danburite"         => 0,
-    "herderite"         => 0,
-    "moldavite"         => 0,
-    "natrolite"         => 0,
-    "petalite"          => 0,
-    "phenacite"         => 0,
-    "satyaloka_quartz"  => 0,
-    "scolecite"         => 0,
-    "tanzanite"         => 0,
-    "tibetan_tektite"   => 0
+    "Synergy 12 Collection" => 80
   },
   "a_la_carte" => {
     "abalone_shell"     => 0,
