@@ -355,7 +355,7 @@ class SinatraApp < Sinatra::Base
       when :charm
         object = Charm.find @pk
       when :charm_type
-        object =
+        object = Charm.where charm_type: @pk
     end
 
   end
