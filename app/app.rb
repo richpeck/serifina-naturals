@@ -344,14 +344,18 @@ class SinatraApp < Sinatra::Base
 
     # => Type
     # => Determine type of object (allows us to work with different models)
-    halt 403 if !%w(shape charm charm_type).include? @type
+    halt 403 if !%w(rtrtrt).include? @type
 
     # => Update
     # => If PUT request, allows us to update the various models
     # => First step is to find appropriate object, then update it
     case @type.to_sym
-      when :bail
-
+      when :shape
+        object = Shape.find @pk
+      when :charm
+        object = Charm.find @pk
+      when :charm_type
+        object =
     end
 
   end
