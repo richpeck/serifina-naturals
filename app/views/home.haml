@@ -12,7 +12,8 @@
           - shapes = instance_variable_get("@#{bail[0].pluralize}")
           - shapes.sort_by { |shape| shape[:name] }.group_by(&:shape_type).each do |shape_type, array|
             %td{ class: bail, colspan: array.size, align: :center }
-              %strong{ class: 'editable', data: { type: "text", name: :shape, pk: shape_type, url: "/edit", title: "Shape Name:" }}= link_to "#{shape_type.titleize.pluralize}", "#"
+              - #%strong{ class: 'editable', data: { type: "text", name: :shape, pk: shape_type, url: "/edit", title: "Shape Name:" }}= link_to "#{shape_type.titleize.pluralize}", "#"
+              %strong= "#{shape_type.titleize.pluralize}"
 
       %tr{ class: "bails" }
 
@@ -21,8 +22,8 @@
           - shapes = instance_variable_get("@#{bail[0].pluralize}")
           - shapes.sort_by { |shape| shape[:name] }.each do |shape|
             %td{ class: bail, align: :center }
-              %strong{ class: 'editable', data: { type: "text", name: :bail, pk: shape.id, url: "/edit", title: "Bail Name:" }}= link_to "#{shape.name}", "#"
-              %strong{ class: 'editable price', data: { type: "text", name: :bail, pk: shape.id, url: "/edit", title: "Bail Price:", value: number_to_currency(shape.price, format: "%n" ) }}= link_to "#{number_to_currency(shape.price)}", "#"
+              %strong{ class: 'editable', data: { type: "text", name: :shape, pk: shape.id, url: "/edit", title: "Bail Name:" }}= link_to "#{shape.name}", "#"
+              %strong{ class: 'editable price', data: { type: "text", name: :shape, pk: shape.id, url: "/edit", title: "Bail Price:", value: number_to_currency(shape.price, format: "%n" ) }}= link_to "#{number_to_currency(shape.price)}", "#"
 
     - # Charms (general content)
     - @charms.group_by(&:charm_type).each_with_index do |(charm_type, array), index|
