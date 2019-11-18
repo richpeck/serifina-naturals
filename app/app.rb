@@ -337,9 +337,9 @@ class SinatraApp < Sinatra::Base
 
     # => Required Params
     # => Ensures we are able to manage the inputted data
-    required_params :shop, :name, :value, :pk # => pk - primary_key
+    required_params :name, :value, :pk # => pk - primary_key
 
-    
+
 
   end
 
