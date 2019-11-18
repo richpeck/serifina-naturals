@@ -346,7 +346,7 @@ class SinatraApp < Sinatra::Base
 
     # => Type
     # => Determine type of object (allows us to work with different models)
-    halt 403 unless %w(rtrtrt).include? @type
+    halt 403 unless %w(shape charm charm_type).include? @type
 
     # => Update
     # => If PUT request, allows us to update the various models
