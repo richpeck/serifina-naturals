@@ -52,6 +52,7 @@ $(document).ready ->
           msg += k+": "+v+"<br>"
 
       console.log msg
+      return msg
 
 
 ##########################################################
