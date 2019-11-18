@@ -366,7 +366,7 @@ class SinatraApp < Sinatra::Base
 
     # => Update
     # => If error, return 500 HTTP code
-    halt 500, "Failed To Update #{@type.titleize}" unless object.update(value)
+    halt 500, "Failed To Update #{@type.titleize}" #unless object.update(value)
 
 
   end
