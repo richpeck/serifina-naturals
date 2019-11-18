@@ -33,7 +33,7 @@ class CreateShapes < ActiveRecord::Migration::Current
       t.integer :bail_type,  default: 0
       t.integer :shape_type, default: 0
       t.string  :name
-      t.integer :price, precision: 10, scale: 2
+      t.decimal :price, precision: 10, scale: 2
 
       # => Index
       # => Required for upsert_all (ActiveRecord 6+)
