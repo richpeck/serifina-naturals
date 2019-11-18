@@ -344,7 +344,7 @@ class SinatraApp < Sinatra::Base
 
     # => Type
     # => Determine type of object (allows us to work with different models)
-    halt 403, "Incorrect Params" unless %w(shape charm charm_type).include? @type
+    halt 403, "Invalid Params" unless %w(shape shape_price charm charm_type).include? @type
 
     # => Update
     # => If PUT request, allows us to update the various models
@@ -352,14 +352,21 @@ class SinatraApp < Sinatra::Base
     case @type.to_sym
       when :shape
         object = Shape.find @pk
-        halt 500, "Failed To Update Shape" unless object.update(@value.is_a?(Integer) ? { price: @value} : { name: @value })
+        value  = { name: @value }
+      when :shape_price
+        object = Shape.find @pk
+        value  = { price: @value }
       when :charm
         object = Charm.find @pk
-        object.update(name: @value)
+        value  = { name: @value }
       when :charm_type
         object = Charm.where charm_type: @pk
         # Need to change charm_type from enum to model
     end
+
+    # => Update
+    # => If error, return 500 HTTP code
+    halt 500, "Failed To Update #{@type.titleize}" unless object.update(value)
 
 
   end

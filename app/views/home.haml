@@ -23,7 +23,7 @@
           - shapes.sort_by { |shape| shape[:name] }.each do |shape|
             %td{ class: bail, align: :center }
               %strong{ class: 'editable', data: { type: "text", name: :shape, pk: shape.id, url: "/edit", title: "Bail Name:" }}= link_to "#{shape.name}", "#"
-              %strong{ class: 'editable price', data: { type: "text", name: :shape, pk: shape.id, url: "/edit", title: "Bail Price:", value: number_to_currency(shape.price, format: "%n" ) }}= link_to "#{number_to_currency(shape.price)}", "#"
+              %strong{ class: 'editable price', data: { type: "text", name: :shape_price, pk: shape.id, url: "/edit", title: "Bail Price:", value: number_to_currency(shape.price, format: "%n" ) }}= link_to "#{number_to_currency(shape.price)}", "#"
 
     - # Charms (general content)
     - @charms.group_by(&:charm_type).each_with_index do |(charm_type, array), index|
