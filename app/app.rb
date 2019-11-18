@@ -328,11 +328,18 @@ class SinatraApp < Sinatra::Base
   ##########################################################
   ##########################################################
 
-  ## EDITOR ##
+  ## EDIT ##
   ## By request, this allows us to manage the titles/prices of various elements
-  route :post, :put, :delete, '/edit/:item/:id' do # => /edit/charm/15
+  route :post, :put, :delete, '/edit' do # => /edit (charm_type,15)
 
     # => Allows us to create/update/delete elements
+    # => Needs to accept all data as attached form data
+
+    # => Required Params
+    # => Ensures we are able to manage the inputted data
+    required_params :shop, :name, :value, :pk # => pk - primary_key
+
+    
 
   end
 
