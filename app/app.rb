@@ -342,9 +342,11 @@ class SinatraApp < Sinatra::Base
     @type  = params[:name]
     @value = params[:value]
 
+    puts @type
+
     # => Type
     # => Determine type of object (allows us to work with different models)
-    halt 403 if !%w(rtrtrt).include? @type
+    halt 403 unless %w(rtrtrt).include? @type
 
     # => Update
     # => If PUT request, allows us to update the various models
