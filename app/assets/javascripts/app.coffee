@@ -43,10 +43,6 @@ $(document).ready ->
       if $.trim(value) == ''
         return 'Field required'
 
-    # Ajax
-    success: (response, newValue) ->
-      alert newValue
-
     error: (errors) ->
       msg = ''
       if errors && errors.responseText
