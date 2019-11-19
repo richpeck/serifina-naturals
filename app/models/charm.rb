@@ -34,7 +34,7 @@ class Charm < ActiveRecord::Base
 
   ## Extra Attributes ##
   ## Required to ensure we're able to include the charm_type ##
-  attr_reader :charm_type_test
+  attr_accessor :charm_type_test
 
   ## Charm Type ##
   def charm_type_test
