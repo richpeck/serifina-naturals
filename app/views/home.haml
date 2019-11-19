@@ -12,7 +12,7 @@
           - shapes = instance_variable_get("@#{bail[0].pluralize}")
           - shapes.sort_by { |shape| shape[:name] }.group_by(&:shape_type).each do |shape_type, array|
             %td{ class: bail, colspan: array.size, align: :center }
-              %strong{ class: 'editable', data: { type: "text", name: :shape_type, pk: shape_type, url: "/edit", title: "Shape Type:" }}= link_to "#{shape_type.titleize.pluralize}", "#"
+              %strong{ class: 'editable', data: { type: "text", name: :shape_type, pk: shape_type.id, url: "/edit", title: "Shape Type:" }}= link_to "#{shape_type.name.titleize.pluralize}", "#"
 
       %tr{ class: "bails" }
 
