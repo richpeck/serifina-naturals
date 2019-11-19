@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2014_04_13_221334) do
+ActiveRecord::Schema.define(version: 2014_04_13_221390) do
 
   create_table "associations", force: :cascade do |t|
     t.string "associatiable_type"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 2014_04_13_221334) do
     t.string "name"
     t.integer "price"
     t.index ["charm_type", "name"], name: "charm_type_name_index", unique: true
+  end
+
+  create_table "nodes", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.index ["type", "name"], name: "Only one name per type", unique: true
   end
 
   create_table "products", force: :cascade do |t|

@@ -13,9 +13,16 @@
 ############################################
 ############################################
 
-## CharmType ##
-## id | name | created_at | updated_at ##
-class CharmType < ActiveRecord::Base
+## Libs ##
+## Since this is not loaded at init (as it is with Rails), need to manually invoke Node ##
+require_relative 'node'
+
+############################################
+############################################
+
+## CharmType -> Node ##
+## id | type | name | created_at | updated_at ##
+class CharmType < Node
 end
 
 ############################################
