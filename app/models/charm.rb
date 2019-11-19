@@ -32,15 +32,6 @@ class Charm < ActiveRecord::Base
   has_many :associations, as: :associated, dependent: :destroy
   has_many :shapes, through: :associations, source: :associatiable, source_type: "Shape"
 
-  ## Extra Attributes ##
-  ## Required to ensure we're able to include the charm_type ##
-  attr_accessor :charm_type_test
-
-  ## Charm Type ##
-  def charm_type_test
-    "test"
-  end
-
 end
 
 ############################################
