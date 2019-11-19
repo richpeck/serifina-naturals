@@ -13,7 +13,7 @@
           - shapes.sort_by { |shape| shape[:name] }.group_by(&:shape_type).each do |shape_type, array|
             %td{ class: bail, colspan: array.size, align: :center }
               %strong{ class: 'editable', data: { type: "text", name: :shape, pk: shape_type, url: "/edit", title: "Shape Name:" }}= link_to "#{shape_type.titleize.pluralize}", "#"
-               - #%strong= "#{shape_type.titleize.pluralize}"
+              - #%strong= "#{shape_type.titleize.pluralize}"
 
       %tr{ class: "bails" }
 
