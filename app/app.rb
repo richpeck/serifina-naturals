@@ -238,7 +238,7 @@ class SinatraApp < Sinatra::Base
     # => Vars
     # => Allows us to identify the various variables for the system
     @shape  = Shape.find_by(id: params[:shape])
-    @charms = @shape.try(:charms).try(:order, charm_type: :asc) # Charm.all.order(charm_type: :asc)
+    @charms = @shape.try(:charms).try(:order, charm_type_id: :asc) # Charm.all.order(charm_type: :asc)
 
     # => Build out response object
     # => This is designed to provide the user with a series of pieces of information
@@ -310,7 +310,7 @@ class SinatraApp < Sinatra::Base
             "value": "#{@shape.shape_type.titleize} (#{@shape.name.upcase}) (#{number_to_currency(@shape.price)})",
           },{
             "name":   "Charm",
-            "value":  "#{@charm.charm_type.titleize} (+ #{number_to_currency(@charm.price)})",
+            "value":  "#{@charm.charm_type_name.titleize} (+ #{number_to_currency(@charm.price)})",
           }].append(*stones).append(*properties)
         }
       ]
