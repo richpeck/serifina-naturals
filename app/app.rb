@@ -238,7 +238,7 @@ class SinatraApp < Sinatra::Base
     # => Vars
     # => Allows us to identify the various variables for the system
     @shape  = Shape.find_by(id: params[:shape])
-    @charms = @shape.try(:charms).try(:select, "id, name, price AS test").try(:order, charm_type_id: :asc)
+    @charms = @shape.try(:charms).try(:select, "charms.id, charms.name, charms.price AS test").try(:order, charm_type_id: :asc)
     #@charms = @shape.try(:charms).try(:includes, :charm_type).try(:select, "charms.id, charms.name, charms.price, nodes.name AS charm_type").try(:order, "charms.charm_type_id" => :asc).try(:references, :charm_type) # Charm.all.joins(:charm_types).order("charm_type.name": :asc)
 
     # => Build out response object
