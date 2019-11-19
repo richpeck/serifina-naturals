@@ -24,13 +24,22 @@ class Charm < ActiveRecord::Base
 
   # => Delegations
   # => Allows us to call associative data
-  delegate :name, to: :charm_type, prefix: true # => charm_type_name
+  delegate :name, to: :charm_type, prefix: true # => @charm.charm_type_name
 
   # => Associations
   # => Gives us the ability to associate different objects
   # => EG @shop.shapes.find(1).charms
   has_many :associations, as: :associated, dependent: :destroy
   has_many :shapes, through: :associations, source: :associatiable, source_type: "Shape"
+
+  ## Extra Attributes ##
+  ## Required to ensure we're able to include the charm_type ##
+  attr_reader :charm_type_test
+
+  ## Charm Type ##
+  def charm_type_test
+    "test"
+  end
 
 end
 
