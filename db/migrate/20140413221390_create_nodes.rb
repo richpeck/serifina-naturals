@@ -32,7 +32,7 @@ class CreateNodes < ActiveRecord::Migration::Current
 
       # => Index
       # => Required for upsert_all (ActiveRecord 6+)
-      t.index [:type, :name], unique: true, name: 'Only one name per type'
+      t.index [:type, :name], unique: true, name: 'type_name_index'
     end
   end
 

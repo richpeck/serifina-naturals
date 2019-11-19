@@ -27,13 +27,13 @@ class CreateCharms < ActiveRecord::Migration::Current
   ## Up ##
   def up
     create_table @@table do |t|
-      t.integer :charm_type,  default: 0
+      t.integer :charm_type_id
       t.string  :name
       t.integer :price, precision: 10, scale: 2
 
       # => Index
       # => Required for upsert_all (ActiveRecord 6+)
-      t.index [:charm_type, :name], unique: true, name: 'charm_type_name_index'
+      t.index [:charm_type_id, :name], unique: true, name: 'charm_type_id_name_index'
     end
   end
 

@@ -23,6 +23,10 @@ require_relative 'node'
 ## CharmType -> Node ##
 ## id | type | name | created_at | updated_at ##
 class CharmType < Node
+
+  ## Associations ##
+  has_many :charms
+
 end
 
 ############################################

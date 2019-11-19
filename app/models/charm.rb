@@ -15,12 +15,16 @@
 ############################################
 
 ## Charm ##
-## id | charm_type | name | price | created_at | updated_at ##
+## id | charm_type_id | name | price | created_at | updated_at ##
 class Charm < ActiveRecord::Base
 
   # => Charm Type
-  # => Gives us the ability to determine the type of the charm
-  enum charm_type: %i[dream_catcher ohms paisley steampunk_gear tree_of_life peace feather hamsa lotus chakra heart mini_heart_&_arrow lock_and_key owl paw_print tear_drop cross word starfish seahorse anchor turtle dolphin premium_mini seashell request_shape sm_med_or_large shark_teeth]
+  # => Gives us the ability to determine type of the charm
+  belongs_to :charm_type, required: true
+
+  # => Delegations
+  # => Allows us to call associative data
+  delegate :name, to: :charm_type, prefix: true # => charm_type_name
 
   # => Associations
   # => Gives us the ability to associate different objects

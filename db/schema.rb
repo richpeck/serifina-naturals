@@ -23,16 +23,16 @@ ActiveRecord::Schema.define(version: 2014_04_13_221390) do
   end
 
   create_table "charms", force: :cascade do |t|
-    t.integer "charm_type", default: 0
+    t.integer "charm_type_id"
     t.string "name"
     t.integer "price"
-    t.index ["charm_type", "name"], name: "charm_type_name_index", unique: true
+    t.index ["charm_type_id", "name"], name: "charm_type_id_name_index", unique: true
   end
 
   create_table "nodes", force: :cascade do |t|
     t.string "type"
     t.string "name"
-    t.index ["type", "name"], name: "Only one name per type", unique: true
+    t.index ["type", "name"], name: "type_name_index", unique: true
   end
 
   create_table "products", force: :cascade do |t|
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2014_04_13_221390) do
     t.integer "bail_type", default: 0
     t.integer "shape_type", default: 0
     t.string "name"
-    t.integer "price"
+    t.decimal "price", precision: 10, scale: 2
     t.index ["bail_type", "shape_type", "name"], name: "bail_shop_name_unique_index", unique: true
   end
 

@@ -338,11 +338,16 @@ charms = {
   }
 }
 
+## Charm Types ##
+## Seeds the types of charms for later use ##
+## Pulls top level of array stack & DOESN'T return any objects ##
+Node.upsert_all( charms.map{ |c,d| {"type": "CharmType", "name": c} }, unique_by: :type_name_index)
+
 ## Loop ##
 ## Cycles the hash above and creates the appropriate listings ##
-charms.each do |charm_type,charms| # => starfish etc
-  charms.each do |charm,item|  # => {price: 1, associations: x} etc
-    charm  = Charm.upsert({charm_type: Charm.charm_types[charm_type], name: charm, price: item[:price]}, unique_by: :charm_type_name_index) # => doesn't return any id's - build the associations separately
+CharmType.all.each do |charm_type|
+  charms[charm_type.name].each do |charm, item|
+    Charm.upsert({charm_type_id: charm_type.id, name: charm, price: item[:price]}, unique_by: :charm_type_id_name_index) # => doesn't return any id's - build the associations separately
   end
 end
 
@@ -501,7 +506,7 @@ end
 ## Associations ##
 ## Allows us to build the various associations between charms & shapes ##
 Charm.all.each do |charm|
-  shapes = Shape.where name: charms[charm.charm_type][charm.name.to_sym][:associations]
+  shapes = Shape.where name: charms[charm.charm_type_name][charm.name.to_sym][:associations]
   begin
     charm.shapes << shapes # => unique constraints
   rescue ActiveRecord::RecordNotUnique => e
