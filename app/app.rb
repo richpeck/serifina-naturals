@@ -344,7 +344,7 @@ class SinatraApp < Sinatra::Base
 
     # => Type
     # => Determine type of object (allows us to work with different models)
-    halt 403, "Invalid Params" unless %w(shape shape_price charm charm_type).include? @type
+    halt 403, "Invalid Params" unless %w(shape shape_price charm charm_type charm_price).include? @type
 
     # => Update
     # => If PUT request, allows us to update the various models
@@ -362,6 +362,9 @@ class SinatraApp < Sinatra::Base
       when :charm_type
         object = CharmType.find @pk
         value  = { name: @value }
+      when :charm_price
+        object = Charm.find @pk
+        value  = { price: @value }
     end
 
     # => Update
