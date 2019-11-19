@@ -20,13 +20,7 @@ class Charm < ActiveRecord::Base
 
   # => Charm Type
   # => Gives us the ability to determine type of the charm
-  belongs_to :charm_type, required: true do
-
-    def load
-      puts "test"
-    end
-
-  end
+  belongs_to :charm_type, required: true
 
   # => Delegations
   # => Allows us to call associative data
