@@ -360,8 +360,8 @@ class SinatraApp < Sinatra::Base
         object = Charm.find @pk
         value  = { name: @value }
       when :charm_type
-        object = Charm.where charm_type: @pk
-        # Need to change charm_type from enum to model
+        object = CharmType.find_by name: @pk
+        value  = { name: @value }
     end
 
     # => Update
