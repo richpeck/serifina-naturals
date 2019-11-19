@@ -21,13 +21,15 @@
 ## Dependent on bail type (loop / regular) ##
 ## Loop: Circles, Rectangles, Squares, Ovals, Teardrops, Puzzle, Hunch Shell | Regular: Circles, Squares, Ovals, Teardrop, Hearts ##
 ## -- ##
-## id | bail_type | shape_type | name | code | price | created_at | updated_at ##
+## id | bail_type | shape_type_id | name | code | price | created_at | updated_at ##
 class Shape < ActiveRecord::Base
 
   # => Types
   # => Allows us to differentiate between the various items
-  enum bail_type:  %i[loop regular]
-  enum shape_type: %i[square oval rectangle circle teardrop puzzle hunch_shell heart] # => 7 types of shape
+  enum bail_type: %i[loop regular]
+
+  # => Shape Types
+  belongs_to :shape_type, required: true
 
   # => Associations
   # => Gives us the ability to associate different objects

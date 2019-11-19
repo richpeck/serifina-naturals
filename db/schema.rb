@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 2014_04_13_221390) do
 
   create_table "shapes", force: :cascade do |t|
     t.integer "bail_type", default: 0
-    t.integer "shape_type", default: 0
+    t.integer "shape_type_id", default: 0
     t.string "name"
     t.decimal "price", precision: 10, scale: 2
-    t.index ["bail_type", "shape_type", "name"], name: "bail_shop_name_unique_index", unique: true
+    t.index ["bail_type", "shape_type_id", "name"], name: "bail_shop_name_unique_index", unique: true
   end
 
   create_table "shops", force: :cascade do |t|

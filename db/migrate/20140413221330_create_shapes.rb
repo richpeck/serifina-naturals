@@ -30,14 +30,14 @@ class CreateShapes < ActiveRecord::Migration::Current
   ## Up ##
   def up
     create_table @@table do |t|
-      t.integer :bail_type,  default: 0
-      t.integer :shape_type, default: 0
+      t.integer :bail_type,     default: 0
+      t.integer :shape_type_id, default: 0
       t.string  :name
       t.decimal :price, precision: 10, scale: 2
 
       # => Index
       # => Required for upsert_all (ActiveRecord 6+)
-      t.index [:bail_type, :shape_type, :name], unique: true, name: 'bail_shop_name_unique_index'
+      t.index [:bail_type, :shape_type_id, :name], unique: true, name: 'bail_shop_name_unique_index'
     end
   end
 

@@ -87,12 +87,22 @@ shapes = {
   }
 }
 
+## Shape Types ##
+## Pluck from above hash ##
+items = []
+shapes.each do |bail,shape|
+  items.push shape.map { |c,d| {"type": "ShapeType", "name": c} }
+end
+Node.upsert_all(items.flatten.uniq, unique_by: :type_name_index)
+
 ## Loop ##
 ## Cycles the hash above and creates the appropriate listings ##
-shapes.each do |bail_type,shapes| # => loop/regular
-  shapes.each do |shape_type,models|  # => circle/square/oval/teardrop etc
-    models.each do |name, price|
-      Shape.upsert({bail_type: Shape.bail_types[bail_type], shape_type: Shape.shape_types[shape_type], name: name, price: price}, unique_by: :bail_shop_name_unique_index)
+if ShapeType.any?
+  shapes.each do |bail_type,shape| # => loop/regular etc
+    shape.each do |shape_type,models| # => circle/square/oval/teardrop etc
+      models.each do |name, price|
+        Shape.upsert({bail_type: Shape.bail_types[bail_type], shape_type_id: ShapeType.find_by(name: shape_type).id, name: name, price: price}, unique_by: :bail_shop_name_unique_index)
+      end
     end
   end
 end
