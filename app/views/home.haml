@@ -13,7 +13,6 @@
           - shapes.sort_by { |shape| shape[:name] }.group_by(&:shape_type).each do |shape_type, array|
             %td{ class: bail, colspan: array.size, align: :center }
               %strong{ class: 'editable', data: { type: "text", name: :shape, pk: shape_type, url: "/edit", title: "Shape Name:" }}= link_to "#{shape_type.titleize.pluralize}", "#"
-              - #%strong= "#{shape_type.titleize.pluralize}"
 
       %tr{ class: "bails" }
 
@@ -34,7 +33,7 @@
               %strong{ class: 'editable', data: { type: "text", name: :charm_type, pk: charm_type.id, url: "/edit", title: "Charm Type:" }}= link_to charm_type.name.titleize, '#'
           %td{ class: "charm charm2" }
             = link_to charm.name.titleize, "#", class: 'editable', data: { type: "text", name: :charm, pk: charm.id, url: "/edit", title: "Charm Name:" }
-            = link_to number_to_currency(charm.price), "#"
+            = link_to number_to_currency(charm.price), "#", class: 'editable price', data: { type: "text", name: :charm_price, pk: charm.id, url: "/edit", title: "Charm Price:", value: number_to_currency(charm.price, format: "%n" ) }
 
           - # Shapes
           - @shapes.each do |bail|
