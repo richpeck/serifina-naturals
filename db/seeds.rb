@@ -345,9 +345,11 @@ Node.upsert_all( charms.map{ |c,d| {"type": "CharmType", "name": c} }, unique_by
 
 ## Loop ##
 ## Cycles the hash above and creates the appropriate listings ##
-CharmType.all.each do |charm_type|
-  charms[charm_type.name].each do |charm, item|
-    Charm.upsert({charm_type_id: charm_type.id, name: charm, price: item[:price]}, unique_by: :charm_type_id_name_index) # => doesn't return any id's - build the associations separately
+if CharmType.any?
+  CharmType.all.each do |charm_type|
+    charms[charm_type.name].each do |charm, item|
+      Charm.upsert({charm_type_id: charm_type.id, name: charm, price: item[:price]}, unique_by: :charm_type_id_name_index) # => doesn't return any id's - build the associations separately
+    end
   end
 end
 
