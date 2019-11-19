@@ -360,7 +360,7 @@ class SinatraApp < Sinatra::Base
         object = Charm.find @pk
         value  = { name: @value }
       when :charm_type
-        object = CharmType.find_by name: @pk
+        object = CharmType.find @pk
         value  = { name: @value }
     end
 
