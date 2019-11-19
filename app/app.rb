@@ -238,9 +238,8 @@ class SinatraApp < Sinatra::Base
     # => Vars
     # => Allows us to identify the various variables for the system
     @shape  = Shape.find_by(id: params[:shape])
-    @charms = @shape.charms.joins(:charm_type).select("charms.id, charms.name, charms.price, nodes.name AS tester").order(charm_type_id: :asc).references(:charm_type) if @shape
-    #@charms = @shape.try(:charms).try(:includes, :charm_type).try(:select, "charms.id, charms.name, charms.price, nodes.name AS charm_type").try(:order, "charms.charm_type_id" => :asc).try(:references, :charm_type) # Charm.all.joins(:charm_types).order("charm_type.name": :asc)
-
+    @charms = @shape.charms.joins(:charm_type).select("charms.id, charms.name, charms.price, nodes.name AS charm_type").order(charm_type_id: :asc).references(:charm_type) if @shape
+    
     # => Build out response object
     # => This is designed to provide the user with a series of pieces of information
     # => which gives them the ability to add certain products to their cart
