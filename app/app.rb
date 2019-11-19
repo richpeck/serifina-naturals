@@ -307,7 +307,7 @@ class SinatraApp < Sinatra::Base
           "quantity":   1,
           "properties": [{
             "name": "Shape",
-            "value": "#{@shape.shape_type.titleize} (#{@shape.name.upcase}) (#{number_to_currency(@shape.price)})",
+            "value": "#{@shape.shape_type_name.titleize} (#{@shape.name.upcase}) (#{number_to_currency(@shape.price)})",
           },{
             "name":   "Charm",
             "value":  "#{@charm.charm_type_name.titleize} (+ #{number_to_currency(@charm.price)})",

@@ -31,6 +31,9 @@ class Shape < ActiveRecord::Base
   # => Shape Types
   belongs_to :shape_type, required: true
 
+  # => Delegate
+  delegate :name, to: :shape_type, prefix: true
+
   # => Associations
   # => Gives us the ability to associate different objects
   # => EG @shop.shapes.find(1).charms
