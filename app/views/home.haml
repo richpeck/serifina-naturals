@@ -32,7 +32,9 @@
           %td{ class: "charm" }
             - if i <= 0
               %strong{ class: 'editable', data: { type: "text", name: :charm_type, pk: charm_type.id, url: "/edit", title: "Charm Type:" }}= link_to charm_type.name.titleize, '#'
-          %td{ class: "charm charm2" }= link_to charm.name.titleize, "#", class: 'editable', data: { type: "text", name: :charm, pk: charm.id, url: "/edit", title: "Charm Name:" }
+          %td{ class: "charm charm2" }
+            = link_to charm.name.titleize, "#", class: 'editable', data: { type: "text", name: :charm, pk: charm.id, url: "/edit", title: "Charm Name:" }
+            = link_to charm.price, "#"
 
           - # Shapes
           - @shapes.each do |bail|
