@@ -55,5 +55,5 @@
   %ul
   - stones.each do |stone|
     %li
-      = link_to stone.name.titleize, "#"
-      = link_to number_to_currency(stone.price), "#"
+      %strong= link_to stone.name.titleize, "#", class: 'editable', data: { type: "text", name: :stone, pk: stone.id, url: "/edit", title: "Stone Name:" }
+      = link_to number_to_currency(stone.price), "#", class: 'editable price', data: { type: "text", name: :stone_price, pk: stone.id, url: "/edit", title: "Stone Price:", value: number_to_currency(stone.price, format: "%n" ) }
