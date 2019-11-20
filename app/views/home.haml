@@ -52,6 +52,8 @@
 - @stones.group_by(&:stone_type_name_item).each_with_index do |(stone_type,stones), index|
   %strong
     %u= stone_type.titleize
+  %ul
   - stones.each do |stone|
-    = stone.name
-  %br
+    %li
+      = link_to stone.name.titleize, "#"
+      = link_to number_to_currency(stone.price), "#"
