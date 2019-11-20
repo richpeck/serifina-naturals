@@ -46,3 +46,7 @@
                       = button_to shape.name.upcase, "/associations/#{shape.id}/#{charm.id}", method: :delete, title: "Remove Association"
                     - else
                       = button_to "x", "/associations/#{shape.id}/#{charm.id}", method: :put, title: "Add Association"
+
+- # Stones
+- @stones.each do |stone|
+  = stone.inspect()
