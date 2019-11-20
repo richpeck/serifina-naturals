@@ -246,7 +246,7 @@ class SinatraApp < Sinatra::Base
     @items = {
       shapes: Shape.send(params[:bail_type]).joins(:shape_type).select("shapes.id, shapes.name, shapes.price, nodes.name AS shape_type_name_item").order(shape_type_name_item: :asc).references(:shape_type).group(:id, :shape_type_name_item).order(name: :asc),
       charms: @charms || "", # => has to be a derivative of the @shape var
-      stones: Stone.all
+      stones: Stone.all.joins(:stone_type).select("stones.id, stones.name, stones.price, nodes.name AS stone_type_name_item").order(stone_type_name_item: :asc).references(:stone_type).
     }
 
     # => Response
