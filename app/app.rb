@@ -152,7 +152,7 @@ class SinatraApp < Sinatra::Base
       @shop     = Shop.find_by name: shop_name
       @shapes   = Shape.bail_types
       @charms   = Charm.all
-      @stones   = Stone.all.joins(:stone_type).select("stones.id, stones.name, stones.price, nodes.name AS stone_type_name_item").order(stone_type_name_item: :asc).group(:stone_type_name_item).references(:stone_type)
+      @stones   = Stone.all.joins(:stone_type).select("stones.id, stones.name, stones.price, nodes.name AS stone_type_name_item").order(stone_type_name_item: :asc).group("stones.id", :stone_type_name_item).references(:stone_type)
 
       @shapes.each do |type|
         instance_variable_set("@#{type[0].pluralize}", Shape.send( type[0] ).includes(:charms)) # => @loop, loops
