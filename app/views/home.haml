@@ -51,6 +51,6 @@
 %h1 Stones
 - @stones.each do |stone_type,stone|
   %strong
-    %u= stone_type_name_item.titleize
-    = stone.name.titleize
+    %u= stone_type.inspect()
+    = stone.inspect()
   %br
