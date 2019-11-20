@@ -49,4 +49,8 @@
 
 - # Stones
 %h1 Stones
-= @stones.inspect()
+- @stones.group_by(&:stone_type_name_item).each_with_index do |(stone_type,stones), index|
+  %strong
+    %u= stone_type.inspect()
+    = stones.inspect()
+  %br
