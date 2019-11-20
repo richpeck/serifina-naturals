@@ -51,6 +51,7 @@
 %h1 Stones
 - @stones.group_by(&:stone_type_name_item).each_with_index do |(stone_type,stones), index|
   %strong
-    %u= stone_type.inspect()
-    = stones.inspect()
+    %u= stone_type.titleize
+  - stones.each do |stone|
+    = stone.name
   %br
