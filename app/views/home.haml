@@ -49,8 +49,4 @@
 
 - # Stones
 %h1 Stones
-- @stones.each_with_index do |(stone_type,stones), index|
-  %strong
-    %u= stone_type.inspect()
-    = stones.inspect()
-  %br
+= @stones.inspect()
