@@ -48,6 +48,9 @@
                       = button_to "x", "/associations/#{shape.id}/#{charm.id}", method: :put, title: "Add Association"
 
 - # Stones
+%h1 Stones
 - @stones.each do |stone|
-  %strong= stone.name 
+  %strong
+    %u= stone.stone_type_name_item.titleize
+    = stone.name.titleize
   %br
