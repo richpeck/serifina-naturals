@@ -49,8 +49,8 @@
 
 - # Stones
 %h1 Stones
-- @stones.each do |stone|
+- @stones.each do |stone_type,stone|
   %strong
-    %u= stone.stone_type_name_item.titleize
+    %u= stone_type_name_item.titleize
     = stone.name.titleize
   %br
