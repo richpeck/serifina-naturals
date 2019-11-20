@@ -27,13 +27,13 @@ class CreateStones < ActiveRecord::Migration::Current
   ## Up ##
   def up
     create_table @@table do |t|
-      t.integer :stone_type,  default: 0
+      t.integer :stone_type_id,  default: 0
       t.string  :name
       t.integer :price, precision: 10, scale: 2
 
       # => Index
       # => Required for upsert_all (ActiveRecord 6+)
-      t.index [:stone_type, :name], unique: true, name: 'stone_type_name_index'
+      t.index [:stone_type_id, :name], unique: true, name: 'stone_type_name_index'
     end
   end
 

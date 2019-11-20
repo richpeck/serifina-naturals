@@ -15,9 +15,15 @@
 ############################################
 
 ## Stone ##
-## id | stone_type | name | price | created_at | updated_at ##
+## id | stone_type_id | name | price | created_at | updated_at ##
 class Stone < ActiveRecord::Base
-  enum stone_type: %i[chakra synergy12 a_la_carte]
+
+  # => Stone Types
+  belongs_to :stone_type, required: true
+
+  # => Delegate
+  delegate :name, to: :stone_type, prefix: true
+
 end
 
 ############################################

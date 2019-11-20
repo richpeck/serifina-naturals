@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 2014_04_13_221390) do
   end
 
   create_table "stones", force: :cascade do |t|
-    t.integer "stone_type", default: 0
+    t.integer "stone_type_id", default: 0
     t.string "name"
     t.integer "price"
-    t.index ["stone_type", "name"], name: "stone_type_name_index", unique: true
+    t.index ["stone_type_id", "name"], name: "stone_type_name_index", unique: true
   end
 
 end

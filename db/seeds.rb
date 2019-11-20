@@ -504,11 +504,17 @@ stones = {
   }
 }
 
+## StoneTypes ##
+## Populate StoneType model before anything else ##
+Node.upsert_all( stones.map{ |c,d| {"type": "StoneType", "name": c} }, unique_by: :type_name_index)
+
 ## Loop ##
 ## Cycles the hash above and creates the appropriate listings ##
-stones.each do |stone_type,stones| # => starfish etc
-  stones.each do |stone,price|  # => circle/square/oval/teardrop etc
-    Stone.upsert({stone_type: Stone.stone_types[stone_type], name: stone, price: price}, unique_by: :stone_type_name_index)
+if StoneType.any?
+  stones.each do |stone_type,stones| # => starfish etc
+    stones.each do |stone,price|  # => circle/square/oval/teardrop etc
+      Stone.upsert({stone_type_id: StoneType.find_by(name: stone_type).id, name: stone, price: price}, unique_by: :stone_type_name_index)
+    end
   end
 end
 
